@@ -1,0 +1,168 @@
+<section id="feedback">
+  <h2>Feedback Form</h2>
+  <form action="#" method="post">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="comments">Comments:</label>
+    <textarea id="comments" name="comments" rows="5" required></textarea>
+
+    <div class="checkbox-group">
+      <p><strong>Select your favorite dinosaurs:</strong></p>
+      <label><input type="checkbox" name="dinosaurs" value="t-rex"> T-Rex</label>
+      <label><input type="checkbox" name="dinosaurs" value="mosasaurs"> Mosasaurs</label>
+      <label><input type="checkbox" name="dinosaurs" value="d-rex"> D-Rex</label>
+      <label><input type="checkbox" name="dinosaurs" value="spinosaurus"> Spinosaurus</label>
+      <label><input type="checkbox" name="dinosaurs" value="velociraptor"> Velociraptor</label>
+       <label><input type="checkbox" name="dinosaurs" value="quetzalcoatlus"> Quetzalcoatlus</label>
+        <label><input type="checkbox" name="dinosaurs" value="titanosaurus"> Titanosaurus</label>
+         <label><input type="checkbox" name="dinosaurs" value="mutadon"> Mutadon</label>
+    </div>
+
+    <label for="country">Country:</label>
+    <select id="country" name="country" required>
+      <option value="">Select Your Country</option>
+      <option value="usa">United States</option>
+      <option value="uk">United Kingdom</option>
+      <option value="philippines">Philippines</option>
+      <option value="canada">Canada</option>
+      <option value="australia">Australia</option>
+    </select>
+
+    <button type="submit">Submit Feedback</button>
+  </form>
+</section>
+
+<footer>
+  © 2025 Jurassic World Rebirth | All Rights Reserved
+</footer>
+
+<section id="showing">
+  <h2>Now Showing in Different Countries</h2>
+  <div class="showing">
+    <div class="ticket">🎟️ Ayala Malls</div>
+    <div class="ticket">🎟️ Cinemas</div>
+    <div class="ticket">🎟️ SM Cinema</div>
+  </div>
+</section>
+
+
+  <section id="dinosaurs">
+    <h2>Dinosaurs Rivalry</h2>
+    <div class="gallery">
+      <figure>
+        <img src="" alt="T-Rex">
+        <figcaption>Tyrannosaurus Rex</figcaption>
+      </figure>
+
+      <figure>
+        <img src="" alt="Mosasaurus">
+        <figcaption>Mosasaurus</figcaption>
+      </figure>
+
+      <figure>
+        <img src="" alt="D-Rex">
+        <figcaption>Distortus Rex</figcaption>
+      </figure>
+
+      <figure>
+        <img src="" alt="Spinosaurus">
+        <figcaption>Spinosaurus</figcaption>
+      </figure>
+
+      <figure>
+        <img src="" alt="Titanosaurus">
+        <figcaption>Titanosaurus</figcaption>
+      </figure>
+
+      <figure>
+        <img src="" alt="Quetzalcoatlus">
+        <figcaption>Quetzalcoatlus</figcaption>
+      </figure>
+
+      <figure>
+        <img src="" alt="Velociraptor">
+        <figcaption>Velociraptor</figcaption>
+      </figure>
+
+      <figure>
+        <img src="" alt="Mutadon">
+        <figcaption>Mutadon</figcaption>
+      </figure>
+    </div>
+  </section>
+
+
+
+<section class="features">
+    <div class="feature-box box1">
+      <h3>Learning</h3>
+      <p>Gain hands-on experience in programming, networking, and electronics.</p>
+      <a href="#about">Learn More →</a>
+    </div>
+    <div class="feature-box box2">
+      <h3>Expertise</h3>
+      <p>Develop the technical skills needed for today’s industries.</p>
+      <a href="#about">Learn More →</a>
+    </div>
+    <div class="feature-box box3">
+      <h3>Activities</h3>
+      <p>Join coding events, seminars, and workshops to enhance your skills.</p>
+      <a href="#activities">Learn More →</a>
+    </div>
+    <div class="feature-box box4">
+      <h3>Support</h3>
+      <p>We guide students with mentorship, training, and career advice.</p>
+      <a href="#contact">Learn More →</a>
+    </div>
+  </section>
+
+  .features {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  padding: 50px 40px;
+}
+
+
+.feature-box {
+  color: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+  transition: transform 0.3s ease;
+}
+
+.feature-box:hover {
+  transform: translateY(-8px);
+}
+
+
+.feature-box h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.feature-box p {
+  flex: 1;
+  margin-bottom: 15px;
+}
+
+.feature-box a {
+  color: #fff;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+
+.box1 { background: linear-gradient(135deg, #27ae60, #2ecc71); }
+.box2 { background: linear-gradient(135deg, #2980b9, #3498db); }
+.box3 { background: linear-gradient(135deg, #8e44ad, #9b59b6); }
+.box4 { background: linear-gradient(135deg, #d35400, #e67e22); }
