@@ -13,29 +13,72 @@ body {
 }
 
 
-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: #0077cc;
-  padding: 15px 40px;
-  color: white;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-nav .logo {
-  font-size: 1.2rem;
-  font-weight: bold;
+body {
+  font-family: 'Georgia', serif;
+}
+
+
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(15, 15, 15, 0.85); 
+  backdrop-filter: blur(6px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px 60px;
+  z-index: 1000;
+}
+
+
+.nav-links {
+  display: flex;
+  gap: 50px;
 }
 
 .nav-links a {
-  margin: 0 15px;
   text-decoration: none;
-  color: white;
+  color: #f8f8f8;
+  font-size: 1rem;
   font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  position: relative;
+  transition: color 0.3s ease;
 }
 
+
 .nav-links a:hover {
-  text-decoration: underline;
+  color: #d9b76f;
+}
+
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0%;
+  height: 2px;
+  background-color: #d9b76f;
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+
+header, section {
+  margin-top: 80px;
+
 }
 
 header {
@@ -70,11 +113,6 @@ section h2 {
   color: #0077cc;
 
 }
-.extra-info{
-  display:flex;
-  padding: 10px;
-}
-
 
 .career ul {
   list-style: none;
