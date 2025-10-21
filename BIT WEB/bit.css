@@ -28,46 +28,42 @@ nav {
   position: fixed;
   top: 0;
   width: 100%;
-  background: rgba(231, 231, 231, 0.85); 
-  backdrop-filter: blur(6px);
+  background: rgba(25, 47, 89, 0.75); /* soft navy with transparency */
+  backdrop-filter: blur(12px);
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 15px 0;
+  padding: 18px 0;
   z-index: 1000;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-
+/* Links */
 .nav-links {
   display: flex;
+  align-items: center;
   gap: 40px;
 }
 
 .nav-links a {
   text-decoration: none;
-  color: #333;
-  font-size: 0.95rem;
+  color: #f1f5ff; /* light text */
   font-weight: 500;
+  letter-spacing: 0.8px;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
   position: relative;
-  transition: color 0.3s ease;
 }
-
-
-.nav-links a:hover {
-  color: #d9b76f;
-}
-
 
 .nav-links a::after {
   content: "";
   position: absolute;
   left: 0;
-  bottom: -6px;
+  bottom: -5px;
   width: 0%;
   height: 2px;
-  background-color: #d9b76f;
+  background-color: #ffc947; /* soft gold accent */
   transition: width 0.3s ease;
 }
 
@@ -75,27 +71,69 @@ nav {
   width: 100%;
 }
 
-
-header, section {
-  margin-top: 80px;
-
+.nav-links a:hover {
+  color: #ffc947;
 }
+
+/* Logo */
+.nav-logo img {
+  height: 45px;
+  width: auto;
+  border-radius: 50%;
+  object-fit: contain;
+  margin: 0 15px;
+  background: white;
+  padding: 3px;
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.4);
+  transition: transform 0.3s ease;
+}
+
+.nav-logo img:hover {
+  transform: scale(1.08);
+}
+
 
 header {
   text-align: center;
-  padding: 60px 20px;
-  background: linear-gradient(135deg, #0077cc, #00aaff);
+  height: 600px;
+  background: url("bg ex.jpg") no-repeat center center/cover;
   color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+  position: relative;
+}
+
+
+header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(10, 25, 47, 0.55); 
+  z-index: 0;
+}
+
+header h1, header h2 {
+  position: relative;
+  z-index: 1;
 }
 
 header h1 {
-  font-size: 2rem;
-  margin-bottom: 10px;
+  font-size: 2.5rem;
+  margin-bottom: 12px;
+  color: #ffffff;
+  letter-spacing: 1px;
 }
 
 header h2 {
-  font-size: 1.4rem;
-  margin-bottom: 20px;
+  font-size: 2.4rem;
+  color: #ffc947;
+  font-weight: 400;
 }
 
 
@@ -111,6 +149,7 @@ section {
 section h2 {
   margin-bottom: 15px;
   color: #0077cc;
+  text-align: center;
 
 }
 
