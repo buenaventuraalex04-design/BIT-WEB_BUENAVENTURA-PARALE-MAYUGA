@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BIT Program – Admin Dashboard</title>
+  <link rel="stylesheet" href="it.css"/>
+  <style>
+    /* Lightweight admin helpers on top of your theme */
+    .admin-wrap { padding: 40px 0; }
+    .admin-grid { display:grid; grid-template-columns: 1.1fr 1fr; gap:24px; }
+    .card {
+      background:#fff; border-radius:12px; padding:18px;
+      box-shadow:0 6px 18px rgba(0,0,0,.08);
+    }
+    .card h2 { margin-bottom:10px; color: var(--primary); }
+    .muted { color:#666; font-size:.95rem; }
+    .row { display:flex; gap:12px; }
+    .row > .form-group { flex:1; }
+    .actions { display:flex; gap:10px; justify-content:flex-end; margin-top:12px; }
+    .danger { background:#b3261e; }
+    .secondary { background:#e9ecef; color:#333; }
+    .table {
+      width:100%; border-collapse: collapse; font-size:.95rem; margin-top:6px;
+    }
+    .table th, .table td { padding:10px 8px; border-bottom:1px solid #eee; vertical-align: top; }
+    .table th { text-align:left; color:#555; font-weight:700; }
+    .pill {
+      display:inline-block; padding:2px 8px; border-radius:999px; font-size:.8rem; background:#f3f3f3;
+    }
+    .pill.published { background:#e6b8b8; color:#4a0000; font-weight:700; }
+    .img-preview {
+      width:100%; max-height:220px; object-fit:cover; border-radius:8px; border:1px solid #eee;
+    }
+    @media (max-width: 980px) { .admin-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <nav class="navbar">
+        <a href="home.html" class="logo" aria-label="BIT Program - Home">
+          <img src="logo-placeholder.png" alt="BIT Program logo" class="logo-img">
+        </a>
+        <ul class="nav-links">
+          <li><a href="home.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="news.html">News & Events</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="hamburger" aria-label="Menu" aria-expanded="false" role="button" tabindex="0">
+          <div></div><div></div><div></div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Admin -->
+  <section class="admin-wrap">
+    <div class="container">
+      <h1 class="section-title">Admin Dashboard</h1>
+
+      <div class="admin-grid">
+        <!-- Editor -->
+        <div class="card">
+          <h2>Create / Edit Post</h2>
+          <p class="muted">Fill in the details, upload an image (optional), then **Save**. Toggle “Published” to show on the News page.</p>
+
+          <form id="postForm">
+            <input type="hidden" id="postId" value="">
+            <div class="form-group">
+              <label for="title">Title</label>
+              <input id="title" class="form-control" type="text" placeholder="Post title" required>
+            </div>
+
+            <div class="row">
+              <div class="form-group">
+                <label for="date">Date</label>
+                <input id="date" class="form-control" type="date" required>
+              </div>
+              <div class="form-group">
+                <label for="published">Published</label>
+                <select id="published" class="form-control">
+                  <option value="true">Yes</option>
+                  <option value="false" selected>No</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="summary">Summary</label>
+              <textarea id="summary" class="form-control" placeholder="Short teaser shown in the card…" required></textarea>
+            </div>
+
+            <div class="row">
+              <div class="form-group">
+                <label for="image">Cover Image (optional)</label>
+                <input id="image" class="form-control" type="file" accept="image/*">
+              </div>
+              <div class="form-group">
+                <label for="imgAlt">Image Alt Text</label>
+                <input id="imgAlt" class="form-control" type="text" placeholder="Describe the image">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="content">Full Content (optional)</label>
+              <textarea id="content" class="form-control" placeholder="Long-form content if you want a detail page later…"></textarea>
+            </div>
+
+            <img id="preview" class="img-preview" alt="" style="display:none;">
+
+            <div class="actions">
+              <button type="button" class="btn secondary" id="newBtn">New</button>
+              <button type="submit" class="btn">Save Post</button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Posts list -->
+        <div class="card">
+          <h2>Posts</h2>
+          <div class="row" style="margin-bottom:8px">
+            <button class="btn" id="exportBtn" title="Download a JSON backup">Export</button>
+            <label class="btn secondary" for="importFile" title="Load a JSON backup">Import</label>
+            <input id="importFile" type="file" accept="application/json" style="display:none">
+          </div>
+          <table class="table" id="postsTable" aria-live="polite">
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Date</th>
+                <th>Status</th>
+                <th style="text-align:right">Actions</th>
+              </tr>
+            </thead>
+            <tbody><!-- rows injected --></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer (Contact + Subscribe) -->
+  <footer id="contact">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-column">
+          <h3>BIT Program</h3>
+          <p>Empowering the next generation of IT professionals with cutting-edge knowledge and practical skills.</p>
+          <div class="social-links">
+            <a href="#"><span>FB</span></a>
+            <a href="#"><span>IG</span></a>
+          </div>
+        </div>
+        <div class="footer-column">
+          <h3>Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="news.html">News & Events</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Contact</h3>
+          <div class="contact-mini">
+            <div class="row"><span class="label">Email:</span><span>kalmahe</span></div>
+            <div class="row"><span class="label">Phone:</span><span>tatawag ka ga</span></div>
+            <div class="row"><span class="label">Address:</span><span>wala pa ngani</span></div>
+            <div class="contact-cta">
+              <button class="btn" id="openSubscribe">Subscribe</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>&copy; 2025 BIT Program. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Subscribe Modal + Toast (same as on other pages) -->
+  <div class="modal" id="subscribeModal" aria-hidden="true" role="dialog" aria-labelledby="subscribeTitle">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div class="modal-title" id="subscribeTitle">Subscribe to updates</div>
+        <button class="modal-close" id="closeSubscribe" aria-label="Close">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form id="subscribeForm">
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="subEmail">Email</label>
+              <input id="subEmail" type="email" class="form-control" placeholder="you@example.com" required>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn" id="cancelSubscribe">Cancel</button>
+            <button type="submit" class="btn">Subscribe</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div id="toast">Subscribed! Check your inbox for a confirmation.</div>
+
+  <script>
+    /* ===== Mobile nav ===== */
+    (function(){
+      const burger = document.querySelector('.hamburger');
+      const links = document.querySelector('.nav-links');
+      if (!burger || !links) return;
+      const toggle = () => {
+        links.classList.toggle('active');
+        burger.classList.toggle('active');
+        burger.setAttribute('aria-expanded', burger.classList.contains('active'));
+      };
+      burger.addEventListener('click', toggle);
+      burger.addEventListener('keypress', e => (e.key === 'Enter') && toggle());
+    })();
+
+    /* ===== Subscribe modal (shared) ===== */
+    (function(){
+      const openBtn  = document.getElementById('openSubscribe');
+      const modal    = document.getElementById('subscribeModal');
+      const closeBtn = document.getElementById('closeSubscribe');
+      const cancel   = document.getElementById('cancelSubscribe');
+      const form     = document.getElementById('subscribeForm');
+      const emailInp = document.getElementById('subEmail');
+      const toast    = document.getElementById('toast');
+
+      function openModal() { modal.classList.add('open'); document.body.classList.add('modal-open'); setTimeout(()=>emailInp?.focus(), 50); }
+      function closeModal(){ modal.classList.remove('open'); document.body.classList.remove('modal-open'); }
+      function showToast(msg){ toast.textContent = msg || 'Subscribed!'; toast.classList.add('show'); setTimeout(()=> toast.classList.remove('show'), 2000); }
+
+      openBtn?.addEventListener('click', openModal);
+      closeBtn?.addEventListener('click', closeModal);
+      cancel?.addEventListener('click', closeModal);
+      modal?.addEventListener('click', (e)=>{ if(e.target === modal) closeModal(); });
+      window.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeModal(); });
+
+      form?.addEventListener('submit', (e)=>{
+        e.preventDefault();
+        const email = (emailInp?.value || '').trim();
+        const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        if (!valid) { emailInp?.focus(); emailInp?.setAttribute('aria-invalid','true'); return; }
+        const key = 'bit_subscribers';
+        const list = JSON.parse(localStorage.getItem(key) || '[]');
+        if (!list.includes(email)) list.push(email);
+        localStorage.setItem(key, JSON.stringify(list));
+        closeModal(); form.reset(); showToast('Subscribed! Check your inbox for a confirmation.');
+      });
+    })();
+
+    /* ===== Admin app (localStorage CRUD) ===== */
+    (function(){
+      const LS_KEY = 'bit_news';
+      const form = document.getElementById('postForm');
+      const postId = document.getElementById('postId');
+      const title = document.getElementById('title');
+      const date = document.getElementById('date');
+      const published = document.getElementById('published');
+      const summary = document.getElementById('summary');
+      const image = document.getElementById('image');
+      const imgAlt = document.getElementById('imgAlt');
+      const content = document.getElementById('content');
+      const preview = document.getElementById('preview');
+      const newBtn = document.getElementById('newBtn');
+      const tableBody = document.querySelector('#postsTable tbody');
+      const exportBtn = document.getElementById('exportBtn');
+      const importFile = document.getElementById('importFile');
+
+      // Default date today
+      date.value = new Date().toISOString().slice(0,10);
+
+      function load() {
+        try { return JSON.parse(localStorage.getItem(LS_KEY) || '[]'); }
+        catch { return []; }
+      }
+      function save(list) {
+        localStorage.setItem(LS_KEY, JSON.stringify(list));
+        renderTable();
+      }
+      function uid() { return Math.random().toString(36).slice(2) + Date.now().toString(36); }
+
+      function clearForm() {
+        postId.value = '';
+        title.value = '';
+        date.value = new Date().toISOString().slice(0,10);
+        published.value = 'false';
+        summary.value = '';
+        image.value = '';
+        imgAlt.value = '';
+        content.value = '';
+        preview.src = '';
+        preview.style.display = 'none';
+      }
+
+      image.addEventListener('change', () => {
+        const file = image.files?.[0];
+        if (!file) { preview.src=''; preview.style.display='none'; return; }
+        const reader = new FileReader();
+        reader.onload = e => { preview.src = e.target.result; preview.style.display = 'block'; };
+        reader.readAsDataURL(file);
+      });
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        if (!title.value.trim() || !summary.value.trim()) return;
+
+        const list = load();
+        const id = postId.value || uid();
+        const idx = list.findIndex(p => p.id === id);
+
+        const base = {
+          id,
+          title: title.value.trim(),
+          date: date.value,
+          summary: summary.value.trim(),
+          imgDataUrl: preview.src || '', // store data URL if provided
+          imgAlt: imgAlt.value.trim(),
+          content: content.value.trim(),
+          published: published.value === 'true',
+          createdAt: postId.value ? list[idx]?.createdAt : new Date().toISOString(),
+          updatedAt: new Date().toISOString()
+        };
+
+        if (idx >= 0) list[idx] = base;
+        else list.push(base);
+
+        save(list);
+        clearForm();
+        alert('Post saved.');
+      });
+
+      newBtn.addEventListener('click', clearForm);
+
+      function renderTable() {
+        const list = load().sort((a,b) => (b.date || '').localeCompare(a.date || ''));
+        tableBody.innerHTML = '';
+        if (!list.length) {
+          tableBody.innerHTML = '<tr><td colspan="4" class="muted">No posts yet. Create one on the left.</td></tr>';
+          return;
+        }
+        for (const p of list) {
+          const tr = document.createElement('tr');
+          tr.innerHTML = `
+            <td><strong>${escapeHtml(p.title)}</strong><br><span class="muted">${escapeHtml(p.summary).slice(0,120)}${p.summary.length>120?'…':''}</span></td>
+            <td>${p.date || ''}</td>
+            <td><span class="pill ${p.published ? 'published':''}">${p.published?'Published':'Draft'}</span></td>
+            <td style="text-align:right">
+              <button class="btn secondary" data-edit="${p.id}">Edit</button>
+              <button class="btn danger" data-del="${p.id}">Delete</button>
+              <button class="btn" data-toggle="${p.id}">${p.published?'Unpublish':'Publish'}</button>
+            </td>
+          `;
+          tableBody.appendChild(tr);
+        }
+      }
+
+      function escapeHtml(s){ return (s||'').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+
+      tableBody.addEventListener('click', (e) => {
+        const t = e.target.closest('button');
+        if (!t) return;
+        const list = load();
+        if (t.dataset.edit) {
+          const p = list.find(x => x.id === t.dataset.edit);
+          if (!p) return;
+          postId.value = p.id;
+          title.value = p.title;
+          date.value = p.date || new Date().toISOString().slice(0,10);
+          published.value = p.published ? 'true' : 'false';
+          summary.value = p.summary || '';
+          imgAlt.value = p.imgAlt || '';
+          content.value = p.content || '';
+          if (p.imgDataUrl) { preview.src = p.imgDataUrl; preview.style.display = 'block'; } else { preview.src=''; preview.style.display='none'; }
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else if (t.dataset.del) {
+          const id = t.dataset.del;
+          if (!confirm('Delete this post?')) return;
+          save(list.filter(x => x.id !== id));
+        } else if (t.dataset.toggle) {
+          const id = t.dataset.toggle;
+          const idx = list.findIndex(x => x.id === id);
+          if (idx >= 0) { list[idx].published = !list[idx].published; list[idx].updatedAt = new Date().toISOString(); save(list); }
+        }
+      });
+
+      // Export / Import
+      exportBtn.addEventListener('click', () => {
+        const blob = new Blob([JSON.stringify(load(), null, 2)], {type:'application/json'});
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = `bit_news_backup_${new Date().toISOString().slice(0,10)}.json`;
+        a.click();
+        URL.revokeObjectURL(a.href);
+      });
+      importFile.addEventListener('change', () => {
+        const file = importFile.files?.[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = e => {
+          try {
+            const imported = JSON.parse(e.target.result);
+            if (!Array.isArray(imported)) throw new Error('Invalid file');
+            localStorage.setItem(LS_KEY, JSON.stringify(imported));
+            renderTable();
+            alert('Import complete.');
+          } catch {
+            alert('Invalid backup file.');
+          }
+        };
+        reader.readAsText(file);
+      });
+
+      // Simple (optional) “admin key” gate — very light protection
+      const ADMIN_KEY = ''; // e.g., set to 'mysupersecret' then open admin.html#mysupersecret
+      if (ADMIN_KEY && location.hash.replace('#','') !== ADMIN_KEY) {
+        document.body.innerHTML = '<div style="display:grid;place-items:center;height:100vh"><div class="card" style="max-width:420px"><h2>Access Denied</h2><p class="muted">Invalid admin key.</p></div></div>';
+        return;
+      }
+
+      renderTable();
+    })();
+  </script>
+</body>
+</html>
