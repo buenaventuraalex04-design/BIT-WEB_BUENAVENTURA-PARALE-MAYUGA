@@ -334,6 +334,58 @@ footer {
     color: #ddd;
 }
 
+/* vision & mission */
+.vision-mission {
+  background-color: #f8f9fa; /* light gray background */
+  padding: 50px 20px;
+}
+
+.vm-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.vm-box {
+  flex: 1 1 45%;
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.vm-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.vm-box h2 {
+  color: #2c3e50;
+  font-size: 24px;
+  margin-bottom: 15px;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+.vm-box p {
+  color: #555;
+  font-size: 16px;
+  line-height: 1.6;
+  text-align: justify;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .vm-box {
+    flex: 1 1 100%;
+  }
+}
+
 /* Contact Page Styles */
 .contact-hero {
     background: linear-gradient(rgba(44, 62, 80, 0.8,) rgba(44, 62, 80, 0.8)), url('https://images.unsplash.com/photo-1568992688065-536aad8a12f6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
