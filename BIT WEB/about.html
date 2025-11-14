@@ -1,209 +1,360 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BIT COURSE WEBSITE</title>
-  <link rel="stylesheet" href="bit.css">
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Bachelor in Industrial Technology (Major in Computer Technology) - About</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { theme: { extend: { colors: {
+      primary:'#550000', secondary:'#800000', dark:'#4a0000', light:'#faeef0'
+    }}}}
+  </script>
+
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24..48,400..700,0..1,-50..200" />
+  <style>
+    .material-symbols-rounded{
+      font-family:'Material Symbols Rounded' !important;
+      font-variation-settings:'FILL' 1,'wght' 600,'GRAD' 0,'opsz' 24;
+      display:inline-flex; align-items:center; justify-content:center;
+      line-height:1; vertical-align:middle; -webkit-font-feature-settings:'liga'; -webkit-font-smoothing:antialiased;
+    }
+    .no-scrollbar::-webkit-scrollbar{display:none}
+    .no-scrollbar{-ms-overflow-style:none;scrollbar-width:none}
+  </style>
 </head>
-<body>
+<body class="text-zinc-800 bg-[url('assets/img/bgnew.png')] bg-cover bg-fixed bg-center">
   <!-- Header -->
-<header>
-    <div class="container">
-      <nav class="navbar">
-        <a href="index.html" class="logo" aria-label="BIT Program - Home">
-          <img src="assets/img/logo-placeholder.png" alt="BIT Program logo" class="logo-img">
+  <header class="sticky top-0 z-50 bg-secondary text-white shadow">
+    <div class="max-w-6xl mx-auto px-4">
+      <nav class="flex items-center justify-between py-3">
+        <!-- Logo + Title -->
+        <a href="index.html" aria-label="Home" class="flex items-center gap-3">
+          <img src="assets/img/logo-placeholder.png" alt="logo"
+               class="w-14 h-14 md:w-16 md:h-16 rounded-full object-cover border-2 border-white/70 shadow">
+          <span class="text-lg md:text-xl font-semibold" style="font-family:'Times New Roman', Times, serif;">
+            Southern Luzon State University
+          </span>
         </a>
-        <ul class="nav-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="news.html">News & Events</a></li>
-          <li><a href="#contact">Contact</a></li>
+
+        <!-- Nav links (unchanged) -->
+        <ul class="hidden md:flex items-center gap-8 font-semibold">
+          <li>
+            <a href="index.html" class="text-white/90 px-3 py-1 rounded-md transition hover:bg-white hover:text-secondary">
+              Home
+            </a>
+          </li>
+          <li>
+            <a href="about.html" aria-current="page"
+               class="px-3 py-1 rounded-md bg-white/90 text-secondary transition hover:bg-white">
+              About
+            </a>
+          </li>
+          <li>
+            <a href="news.html" class="text-white/90 px-3 py-1 rounded-md transition hover:bg-white hover:text-secondary">
+              News &amp; Events
+            </a>
+          </li>
+          <li>
+            <a href="#contact" class="text-white/90 px-3 py-1 rounded-md transition hover:bg-white hover:text-secondary">
+              Contact
+            </a>
+          </li>
         </ul>
-        <div class="hamburger" aria-label="Menu" aria-expanded="false" role="button" tabindex="0">
-          <div></div><div></div><div></div>
-        </div>
+
+        <!-- Mobile menu -->
+        <button id="burger" class="md:hidden flex flex-col gap-1.5" aria-label="Menu" aria-expanded="false">
+          <span class="w-7 h-[3px] bg-white"></span>
+          <span class="w-7 h-[3px] bg-white"></span>
+          <span class="w-7 h-[3px] bg-white"></span>
+        </button>
       </nav>
+
+      <!-- Mobile Nav -->
+      <ul id="mobileNav" class="hidden flex-col items-center gap-4 pb-4 font-semibold md:hidden text-white">
+        <li><a class="hover:text-white" href="index.html">Home</a></li>
+        <li><a class="text-white" href="about.html">About</a></li>
+        <li><a class="hover:text-white" href="news.html">News & Events</a></li>
+        <li><a class="hover:text-white" href="#contact">Contact</a></li>
+      </ul>
     </div>
   </header>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="container">
-      <h1>Bachelor of Information Technology</h1>
-      <p>Empowering the next generation of IT professionals with cutting-edge knowledge, practical skills, and innovative thinking.</p>
-      <a href="#contact" class="btn">Contact Us</a>
-    </div>
-  </section>
+  <!-- Hero -->
+  <section class="relative">
+    <div class="absolute inset-0 bg-primary/85"></div>
+    <div class="relative max-w-6xl mx-auto px-4 py-16 md:py-24 text-white">
+      <div class="grid lg:grid-cols-[1.2fr,1fr] gap-8 items-center">
+        <div>
+          <h1 class="text-3xl md:text-5xl font-bold">About Bachelor in Industrial Technology (Major in Computer Technology)</h1>
 
-  <!-- Features Section -->
-  <section class="section features">
-    <div class="container">
-      <h2 class="section-title">Why Choose BIT?</h2>
-      <div class="features-grid">
-        <div class="feature-card">
-          <div class="feature-icon">💻</div>
-          <h3>Industry-Relevant Curriculum</h3>
-          <p>Our program is designed in collaboration with industry leaders to ensure you gain the skills employers need.</p>
+          <p class="mt-4 text-white/95 max-w-2xl">The Bachelor of Information Technology builds problem solvers ready for software, systems, data, and emerging tech — grounded in hands-on learning and strong industry collaboration.</p>
+          <div class="mt-6 flex flex-wrap gap-3">
+            <span class="px-3 py-1 rounded-full bg-white/15 border border-white/20 inline-flex items-center gap-2"><span class="material-symbols-rounded">code</span> Software</span>
+            <span class="px-3 py-1 rounded-full bg-white/15 border border-white/20 inline-flex items-center gap-2"><span class="material-symbols-rounded">storage</span> Data</span>
+            <span class="px-3 py-1 rounded-full bg-white/15 border border-white/20 inline-flex items-center gap-2"><span class="material-symbols-rounded">cloud</span> Cloud</span>
+            <span class="px-3 py-1 rounded-full bg-white/15 border border-white/20 inline-flex items-center gap-2"><span class="material-symbols-rounded">shield</span> Security</span>
+          </div>
         </div>
-        <div class="feature-card">
-          <div class="feature-icon">👥</div>
-          <h3>Expert Faculty</h3>
-          <p>Learn from experienced professionals and researchers who are passionate about technology and education.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">🚀</div>
-          <h3>Hands-On Learning</h3>
-          <p>Gain practical experience through labs, projects, internships, and industry collaborations.</p>
+        <div class="bg-white/10 backdrop-blur rounded-xl p-5 border border-white/20">
+          <h3 class="font-bold text-lg">Program at a glance</h3>
+          <ul class="mt-3 space-y-2 text-white/90">
+            <li class="flex items-start gap-2"><span class="material-symbols-rounded">schedule</span> 4-year program with capstone & internship</li>
+            <li class="flex items-start gap-2"><span class="material-symbols-rounded">science</span> Project-based courses and labs</li>
+            <li class="flex items-start gap-2"><span class="material-symbols-rounded">diversity_3</span> Industry mentors and workshops</li>
+            <li class="flex items-start gap-2"><span class="material-symbols-rounded">workspace_premium</span> Career-ready portfolio on graduation</li>
+          </ul>
         </div>
       </div>
     </div>
   </section>
 
-     <!-- sa vission at mission -->
-    <section class="vision-mission">
-  <div class="vm-container">
-    <div class="vm-box vision">
-      <h2>VISION</h2>
-      <p>
-        A globally recognized university known for academic excellence,
-        innovative and responsive research and extension services for national
-        and global development.
-      </p>
-    </div>
-    <div class="vm-box mission">
-      <h2>MISSION</h2>
-      <p>
-        SLSU shall provide global education that nurtures competent professionals
-        who are morally grounded and responsive to community needs. The university
-        is also committed to conduct research and extension across various fields
-        while innovatively utilizing and regenerating its resources through
-        sustainable environmental approaches.
-      </p>
-    </div>
-  </div>
-</section>
-
- <!-- Footer (Contact + Subscribe) -->
-  <footer id="contact">
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-column">
-          <h3>BIT Program</h3>
-          <p>Empowering the next generation of IT professionals with cutting-edge knowledge and practical skills.</p>
-          <div class="social-links">
-            <a href="#"><span>FB</span></a>
-            <a href="#"><span>IG</span></a>
-          </div>
+  <!-- Highlights -->
+  <section class="py-14 bg-white/90">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-2xl md:text-3xl font-bold text-center">What makes BIT different?</h2>
+      <div class="mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="bg-white rounded-xl p-6 shadow hover:shadow-lg transition">
+          <span class="material-symbols-rounded text-4xl text-secondary">explore</span>
+          <h3 class="mt-3 font-bold text-primary">Outcome-based</h3>
+          <p class="text-sm mt-1">Clear skill outcomes aligned to in-demand roles.</p>
         </div>
+        <div class="bg-white rounded-xl p-6 shadow hover:shadow-lg transition">
+          <span class="material-symbols-rounded text-4xl text-secondary">handshake</span>
+          <h3 class="mt-3 font-bold text-primary">Industry ties</h3>
+          <p class="text-sm mt-1">Talks, internships, and partner-driven projects.</p>
+        </div>
+        <div class="bg-white rounded-xl p-6 shadow hover:shadow-lg transition">
+          <span class="material-symbols-rounded text-4xl text-secondary">build</span>
+          <h3 class="mt-3 font-bold text-primary">Hands-on labs</h3>
+          <p class="text-sm mt-1">Code, deploy, and iterate in real scenarios.</p>
+        </div>
+        <div class="bg-white rounded-xl p-6 shadow hover:shadow-lg transition">
+          <span class="material-symbols-rounded text-4xl text-secondary">rocket_launch</span>
+          <h3 class="mt-3 font-bold text-primary">Career focus</h3>
+          <p class="text-sm mt-1">Portfolio, mock interviews, and job readiness.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        <div class="footer-column">
-          <h3>Quick Links</h3>
-          <ul class="footer-links">
-            <li><a href="home.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="news.html">News & Events</a></li>
+  <!-- Curriculum + Experiential Learning (BACKGROUND NOW SOLID WHITE) -->
+  <section class="py-10 bg-white">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="grid lg:grid-cols-2 gap-8">
+        <!-- Left card -->
+        <div class="rounded-2xl bg-white shadow p-6 border border-zinc-100">
+          <h3 class="text-xl font-bold text-secondary flex items-center gap-2">
+            <span class="material-symbols-rounded">menu_book</span> Core Courses
+          </h3>
+          <ul class="mt-4 space-y-3 text-zinc-800">
+            <li class="flex items-start gap-3"><span class="material-symbols-rounded text-secondary">chevron_right</span> Programming Fundamentals (Python/JS)</li>
+            <li class="flex items-start gap-3"><span class="material-symbols-rounded text-secondary">data_object</span> Data Structures & Algorithms</li>
+            <li class="flex items-start gap-3"><span class="material-symbols-rounded text-secondary">table</span> Databases & SQL</li>
+            <li class="flex items-start gap-3"><span class="material-symbols-rounded text-secondary">lan</span> Computer Networks</li>
+            <li class="flex items-start gap-3"><span class="material-symbols-rounded text-secondary">memory_alt</span> Operating Systems</li>
+            <li class="flex items-start gap-3"><span class="material-symbols-rounded text-secondary">language</span> Web Dev (Frontend & Backend)</li>
+          </ul>
+
+          <h4 class="mt-6 text-xl font-bold text-secondary flex items-center gap-2">
+            <span class="material-symbols-rounded">settings_heart</span> Specializations
+          </h4>
+          <ul class="mt-3 space-y-3 text-zinc-800">
+            <li class="flex items-start gap-3"><span class="material-symbols-rounded text-secondary">phone_iphone</span> Mobile & Cloud Computing</li>
+            <li class="flex items-start gap-3"><span class="material-symbols-rounded text-secondary">monitoring</span> Data Analytics & Visualization</li>
+            <li class="flex items-start gap-3"><span class="material-symbols-rounded text-secondary">verified_user</span> Cybersecurity & Governance</li>
+            <li class="flex items-start gap-3"><span class="material-symbols-rounded text-secondary">brush</span> UI/UX & Product Engineering</li>
           </ul>
         </div>
 
-        <div class="footer-column">
-          <h3>Contact</h3>
-          <div class="contact-mini">
-            <div class="row"><span class="label">Email:</span><span>buenaventuraalex04@gmail.com</span></div>
-            <div class="row"><span class="label">Phone:</span><span>09301766534</span></div>
-            <div class="row"><span class="label">Address:</span><span>Ibabang Dupay, Lucena City, Quezon, Philippines 4301</span></div>
-            <div class="contact-cta">
-              <button class="btn" id="openSubscribe">Subscribe</button>
-            </div>
+        <!-- Right card -->
+        <div class="rounded-2xl bg-white shadow p-6 border border-zinc-100">
+          <h3 class="text-xl font-bold text-secondary flex items-center gap-2">
+            <span class="material-symbols-rounded">work</span> Experiential Learning
+          </h3>
+          <ul class="mt-4 space-y-3 text-zinc-800">
+            <li class="flex items-start gap-3"><span class="material-symbols-rounded text-secondary">science</span> Lab-intensive courses every semester</li>
+            <li class="flex items-start gap-3"><span class="material-symbols-rounded text-secondary">handyman</span> Industry projects with real clients</li>
+            <li class="flex items-start gap-3"><span class="material-symbols-rounded text-secondary">badge</span> Internship (OJT) and mentoring</li>
+            <li class="flex items-start gap-3"><span class="material-symbols-rounded text-secondary">rocket_launch</span> Capstone research/product build</li>
+            <li class="flex items-start gap-3"><span class="material-symbols-rounded text-secondary">workspace_premium</span> Portfolio & career workshops</li>
+          </ul>
+
+          <button class="mt-5 inline-flex items-center gap-2 bg-secondary hover:bg-primary text-white font-semibold px-5 py-2.5 rounded transition">
+            <span class="material-symbols-rounded">view_list</span> See student stories
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Faculty carousel (unchanged) -->
+  <section id="faculty" class="py-16 bg-zinc-50/90">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-2xl md:text-3xl font-bold text-center">Meet the BIT Faculty</h2>
+      <p class="text-center text-zinc-600 mt-2 max-w-2xl mx-auto">
+        Our faculty blends academic excellence with real-world experience across software engineering, data, networks, and emerging technologies.
+      </p>
+
+      <div class="relative mt-8">
+        <div class="overflow-hidden rounded-xl">
+          <div id="facultyTrack" class="flex transition-transform duration-500 ease-out"></div>
+        </div>
+
+        <button id="facPrev" class="absolute -left-4 top-1/2 -translate-y-1/2 bg-white text-secondary border border-secondary/20 hover:bg-secondary hover:text-white w-10 h-10 rounded-full shadow grid place-items-center">
+          <span class="material-symbols-rounded">chevron_left</span>
+        </button>
+        <button id="facNext" class="absolute -right-4 top-1/2 -translate-y-1/2 bg-white text-secondary border border-secondary/20 hover:bg-secondary hover:text-white w-10 h-10 rounded-full shadow grid place-items-center">
+          <span class="material-symbols-rounded">chevron_right</span>
+        </button>
+
+        <div id="facDots" class="mt-6 flex items-center justify-center gap-2"></div>
+      </div>
+
+      <p class="mt-6 text-center text-sm text-zinc-600">Use the arrows or swipe/drag to browse.</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="contact" class="bg-secondary text-white pt-14 pb-6">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
+        <div><h3 class="font-bold text-lg mb-3">Bachelor in Industrial Technology (Major in Computer Technology)</h3>
+          <p class="text-white/90">Empowering the next generation of IT professionals with cutting-edge knowledge and practical skills.</p></div>
+        <div>
+          <h3 class="font-bold text-lg mb-3">Quick Links</h3>
+          <ul class="space-y-2 text-white/90">
+            <li><a class="hover:text-white" href="index.html">Home</a></li>
+            <li><a class="hover:text-white" href="about.html">About</a></li>
+            <li><a class="hover:text-white" href="news.html">News & Events</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-bold text-lg mb-3">Contact</h3>
+          <div class="space-y-2 text-white/90">
+            <div class="flex gap-2 items-center"><span class="material-symbols-rounded">mail</span><span class="font-semibold">Email:</span><span>buenaventuraalex04@gmail.com</span></div>
+            <div class="flex gap-2 items-center"><span class="material-symbols-rounded">call</span><span class="font-semibold">Phone:</span><span>09301766534</span></div>
+            <div class="flex gap-2 items-center"><span class="material-symbols-rounded">location_on</span><span class="font-semibold">Address:</span><span>Brgy. Ibabang Dupay, Lucena City, Quezon, Philippines 4301</span></div>
           </div>
         </div>
       </div>
-
-      <div class="copyright">
-        <p>&copy; 2025 BIT Program. All rights reserved.</p>
-        <small>Photos & images: <strong>The Technolator</strong>. No reuse without permission.</small>
-      </div>
+      <p class="mt-10 pt-5 border-t border-white/10 text-center text-sm text-white/90">&copy; 2025 Bachelor in Industrial Technology (Major in Computer Technology). All rights reserved.</p>
+      <p class="text-center text-sm text-white/90"><small>Photos & images: <strong>The Technolator</strong>. No reuse without permission.</small></p>
     </div>
   </footer>
 
-
-  <!-- Subscribe Modal -->
-  <div class="modal" id="subscribeModal" aria-hidden="true" role="dialog" aria-labelledby="subscribeTitle">
-    <div class="modal-card">
-      <div class="modal-header">
-        <div class="modal-title" id="subscribeTitle">Subscribe to updates</div>
-        <button class="modal-close" id="closeSubscribe" aria-label="Close">&times;</button>
-      </div>
-      <div class="modal-body">
-        <form id="subscribeForm">
-          <div class="form-grid">
-            <div class="form-group">
-              <label for="subEmail">Email</label>
-              <input id="subEmail" type="email" class="form-control" placeholder="you@example.com" required>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn" id="cancelSubscribe">Cancel</button>
-            <button type="submit" class="btn">Subscribe</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-
-  <!-- Toast -->
-  <div id="toast">Subscribed! Check your inbox for a confirmation.</div>
-
   <script>
     // Mobile nav
-    (function(){
-      const burger = document.querySelector('.hamburger');
-      const links = document.querySelector('.nav-links');
-      if (!burger || !links) return;
-      const toggle = () => {
-        links.classList.toggle('active');
-        burger.classList.toggle('active');
-        burger.setAttribute('aria-expanded', burger.classList.contains('active'));
-      };
-      burger.addEventListener('click', toggle);
-      burger.addEventListener('keypress', e => (e.key === 'Enter') && toggle());
-    })();
+    const burger=document.getElementById('burger'), mobileNav=document.getElementById('mobileNav');
+    burger?.addEventListener('click',()=>{ const open=mobileNav.classList.toggle('hidden')===false; burger.setAttribute('aria-expanded',String(open)); });
 
-    // Subscribe modal
-    (function(){
-      const openBtn  = document.getElementById('openSubscribe');
-      const modal    = document.getElementById('subscribeModal');
-      const closeBtn = document.getElementById('closeSubscribe');
-      const cancel   = document.getElementById('cancelSubscribe');
-      const form     = document.getElementById('subscribeForm');
-      const emailInp = document.getElementById('subEmail');
-      const toast    = document.getElementById('toast');
+    // Faculty carousel data (placeholder images)
+    const FACULTY = [
+      {name:'Prof. Jess Mark L. Alinea',     role:'University Director • Technology Research,',img:'assets/img/Sirjess.jpg'},
+      {name:'Prof. Joriel Flynn V. Mazo',    role:'Program Chair • Database & Data Science',   img:'assets/img/Sirmazo.jpg'},
+      {name:'Prof. Roland A. Calderon',      role:'Associate Prof • Computer Programming',     img:'assets/img/Sironas.jpg'},
+      {name:'Ins. Wilnes John V. Abelido',  role:'Instructor • Embedded Systems',             img:'assets/img/Sirwilnes.jpg'},
+      {name:'Ins. Jerold B. Oticio',        role:'Instructor • Networking & Troubleshooting', img:'assets/img/Sirjerold.jpg'},
+      {name:'Ins. John Paul C. Perez',      role:'Instructor• Computer Hardware & Software',  img:'assets/img/Sirpaul.jpg'},
+      {name:'Ins. Jerome A. Yanga',         role:'Instructor • Game & Web Development',       img:'assets/img/Sirjerome.jpg'},
+      {name:'Ins. Maila Jerrielyn D. Caliao', role:'Instructor • Computer Programming',       img:'assets/img/Maammaila.jpg'},
+    ];
 
-      function openModal() { modal.classList.add('open'); modal.setAttribute('aria-hidden','false'); setTimeout(()=>emailInp?.focus(), 50); }
-      function closeModal(){ modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); }
-      function showToast(msg){ toast.textContent = msg || 'Subscribed!'; toast.classList.add('show'); setTimeout(()=> toast.classList.remove('show'), 2000); }
+    const chunk=(arr,size)=>arr.reduce((a,_,i)=>i%size? a : [...a, arr.slice(i,i+size)],[]);
+    const cardsPerView = ()=> window.innerWidth>=1024 ? 3 : (window.innerWidth>=640 ? 2 : 1);
 
-      openBtn?.addEventListener('click', openModal);
-      closeBtn?.addEventListener('click', closeModal);
-      cancel?.addEventListener('click', closeModal);
-      modal?.addEventListener('click', e => { if(e.target === modal) closeModal(); });
-      window.addEventListener('keydown', e => { if(e.key === 'Escape') closeModal(); });
+    function cardHTML(p){
+      const safeName = (p.name||'').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+      const safeRole = (p.role||'').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+      const img = p.img || 'assets/img/logo-placeholder.png';
+      return `
+        <div class="bg-white rounded-xl p-4 shadow hover:shadow-lg transition flex flex-col">
+          <img src="${img}" alt="${safeName}" onerror="this.src='logo-placeholder.png'"
+               class="w-full h-48 object-cover rounded-lg border border-zinc-100">
+          <h3 class="mt-3 text-lg font-bold">${safeName}</h3>
+          <p class="text-sm text-zinc-600">${safeRole}</p>
+        </div>`;
+    }
 
-      form?.addEventListener('submit', async (e)=>{
-        e.preventDefault();
-        const email = (emailInp?.value || '').trim();
-        const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-        if (!valid) { emailInp?.focus(); emailInp?.setAttribute('aria-invalid','true'); return; }
+    const track = document.getElementById('facultyTrack');
+    const dotsWrap = document.getElementById('facDots');
+    const prevBtn = document.getElementById('facPrev');
+    const nextBtn = document.getElementById('facNext');
 
-        const key = 'bit_subscribers';
-        const list = JSON.parse(localStorage.getItem(key) || '[]');
-        if (!list.includes(email)) list.push(email);
-        localStorage.setItem(key, JSON.stringify(list));
+    let slides=[], index=0, perView=cardsPerView();
 
-        // TODO: wire to backend/Google Form if desired
-        closeModal(); form.reset(); showToast('Subscribed! Check your inbox for a confirmation.');
+    function buildCarousel(){
+      perView = cardsPerView();
+      slides = chunk(FACULTY, perView);
+      track.style.transform = 'translateX(0%)';
+      index = 0;
+
+      track.innerHTML = slides.map(group => `
+        <div class="shrink-0 w-full px-1 sm:px-2 lg:px-3">
+          <div class="grid gap-4" style="grid-template-columns: repeat(${perView}, minmax(0, 1fr));">
+            ${group.map(cardHTML).join('')}
+          </div>
+        </div>
+      `).join('');
+
+      track.style.width = slides.length * 100 + '%';
+      Array.from(track.children).forEach(el => el.style.width = (100/slides.length)+'%');
+
+      dotsWrap.innerHTML = slides.map((_,i)=>`
+        <button class="w-2.5 h-2.5 rounded-full ${i===0?'bg-secondary':'bg-zinc-300'}"
+                aria-label="Go to slide ${i+1}" data-dot="${i}"></button>
+      `).join('');
+      updateButtons();
+    }
+
+    function go(to){
+      index = Math.max(0, Math.min(slides.length-1, to));
+      track.style.transform = `translateX(-${index*(100/slides.length)}%)`;
+      Array.from(dotsWrap.children).forEach((d,i)=>{
+        d.classList.toggle('bg-secondary', i===index);
+        d.classList.toggle('bg-zinc-300', i!==index);
+      });
+      updateButtons();
+    }
+
+    function updateButtons(){
+      prevBtn.disabled = index===0;
+      nextBtn.disabled = index===slides.length-1;
+      [prevBtn,nextBtn].forEach(b=>{
+        b.classList.toggle('opacity-50', b.disabled);
+        b.classList.toggle('pointer-events-none', b.disabled);
+      });
+    }
+
+    prevBtn.addEventListener('click', ()=>go(index-1));
+    nextBtn.addEventListener('click', ()=>go(index+1));
+    dotsWrap.addEventListener('click', e=>{
+      const btn = e.target.closest('[data-dot]');
+      if(btn) go(+btn.dataset.dot);
+    });
+
+    (function dragSupport(){
+      let startX=0, dx=0, dragging=false, w=0;
+      track.addEventListener('pointerdown', e=>{ dragging=true; startX=e.clientX; w=track.getBoundingClientRect().width; track.style.cursor='grabbing'; e.preventDefault(); });
+      window.addEventListener('pointermove', e=>{
+        if(!dragging) return;
+        dx = e.clientX - startX;
+        track.style.transform = `translateX(calc(-${index*(100/slides.length)}% + ${dx}px))`;
+      });
+      window.addEventListener('pointerup', ()=>{
+        if(!dragging) return;
+        dragging=false; track.style.cursor='grab';
+        const threshold = w/(slides.length*10);
+        if(dx < -threshold) go(index+1);
+        else if(dx > threshold) go(index-1);
+        else go(index);
+        dx=0;
       });
     })();
+
+    buildCarousel();
+    let rto; window.addEventListener('resize', ()=>{ clearTimeout(rto); rto=setTimeout(buildCarousel, 200); });
   </script>
 </body>
 </html>

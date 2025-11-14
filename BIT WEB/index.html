@@ -1,244 +1,234 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BIT COURSE WEBSITE</title>
-  <link rel="stylesheet" href="bit.css">
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Bachelor in Industrial Technology (Major in Computer Technology) - Home</title>
+  
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { theme: { extend: { colors: {
+      primary:'#550000', secondary:'#800000', dark:'#4a0000', light:'#faeef0'
+    }}}}
+  </script>
+
+  <!-- Google Material Symbols -->
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24..48,400..700,0..1,-50..200" />
+  <style>
+    .material-symbols-rounded{
+      font-family:'Material Symbols Rounded' !important;
+      font-weight:600; font-style:normal; font-size:24px; line-height:1;
+      display:inline-block; text-transform:none; letter-spacing:normal; white-space:nowrap; direction:ltr;
+      font-variation-settings:'FILL' 1,'wght' 600,'GRAD' 0,'opsz' 24;
+      -webkit-font-feature-settings:'liga'; -webkit-font-smoothing:antialiased;
+      vertical-align:middle;
+    }
+  </style>
 </head>
-<body>
+<body class="text-zinc-800 bg-[url('assets/img/bgnew.png')] bg-cover bg-fixed bg-center">
   <!-- Header -->
-  <header>
-    <div class="container">
-      <nav class="navbar">
-        <a href="index.html" class="logo" aria-label="BIT Program - Home">
-          <img src="assets/img/logo-placeholder.png" alt="BIT Program logo" class="logo-img">
+  <header class="sticky top-0 z-50 bg-secondary text-white shadow">
+    <div class="max-w-6xl mx-auto px-4">
+      <nav class="flex items-center justify-between py-3">
+        <!-- Logo + Title -->
+        <a href="index.html" aria-label="Home" class="flex items-center gap-3">
+          <img src="assets/img/logo-placeholder.png" alt="logo"
+               class="w-14 h-14 md:w-16 md:h-16 rounded-full object-cover border-2 border-white/70 shadow">
+          <span class="text-lg md:text-xl font-semibold" style="font-family:'Times New Roman', Times, serif;">
+            Southern Luzon State University
+          </span>
         </a>
-        <ul class="nav-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="news.html">News & Events</a></li>
-          <li><a href="#contact">Contact</a></li>
+
+        <!-- Nav links -->
+        <ul class="hidden md:flex items-center gap-8 font-semibold">
+          <li>
+            <!-- ACTIVE: Home -->
+            <a href="index.html" aria-current="page"
+               class="px-3 py-1 rounded-md bg-white/90 text-secondary transition hover:bg-white">
+              Home
+            </a>
+          </li>
+          <li>
+            <a href="about.html"
+               class="text-white px-3 py-1 rounded-md transition hover:bg-white hover:text-secondary">
+              About
+            </a>
+          </li>
+          <li>
+            <a href="news.html"
+               class="text-white/90 px-3 py-1 rounded-md transition hover:bg-white hover:text-secondary">
+              News &amp; Events
+            </a>
+          </li>
+          <li>
+            <a href="#contact"
+               class="text-white/90 px-3 py-1 rounded-md transition hover:bg-white hover:text-secondary">
+              Contact
+            </a>
+          </li>
         </ul>
-        <div class="hamburger" aria-label="Menu" aria-expanded="false" role="button" tabindex="0">
-          <div></div><div></div><div></div>
-        </div>
+
+        <!-- Mobile menu -->
+        <button id="burger" class="md:hidden flex flex-col gap-1.5" aria-label="Menu" aria-expanded="false">
+          <span class="w-7 h-[3px] bg-white"></span>
+          <span class="w-7 h-[3px] bg-white"></span>
+          <span class="w-7 h-[3px] bg-white"></span>
+        </button>
       </nav>
+
+      <!-- Mobile Nav -->
+      <ul id="mobileNav" class="hidden flex-col items-center gap-4 pb-4 font-semibold md:hidden text-white">
+        <li><a class="hover:text-white" href="index.html">Home</a></li>
+        <li><a class="text-white" href="about.html">About</a></li>
+        <li><a class="hover:text-white" href="news.html">News & Events</a></li>
+        <li><a class="hover:text-white" href="#contact">Contact</a></li>
+      </ul>
     </div>
   </header>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="container">
-      <h1>Bachelor of Information Technology</h1>
-      <p>Empowering the next generation of IT professionals with cutting-edge knowledge, practical skills, and innovative thinking.</p>
-      <a href="#contact" class="btn">Contact Us</a>
+  <!-- Hero -->
+  <section class="relative">
+    <!-- Slightly more transparent overlay: 85% -> 75% -->
+    <div class="absolute inset-0 bg-primary/75"></div>
+    <div class="relative max-w-6xl mx-auto px-4 py-24 md:py-32 text-center text-white">
+      <h1 class="text-3xl md:text-5xl font-bold">Bachelor in Industrial Technology </h1>
+      <h3 class="text-2xl md:text-4xl font-bold">(Major in Computer Technology) </h3>
+
+      <p class="mt-4 max-w-2xl mx-auto text-lg opacity-95">
+        Empowering the next generation of IT professionals with cutting-edge knowledge, practical skills, and innovative thinking.
+      </p>
+
+      <div class="mt-6 flex flex-wrap gap-3 justify-center">
+        <span class="px-3 py-1 rounded-full bg-white/15 border border-white/20 inline-flex items-center gap-2">
+          <span class="material-symbols-rounded">code</span> Software
+        </span>
+        <span class="px-3 py-1 rounded-full bg-white/15 border border-white/20 inline-flex items-center gap-2">
+          <span class="material-symbols-rounded">storage</span> Data
+        </span>
+        <span class="px-3 py-1 rounded-full bg-white/15 border border-white/20 inline-flex items-center gap-2">
+          <span class="material-symbols-rounded">cloud</span> Cloud
+        </span>
+        <span class="px-3 py-1 rounded-full bg-white/15 border border-white/20 inline-flex items-center gap-2">
+          <span class="material-symbols-rounded">shield</span> Security
+        </span>
+      </div>
+
+      <a href="#contact" class="mt-8 inline-flex items-center gap-2 bg-secondary hover:bg-primary text-white font-semibold px-6 py-3 rounded shadow transition">
+        <span class="material-symbols-rounded">mail</span> Contact us
+      </a>
     </div>
   </section>
 
-  <!-- Features Section -->
-  <section class="section features">
-    <div class="container">
-      <h2 class="section-title">Why Choose BIT?</h2>
-      <div class="features-grid">
-        <div class="feature-card">
-          <div class="feature-icon">💻</div>
-          <h3>Industry-Relevant Curriculum</h3>
-          <p>Our program is designed in collaboration with industry leaders to ensure you gain the skills employers need.</p>
+  <!-- Why choose -->
+  <section class="py-16 bg-white/90">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-2xl md:text-3xl font-bold text-center">Why Choose BIT?</h2>
+      <div class="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="bg-white rounded-lg p-6 shadow hover:shadow-lg transition text-center">
+          <div class="mb-3"><span class="material-symbols-rounded text-4xl text-secondary">computer</span></div>
+          <h3 class="text-primary font-bold mb-2">Industry-Relevant Curriculum</h3>
+          <p>Designed with industry leaders so you gain the skills employers need.</p>
         </div>
-        <div class="feature-card">
-          <div class="feature-icon">👥</div>
-          <h3>Expert Faculty</h3>
-          <p>Learn from experienced professionals and researchers who are passionate about technology and education.</p>
+        <div class="bg-white rounded-lg p-6 shadow hover:shadow-lg transition text-center">
+          <div class="mb-3"><span class="material-symbols-rounded text-4xl text-secondary">groups</span></div>
+          <h3 class="text-primary font-bold mb-2">Expert Faculty</h3>
+          <p>Learn from experienced professionals and passionate researchers.</p>
         </div>
-        <div class="feature-card">
-          <div class="feature-icon">🚀</div>
-          <h3>Hands-On Learning</h3>
-          <p>Gain practical experience through labs, projects, internships, and industry collaborations.</p>
+        <div class="bg-white rounded-lg p-6 shadow hover:shadow-lg transition text-center">
+          <div class="mb-3"><span class="material-symbols-rounded text-4xl text-secondary">rocket_launch</span></div>
+          <h3 class="text-primary font-bold mb-2">Hands-On Learning</h3>
+          <p>Labs, projects, internships, and collaborations that build real skills.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- News Section -->
-  <section class="section news-section">
-    <div class="container">
-      <h2 class="section-title">Latest News & Events</h2>
-      <div class="news-grid">
-        <div class="news-card">
-          <img src="assets/img/acquiantance party.jpg" alt="Acquiantance Party" class="news-img">
-          <div class="news-content">
-            <span class="news-date">October 10, 2025</span>
-            <h3>Glitz and Glam Acquiantance Party</h3>
-            <p>Southern Luzon State University (SLSU) held its much-awaited Acquiantance Party. The event gathered students, faculty, and university personnel to celebrate.</p>
-                                <!-- Updated link -->
-            <a href="https://www.facebook.com/share/17JXKevdbE/"
-               class="btn"
-               target="_blank"
-               rel="noopener"
-               style="margin-top: 15px; padding: 8px 15px;">
-              Read More
-            </a>
-          </div>
+  <!-- Footer -->
+  <footer id="contact" class="bg-secondary text-white pt-14 pb-6">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
+        <div>
+          <h3 class="font-bold text-lg mb-3">Bachelor in Industrial Technology (Major in Computer Technology)</h3>
+          <p class="text-white/90">Empowering the next generation of IT professionals with cutting-edge knowledge and practical skills.</p>
         </div>
-        <div class="news-card">
-          <img src="assets/img/dl awardee.jpg" alt="DL Awardee" class="news-img">
-          <div class="news-content">
-            <span class="news-date">October 10, 2025</span>
-            <h3>Director's List Awarding Ceremony of 2nd Semester School Year 2024-2025</h3>
-            <p>Honoring students for their outstanding academic performance during the second semester of AY 2024-2025.</p>
-                                  <!-- Updated link -->
-            <a href="https://www.facebook.com/share/17JXKevdbE/"
-               class="btn"
-               target="_blank"
-               rel="noopener"
-               style="margin-top: 15px; padding: 8px 15px;">
-              Read More
-            </a>
-          </div>
-        </div>
-        <div class="news-card">
-          <img src="assets/img/Photoshop Seminar.jpg" alt="Visual Design Using Photoshop Seminar" class="news-img">
-          <div class="news-content">
-            <span class="news-date">October 24, 2025</span>
-            <h3>Visual Graphic Design Workshop Using Photoshop</h3>
-            <p>Students from BIT 3A and 3B attended the workshop to enhance their digital creativity and graphic design skills.</p>
-                                  <!-- Updated link -->
-            <a href="https://www.facebook.com/share/17JXKevdbE/"
-               class="btn"
-               target="_blank"
-               rel="noopener"
-               style="margin-top: 15px; padding: 8px 15px;">
-              Read More
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer (Contact + Subscribe) -->
-  <footer id="contact">
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-column">
-          <h3>BIT Program</h3>
-          <p>Empowering the next generation of IT professionals with cutting-edge knowledge and practical skills.</p>
-          <div class="social-links">
-            <a href="#"><span>FB</span></a>
-            <a href="#"><span>IG</span></a>
-          </div>
-        </div>
-
-        <div class="footer-column">
-          <h3>Quick Links</h3>
-          <ul class="footer-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="news.html">News & Events</a></li>
+        <div>
+          <h3 class="font-bold text-lg mb-3">Quick Links</h3>
+          <ul class="space-y-2 text-white/90">
+            <li><a class="hover:text-white" href="index.html">Home</a></li>
+            <li><a class="hover:text-white" href="about.html">About</a></li>
+            <li><a class="hover:text-white" href="news.html">News & Events</a></li>
           </ul>
         </div>
-
-        <div class="footer-column">
-          <h3>Contact</h3>
-          <div class="contact-mini">
-            <div class="row"><span class="label">Email:</span><span>buenaventuraalex04@gmail.com</span></div>
-            <div class="row"><span class="label">Phone:</span><span>09301766534</span></div>
-            <div class="row"><span class="label">Address:</span><span>Ibabang Dupay, Lucena City, Philippines, Quezon 4301</span></div>
-            <div class="contact-cta">
-              <button class="btn" id="openSubscribe">Subscribe</button>
-            </div>
+        <div>
+          <h3 class="font-bold text-lg mb-3">Contact</h3>
+          <div class="space-y-2 text-white/90">
+            <div class="flex gap-2 items-center"><span class="material-symbols-rounded">mail</span><span class="font-semibold">Email:</span><span>buenaventuraalex04@gmail.com</span></div>
+            <div class="flex gap-2 items-center"><span class="material-symbols-rounded">call</span><span class="font-semibold">Phone:</span><span>09301766534</span></div>
+            <div class="flex gap-2 items-center"><span class="material-symbols-rounded">location_on</span><span class="font-semibold">Address:</span><span>Brgy. Ibabang Dupay, Lucena City, Quezon, Philippines 4301</span></div>
           </div>
+          <button id="openSubscribe" class="mt-4 inline-flex items-center gap-2 bg-white/15 hover:bg-white/25 text-white font-semibold px-5 py-2.5 rounded transition">
+            <span class="material-symbols-rounded">subscriptions</span> Subscribe
+          </button>
         </div>
       </div>
-
-      <div class="copyright">
-        <p>&copy; 2025 BIT Program. All rights reserved.</p>
-        <small>Photos & images: <strong>The Technolator</strong>. No reuse without permission.</small>
-      </div>
+      <p class="mt-10 pt-5 border-t border-white/10 text-center text-sm text-white/90">&copy; 2025 Bachelor in Industrial Technology (Major in Computer Technology). All rights reserved.</p>
     </div>
   </footer>
 
-  <!-- Subscribe Modal -->
-  <div class="modal" id="subscribeModal" aria-hidden="true" role="dialog" aria-labelledby="subscribeTitle">
-    <div class="modal-card">
-      <div class="modal-header">
-        <div class="modal-title" id="subscribeTitle">Subscribe to updates</div>
-        <button class="modal-close" id="closeSubscribe" aria-label="Close">&times;</button>
+  <!-- Subscribe Modal (centered) -->
+  <div id="subscribeModal" class="fixed inset-0 hidden grid place-items-center bg-black/60 p-4 z-[60]" role="dialog" aria-modal="true" tabindex="-1">
+    <div class="w-full max-w-md bg-white rounded-xl shadow-xl max-h-[90vh] flex flex-col">
+      <div class="bg-gradient-to-r from-primary to-secondary text-white px-5 py-3 flex items-center justify-between rounded-t-xl">
+        <h4 class="font-bold">Subscribe to updates</h4>
+        <button id="closeSubscribe" class="text-2xl leading-none" aria-label="Close">&times;</button>
       </div>
-      <div class="modal-body">
-        <form id="subscribeForm">
-          <div class="form-grid">
-            <div class="form-group">
-              <label for="subEmail">Email</label>
-              <input id="subEmail" type="email" class="form-control" placeholder="you@example.com" required>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn" id="cancelSubscribe">Cancel</button>
-            <button type="submit" class="btn">Subscribe</button>
-          </div>
-        </form>
-      </div>
+      <form id="subscribeForm" class="p-5 overflow-auto">
+        <label class="block font-semibold mb-1" for="subEmail">Email</label>
+        <div class="relative">
+          <span class="material-symbols-rounded absolute left-3 top-1/2 -translate-y-1/2 text-zinc-400">mail</span>
+          <input id="subEmail" type="email" required placeholder="you@example.com"
+                 class="w-full border rounded-lg pl-10 pr-3 py-2 focus:outline-none focus:ring-2 focus:ring-secondary"/>
+        </div>
+        <div class="mt-4 flex justify-end gap-2">
+          <button type="button" id="cancelSubscribe" class="px-4 py-2 rounded bg-zinc-100 hover:bg-zinc-200">Cancel</button>
+          <button type="submit" class="px-4 py-2 rounded bg-secondary hover:bg-primary text-white font-semibold">Subscribe</button>
+        </div>
+      </form>
     </div>
   </div>
 
-  <!-- Toast -->
-  <div id="toast">Subscribed! Check your inbox for a confirmation.</div>
+  <div id="toast" class="fixed left-1/2 -translate-x-1/2 bottom-6 bg-zinc-900 text-white px-4 py-2 rounded-lg opacity-0 pointer-events-none transition">Subscribed!</div>
 
   <script>
-    // Mobile nav
-    (function(){
-      const burger = document.querySelector('.hamburger');
-      const links = document.querySelector('.nav-links');
-      if (!burger || !links) return;
-      const toggle = () => {
-        links.classList.toggle('active');
-        burger.classList.toggle('active');
-        burger.setAttribute('aria-expanded', burger.classList.contains('active'));
-      };
-      burger.addEventListener('click', toggle);
-      burger.addEventListener('keypress', e => (e.key === 'Enter') && toggle());
-    })();
+    const burger=document.getElementById('burger'), mobileNav=document.getElementById('mobileNav');
+    burger?.addEventListener('click',()=>{ const open=mobileNav.classList.toggle('hidden')===false; burger.setAttribute('aria-expanded',String(open)); });
 
-    // Subscribe modal (open/close + validate + save)
-    (function(){
-      const openBtn  = document.getElementById('openSubscribe');
-      const modal    = document.getElementById('subscribeModal');
-      const closeBtn = document.getElementById('closeSubscribe');
-      const cancel   = document.getElementById('cancelSubscribe');
-      const form     = document.getElementById('subscribeForm');
-      const emailInp = document.getElementById('subEmail');
-      const toast    = document.getElementById('toast');
+    const openBtn=document.getElementById('openSubscribe'), modal=document.getElementById('subscribeModal'),
+          closeBtn=document.getElementById('closeSubscribe'), cancelBtn=document.getElementById('cancelSubscribe'),
+          form=document.getElementById('subscribeForm'), emailInp=document.getElementById('subEmail'),
+          toast=document.getElementById('toast');
 
-      function openModal() { modal.classList.add('open'); modal.setAttribute('aria-hidden','false'); setTimeout(()=>emailInp?.focus(), 50); }
-      function closeModal(){ modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); }
-      function showToast(msg){ toast.textContent = msg || 'Subscribed!'; toast.classList.add('show'); setTimeout(()=> toast.classList.remove('show'), 2000); }
+    function openModal(){ modal.classList.remove('hidden'); document.body.classList.add('overflow-hidden'); setTimeout(()=>emailInp.focus(),50); }
+    function closeModal(){ modal.classList.add('hidden'); document.body.classList.remove('overflow-hidden'); }
+    function showToast(msg){ toast.textContent=msg; toast.classList.remove('opacity-0'); setTimeout(()=>toast.classList.add('opacity-0'),1800); }
 
-      openBtn?.addEventListener('click', openModal);
-      closeBtn?.addEventListener('click', closeModal);
-      cancel?.addEventListener('click', closeModal);
-      modal?.addEventListener('click', e => { if(e.target === modal) closeModal(); });
-      window.addEventListener('keydown', e => { if(e.key === 'Escape') closeModal(); });
+    openBtn?.addEventListener('click',openModal);
+    closeBtn?.addEventListener('click',closeModal);
+    cancelBtn?.addEventListener('click',closeModal);
+    modal?.addEventListener('click',e=>{ if(e.target===modal) closeModal(); });
+    window.addEventListener('keydown',e=>{ if(e.key==='Escape') closeModal(); });
 
-      form?.addEventListener('submit', async (e)=>{
-        e.preventDefault();
-        const email = (emailInp?.value || '').trim();
-        const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-        if (!valid) { emailInp?.focus(); emailInp?.setAttribute('aria-invalid','true'); return; }
-
-        // Store locally for now (replace with your backend later)
-        const key = 'bit_subscribers';
-        const list = JSON.parse(localStorage.getItem(key) || '[]');
-        if (!list.includes(email)) list.push(email);
-        localStorage.setItem(key, JSON.stringify(list));
-
-        // TODO: send to backend / Google Form if needed
-        // await fetch('/api/subscribe',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email})});
-
-        closeModal(); form.reset(); showToast('Subscribed! Check your inbox for a confirmation.');
-      });
-    })();
+    form?.addEventListener('submit',e=>{
+      e.preventDefault();
+      const email=(emailInp.value||'').trim();
+      if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ emailInp.focus(); return; }
+      const k='bit_subscribers', list=JSON.parse(localStorage.getItem(k)||'[]');
+      if(!list.includes(email)) list.push(email);
+      localStorage.setItem(k, JSON.stringify(list));
+      closeModal(); form.reset(); showToast('Subscribed! Check your inbox for a confirmation.');
+    });
   </script>
 </body>
 </html>

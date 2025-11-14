@@ -1,429 +1,343 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>BIT Program – Admin Dashboard</title>
-  <link rel="stylesheet" href="bit.css"/>
-  <style>
-    /* Lightweight admin helpers on top of your theme */
-    .admin-wrap { padding: 40px 0; }
-    .admin-grid { display:grid; grid-template-columns: 1.1fr 1fr; gap:24px; }
-    .card {
-      background:#fff; border-radius:12px; padding:18px;
-      box-shadow:0 6px 18px rgba(0,0,0,.08);
-    }
-    .card h2 { margin-bottom:10px; color: var(--primary); }
-    .muted { color:#666; font-size:.95rem; }
-    .row { display:flex; gap:12px; }
-    .row > .form-group { flex:1; }
-    .actions { display:flex; gap:10px; justify-content:flex-end; margin-top:12px; }
-    .danger { background:#b3261e; }
-    .secondary { background:#e9ecef; color:#333; }
-    .table {
-      width:100%; border-collapse: collapse; font-size:.95rem; margin-top:6px;
-    }
-    .table th, .table td { padding:10px 8px; border-bottom:1px solid #eee; vertical-align: top; }
-    .table th { text-align:left; color:#555; font-weight:700; }
-    .pill {
-      display:inline-block; padding:2px 8px; border-radius:999px; font-size:.8rem; background:#f3f3f3;
-    }
-    .pill.published { background:#e6b8b8; color:#4a0000; font-weight:700; }
-    .img-preview {
-      width:100%; max-height:220px; object-fit:cover; border-radius:8px; border:1px solid #eee;
-    }
-    @media (max-width: 980px) { .admin-grid { grid-template-columns: 1fr; } }
-  </style>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={theme:{extend:{colors:{primary:'#550000',secondary:'#800000',dark:'#4a0000',light:'#faeef0'}}}};</script>
+
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24..48,400..700,0..1,-50..200" />
+  <style>.material-symbols-rounded{font-family:'Material Symbols Rounded' !important;font-variation-settings:'FILL' 1,'wght' 600,'GRAD' 0,'opsz' 24;display:inline-block;line-height:1;vertical-align:middle;-webkit-font-feature-settings:'liga';-webkit-font-smoothing:antialiased}</style>
+  <meta name="robots" content="noindex,nofollow">
 </head>
-<body>
-  <!-- Header -->
-  <header>
-    <div class="container">
-      <nav class="navbar">
-        <a href="index.html" class="logo" aria-label="BIT Program - Home">
-          <img src="assets/img/logo-placeholder.png" alt="BIT Program logo" class="logo-img">
-        </a>
-        <ul class="nav-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="news.html">News & Events</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-        <div class="hamburger" aria-label="Menu" aria-expanded="false" role="button" tabindex="0">
-          <div></div><div></div><div></div>
-        </div>
-      </nav>
+
+<!-- MAIN BACKGROUND NOW PLAIN WHITE -->
+<body class="text-zinc-800 bg-white">
+  <!-- Header (logo + title only) -->
+  <header class="sticky top-0 z-50 bg-secondary text-white shadow">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex items-center gap-3 py-3">
+        <img src="logo-placeholder.png" alt="logo"
+             class="w-14 h-14 md:w-16 md:h-16 rounded-full object-cover border-2 border-white/70 shadow">
+        <span class="text-lg md:text-xl font-semibold" style="font-family:'Times New Roman', Times, serif;">
+          Southern Luzon State University
+        </span>
+      </div>
     </div>
   </header>
 
   <!-- Admin -->
-  <section class="admin-wrap">
-    <div class="container">
-      <h1 class="section-title">Admin Dashboard</h1>
+  <section class="py-12">
+    <div class="max-w-6xl mx-auto px-4">
+      <h1 class="text-3xl font-bold text-center">Admin Dashboard</h1>
 
-      <div class="admin-grid">
+      <div class="mt-8 grid lg:grid-cols-2 gap-6">
         <!-- Editor -->
-        <div class="card">
-          <h2>Create / Edit Post</h2>
-          <p class="muted">Fill in the details, upload an image (optional), then **Save**. Toggle “Published” to show on the News page.</p>
+        <div class="bg-white rounded-xl shadow p-5">
+          <h2 class="text-xl font-bold text-primary flex items-center gap-2">
+            <span class="material-symbols-rounded">edit_square</span> Create / Edit Post
+          </h2>
+          <p class="text-zinc-600 mt-1 text-sm">Fill in the details, upload an image (optional), then <b>Save</b>. Toggle “Published” to show on News page.</p>
 
-          <form id="postForm">
-            <input type="hidden" id="postId" value="">
-            <div class="form-group">
-              <label for="title">Title</label>
-              <input id="title" class="form-control" type="text" placeholder="Post title" required>
-            </div>
-
-            <div class="row">
-              <div class="form-group">
-                <label for="date">Date</label>
-                <input id="date" class="form-control" type="date" required>
-              </div>
-              <div class="form-group">
-                <label for="published">Published</label>
-                <select id="published" class="form-control">
-                  <option value="true">Yes</option>
-                  <option value="false" selected>No</option>
-                </select>
+          <form id="postForm" class="mt-4 space-y-4">
+            <input type="hidden" id="postId"/>
+            <div>
+              <label class="font-semibold block mb-1" for="title">Title</label>
+              <div class="relative">
+                <span class="material-symbols-rounded absolute left-3 top-1/2 -translate-y-1/2 text-zinc-400">title</span>
+                <input id="title" type="text" required placeholder="Post title"
+                       class="w-full border rounded-lg pl-10 pr-3 py-2 focus:outline-none focus:ring-2 focus:ring-secondary"/>
               </div>
             </div>
 
-            <div class="form-group">
-              <label for="summary">Summary</label>
-              <textarea id="summary" class="form-control" placeholder="Short teaser shown in the card…" required></textarea>
-            </div>
-
-            <div class="row">
-              <div class="form-group">
-                <label for="image">Cover Image (optional)</label>
-                <input id="image" class="form-control" type="file" accept="image/*">
+            <div class="grid sm:grid-cols-2 gap-3">
+              <div>
+                <label class="font-semibold block mb-1" for="date">Date</label>
+                <div class="relative">
+                  <span class="material-symbols-rounded absolute left-3 top-1/2 -translate-y-1/2 text-zinc-400">event</span>
+                  <input id="date" type="date" required class="w-full border rounded-lg pl-10 pr-3 py-2 focus:outline-none focus:ring-2 focus:ring-secondary"/>
+                </div>
               </div>
-              <div class="form-group">
-                <label for="imgAlt">Image Alt Text</label>
-                <input id="imgAlt" class="form-control" type="text" placeholder="Describe the image">
+              <div>
+                <label class="font-semibold block mb-1" for="published">Published</label>
+                <div class="relative">
+                  <span class="material-symbols-rounded absolute left-3 top-1/2 -translate-y-1/2 text-zinc-400">public</span>
+                  <select id="published" class="w-full border rounded-lg pl-10 pr-3 py-2">
+                    <option value="true">Yes</option>
+                    <option value="false" selected>No</option>
+                  </select>
+                </div>
               </div>
             </div>
 
-            <div class="form-group">
-              <label for="content">Full Content (optional)</label>
-              <textarea id="content" class="form-control" placeholder="Long-form content if you want a detail page later…"></textarea>
+            <div>
+              <label class="font-semibold block mb-1" for="summary">Summary</label>
+              <div class="relative">
+                <span class="material-symbols-rounded absolute left-3 top-3 text-zinc-400">article</span>
+                <textarea id="summary" required placeholder="Short teaser shown in the card…"
+                          class="w-full border rounded-lg pl-10 pr-3 py-2 min-h-24 focus:outline-none focus:ring-2 focus:ring-secondary"></textarea>
+              </div>
             </div>
 
-            <img id="preview" class="img-preview" alt="" style="display:none;">
+            <div class="grid sm:grid-cols-2 gap-3">
+              <div>
+                <label class="font-semibold block mb-1" for="image">Cover Image (optional)</label>
+                <div class="relative">
+                  <span class="material-symbols-rounded absolute left-3 top-1/2 -translate-y-1/2 text-zinc-400">image</span>
+                  <input id="image" type="file" accept="image/*" class="w-full border rounded-lg pl-10 pr-3 py-2"/>
+                </div>
+              </div>
+              <div>
+                <label class="font-semibold block mb-1" for="imgAlt">Image Alt Text</label>
+                <div class="relative">
+                  <span class="material-symbols-rounded absolute left-3 top-1/2 -translate-y-1/2 text-zinc-400">image_search</span>
+                  <input id="imgAlt" type="text" placeholder="Describe the image" class="w-full border rounded-lg pl-10 pr-3 py-2"/>
+                </div>
+              </div>
+            </div>
 
-            <div class="actions">
-              <button type="button" class="btn secondary" id="newBtn">New</button>
-              <button type="submit" class="btn">Save Post</button>
+            <div>
+              <label class="font-semibold block mb-1" for="content">Full Content (optional)</label>
+              <div class="relative">
+                <span class="material-symbols-rounded absolute left-3 top-3 text-zinc-400">notes</span>
+                <textarea id="content" placeholder="Long-form content for detail page…"
+                          class="w-full border rounded-lg pl-10 pr-3 py-2 min-h-36 focus:outline-none focus:ring-2 focus:ring-secondary"></textarea>
+              </div>
+            </div>
+
+            <img id="preview" class="hidden w-full max-h-64 object-cover rounded-lg border" alt="Preview"/>
+
+            <div class="flex justify-end gap-2">
+              <button type="button" id="newBtn" class="px-4 py-2 rounded bg-zinc-100 hover:bg-zinc-200 inline-flex items-center gap-1">
+                <span class="material-symbols-rounded">add_circle</span> New
+              </button>
+              <button type="submit" class="px-4 py-2 rounded bg-secondary hover:bg-primary text-white font-semibold inline-flex items-center gap-1">
+                <span class="material-symbols-rounded">save</span> Save Post
+              </button>
             </div>
           </form>
         </div>
 
         <!-- Posts list -->
-        <div class="card">
-          <h2>Posts</h2>
-          <div class="row" style="margin-bottom:8px">
-            <button class="btn" id="exportBtn" title="Download a JSON backup">Export</button>
-            <label class="btn secondary" for="importFile" title="Load a JSON backup">Import</label>
-            <input id="importFile" type="file" accept="application/json" style="display:none">
+        <div class="bg-white rounded-xl shadow p-5">
+          <div class="flex items-center justify-between">
+            <h2 class="text-xl font-bold text-primary flex items-center gap-2">
+              <span class="material-symbols-rounded">list_alt</span> Posts
+            </h2>
+            <div class="flex gap-2">
+              <button id="exportBtn" class="px-4 py-2 rounded bg-secondary hover:bg-primary text-white font-semibold inline-flex items-center gap-1" title="Download JSON backup">
+                <span class="material-symbols-rounded">download</span> Export
+              </button>
+              <label for="importFile" class="px-4 py-2 rounded bg-zinc-100 hover:bg-zinc-200 cursor-pointer inline-flex items-center gap-1" title="Load JSON backup">
+                <span class="material-symbols-rounded">upload</span> Import
+              </label>
+              <input id="importFile" type="file" accept="application/json" class="hidden"/>
+            </div>
           </div>
-          <table class="table" id="postsTable" aria-live="polite">
-            <thead>
-              <tr>
-                <th>Title</th>
-                <th>Date</th>
-                <th>Status</th>
-                <th style="text-align:right">Actions</th>
-              </tr>
-            </thead>
-            <tbody><!-- rows injected --></tbody>
-          </table>
+
+          <div class="mt-3 overflow-x-auto">
+            <table class="w-full text-sm">
+              <thead>
+                <tr class="text-left text-zinc-600">
+                  <th class="py-2">Title</th>
+                  <th class="py-2">Date</th>
+                  <th class="py-2">Status</th>
+                  <th class="py-2 text-right">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="postsTable" class="divide-y"></tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Footer (Contact + Subscribe) -->
-  <footer id="contact">
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-column">
-          <h3>BIT Program</h3>
-          <p>Empowering the next generation of IT professionals with cutting-edge knowledge and practical skills.</p>
-          <div class="social-links">
-            <a href="#"><span>FB</span></a>
-            <a href="#"><span>IG</span></a>
-          </div>
-        </div>
-        <div class="footer-column">
-          <h3>Quick Links</h3>
-          <ul class="footer-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="news.html">News & Events</a></li>
-          </ul>
-        </div>
-        <div class="footer-column">
-          <h3>Contact</h3>
-          <div class="contact-mini">
-            <div class="row"><span class="label">Email:</span><span>buenaventuraalex04@gmail.com</span></div>
-            <div class="row"><span class="label">Phone:</span><span>09301766534</span></div>
-            <div class="row"><span class="label">Address:</span><span>Brgy. Ibabang Dupay, Lucena City, Quezon, Philippines 4301</span></div>
-            <div class="contact-cta">
-              <button class="btn" id="openSubscribe">Subscribe</button>
-            </div>
+  <!-- Footer -->
+  <footer id="contact" class="bg-secondary text-white pt-10 pb-6">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
+        <div><h3 class="font-bold text-lg mb-3">BIT Program</h3><p class="text-white/90">Empowering IT professionals.</p></div>
+        <div><h3 class="font-bold text-lg mb-3">Quick Links</h3><ul class="space-y-2 text-white/90"><li><a class="hover:text-white" href="home.html">Home</a></li><li><a class="hover:text-white" href="about.html">About</a></li><li><a class="hover:text-white" href="news.html">News & Events</a></li></ul></div>
+        <div><h3 class="font-bold text-lg mb-3">Contact</h3>
+          <div class="space-y-2 text-white/90">
+            <div class="flex gap-2 items-center"><span class="material-symbols-rounded">mail</span><span class="font-semibold">Email:</span><span>kalmahe</span></div>
+            <div class="flex gap-2 items-center"><span class="material-symbols-rounded">call</span><span class="font-semibold">Phone:</span><span>tatawag ka ga</span></div>
           </div>
         </div>
       </div>
-      <div class="copyright">
-        <p>&copy; 2025 BIT Program. All rights reserved.</p>
-      </div>
+      <p class="mt-8 pt-4 border-t border-white/10 text-center text-sm text-white/90">&copy; 2025 BIT Program. All rights reserved.</p>
     </div>
   </footer>
 
-  <!-- Subscribe Modal + Toast (same as on other pages) -->
-  <div class="modal" id="subscribeModal" aria-hidden="true" role="dialog" aria-labelledby="subscribeTitle">
-    <div class="modal-card">
-      <div class="modal-header">
-        <div class="modal-title" id="subscribeTitle">Subscribe to updates</div>
-        <button class="modal-close" id="closeSubscribe" aria-label="Close">&times;</button>
-      </div>
-      <div class="modal-body">
-        <form id="subscribeForm">
-          <div class="form-grid">
-            <div class="form-group">
-              <label for="subEmail">Email</label>
-              <input id="subEmail" type="email" class="form-control" placeholder="you@example.com" required>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn" id="cancelSubscribe">Cancel</button>
-            <button type="submit" class="btn">Subscribe</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-  <div id="toast">Subscribed! Check your inbox for a confirmation.</div>
-
   <script>
-    /* ===== Mobile nav ===== */
     (function(){
-      const burger = document.querySelector('.hamburger');
-      const links = document.querySelector('.nav-links');
-      if (!burger || !links) return;
-      const toggle = () => {
-        links.classList.toggle('active');
-        burger.classList.toggle('active');
-        burger.setAttribute('aria-expanded', burger.classList.contains('active'));
-      };
-      burger.addEventListener('click', toggle);
-      burger.addEventListener('keypress', e => (e.key === 'Enter') && toggle());
-    })();
+      const LS_KEY='bit_news';
+      const form=document.getElementById('postForm');
+      const postId=document.getElementById('postId');
+      const title=document.getElementById('title');
+      const date=document.getElementById('date');
+      const published=document.getElementById('published');
+      const summary=document.getElementById('summary');
+      const image=document.getElementById('image');
+      const imgAlt=document.getElementById('imgAlt');
+      const content=document.getElementById('content');
+      const preview=document.getElementById('preview');
+      const newBtn=document.getElementById('newBtn');
+      const tableBody=document.getElementById('postsTable');
+      const exportBtn=document.getElementById('exportBtn');
+      const importFile=document.getElementById('importFile');
 
-    /* ===== Subscribe modal (shared) ===== */
-    (function(){
-      const openBtn  = document.getElementById('openSubscribe');
-      const modal    = document.getElementById('subscribeModal');
-      const closeBtn = document.getElementById('closeSubscribe');
-      const cancel   = document.getElementById('cancelSubscribe');
-      const form     = document.getElementById('subscribeForm');
-      const emailInp = document.getElementById('subEmail');
-      const toast    = document.getElementById('toast');
-
-      function openModal() { modal.classList.add('open'); document.body.classList.add('modal-open'); setTimeout(()=>emailInp?.focus(), 50); }
-      function closeModal(){ modal.classList.remove('open'); document.body.classList.remove('modal-open'); }
-      function showToast(msg){ toast.textContent = msg || 'Subscribed!'; toast.classList.add('show'); setTimeout(()=> toast.classList.remove('show'), 2000); }
-
-      openBtn?.addEventListener('click', openModal);
-      closeBtn?.addEventListener('click', closeModal);
-      cancel?.addEventListener('click', closeModal);
-      modal?.addEventListener('click', (e)=>{ if(e.target === modal) closeModal(); });
-      window.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeModal(); });
-
-      form?.addEventListener('submit', (e)=>{
-        e.preventDefault();
-        const email = (emailInp?.value || '').trim();
-        const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-        if (!valid) { emailInp?.focus(); emailInp?.setAttribute('aria-invalid','true'); return; }
-        const key = 'bit_subscribers';
-        const list = JSON.parse(localStorage.getItem(key) || '[]');
-        if (!list.includes(email)) list.push(email);
-        localStorage.setItem(key, JSON.stringify(list));
-        closeModal(); form.reset(); showToast('Subscribed! Check your inbox for a confirmation.');
-      });
-    })();
-
-    /* ===== Admin app (localStorage CRUD) ===== */
-    (function(){
-      const LS_KEY = 'bit_news';
-      const form = document.getElementById('postForm');
-      const postId = document.getElementById('postId');
-      const title = document.getElementById('title');
-      const date = document.getElementById('date');
-      const published = document.getElementById('published');
-      const summary = document.getElementById('summary');
-      const image = document.getElementById('image');
-      const imgAlt = document.getElementById('imgAlt');
-      const content = document.getElementById('content');
-      const preview = document.getElementById('preview');
-      const newBtn = document.getElementById('newBtn');
-      const tableBody = document.querySelector('#postsTable tbody');
-      const exportBtn = document.getElementById('exportBtn');
-      const importFile = document.getElementById('importFile');
-
-      // Default date today
       date.value = new Date().toISOString().slice(0,10);
 
-      function load() {
-        try { return JSON.parse(localStorage.getItem(LS_KEY) || '[]'); }
-        catch { return []; }
-      }
-      function save(list) {
-        localStorage.setItem(LS_KEY, JSON.stringify(list));
-        renderTable();
-      }
-      function uid() { return Math.random().toString(36).slice(2) + Date.now().toString(36); }
-
-      function clearForm() {
-        postId.value = '';
-        title.value = '';
-        date.value = new Date().toISOString().slice(0,10);
-        published.value = 'false';
-        summary.value = '';
-        image.value = '';
-        imgAlt.value = '';
-        content.value = '';
-        preview.src = '';
-        preview.style.display = 'none';
+      function load(){ try{return JSON.parse(localStorage.getItem(LS_KEY)||'[]');}catch{return[];} }
+      function save(list){ localStorage.setItem(LS_KEY, JSON.stringify(list)); renderTable(); }
+      function uid(){ return Math.random().toString(36).slice(2)+Date.now().toString(36); }
+      function clearForm(){
+        postId.value=''; title.value=''; date.value=new Date().toISOString().slice(0,10);
+        published.value='false'; summary.value=''; image.value=''; imgAlt.value=''; content.value='';
+        preview.src=''; preview.classList.add('hidden');
       }
 
-      image.addEventListener('change', () => {
-        const file = image.files?.[0];
-        if (!file) { preview.src=''; preview.style.display='none'; return; }
-        const reader = new FileReader();
-        reader.onload = e => { preview.src = e.target.result; preview.style.display = 'block'; };
+      image.addEventListener('change', ()=>{
+        const file=image.files?.[0]; if(!file){ preview.src=''; preview.classList.add('hidden'); return; }
+        const reader=new FileReader(); reader.onload=e=>{ preview.src=e.target.result; preview.classList.remove('hidden'); };
         reader.readAsDataURL(file);
       });
 
-      form.addEventListener('submit', (e) => {
+      form.addEventListener('submit', e=>{
         e.preventDefault();
-        if (!title.value.trim() || !summary.value.trim()) return;
-
-        const list = load();
-        const id = postId.value || uid();
-        const idx = list.findIndex(p => p.id === id);
-
-        const base = {
-          id,
-          title: title.value.trim(),
-          date: date.value,
-          summary: summary.value.trim(),
-          imgDataUrl: preview.src || '', // store data URL if provided
-          imgAlt: imgAlt.value.trim(),
-          content: content.value.trim(),
+        if(!title.value.trim() || !summary.value.trim()) return;
+        const list=load();
+        const id=postId.value || uid();
+        const idx=list.findIndex(p=>p.id===id);
+        const base={
+          id, title: title.value.trim(), date: date.value, summary: summary.value.trim(),
+          imgDataUrl: preview.src || '', imgAlt: imgAlt.value.trim(), content: content.value.trim(),
           published: published.value === 'true',
           createdAt: postId.value ? list[idx]?.createdAt : new Date().toISOString(),
           updatedAt: new Date().toISOString()
         };
-
-        if (idx >= 0) list[idx] = base;
-        else list.push(base);
-
-        save(list);
-        clearForm();
-        alert('Post saved.');
+        if(idx>=0) list[idx]=base; else list.push(base);
+        save(list); clearForm(); alert('Post saved.');
       });
 
       newBtn.addEventListener('click', clearForm);
 
-      function renderTable() {
-        const list = load().sort((a,b) => (b.date || '').localeCompare(a.date || ''));
-        tableBody.innerHTML = '';
-        if (!list.length) {
-          tableBody.innerHTML = '<tr><td colspan="4" class="muted">No posts yet. Create one on the left.</td></tr>';
-          return;
+      function esc(s){ return (s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+      function renderTable(){
+        const list=load().sort((a,b)=>(b.date||'').localeCompare(a.date||''));
+        tableBody.innerHTML='';
+        if(!list.length){
+          tableBody.innerHTML='<tr><td class="py-3 text-zinc-500" colspan="4">No posts yet. Create one on the left.</td></tr>'; return;
         }
-        for (const p of list) {
-          const tr = document.createElement('tr');
-          tr.innerHTML = `
-            <td><strong>${escapeHtml(p.title)}</strong><br><span class="muted">${escapeHtml(p.summary).slice(0,120)}${p.summary.length>120?'…':''}</span></td>
-            <td>${p.date || ''}</td>
-            <td><span class="pill ${p.published ? 'published':''}">${p.published?'Published':'Draft'}</span></td>
-            <td style="text-align:right">
-              <button class="btn secondary" data-edit="${p.id}">Edit</button>
-              <button class="btn danger" data-del="${p.id}">Delete</button>
-              <button class="btn" data-toggle="${p.id}">${p.published?'Unpublish':'Publish'}</button>
-            </td>
-          `;
+        for(const p of list){
+          const tr=document.createElement('tr');
+          tr.innerHTML=`
+            <td class="py-3"><div class="font-semibold">${esc(p.title)}</div><div class="text-xs text-zinc-600">${esc(p.summary).slice(0,120)}${p.summary.length>120?'…':''}</div></td>
+            <td class="py-3">${p.date||''}</td>
+            <td class="py-3"><span class="px-2 py-0.5 rounded-full text-xs ${p.published?'bg-light text-dark font-semibold':'bg-zinc-100 text-zinc-700'}">${p.published?'Published':'Draft'}</span></td>
+            <td class="py-3 text-right space-x-2">
+              <button class="px-3 py-1.5 rounded bg-zinc-100 hover:bg-zinc-200 inline-flex items-center gap-1" data-edit="${p.id}"><span class="material-symbols-rounded text-base">edit</span>Edit</button>
+              <button class="px-3 py-1.5 rounded bg-red-600 text-white hover:bg-red-700 inline-flex items-center gap-1" data-del="${p.id}"><span class="material-symbols-rounded text-base">delete</span>Delete</button>
+              <button class="px-3 py-1.5 rounded bg-secondary text-white hover:bg-primary inline-flex items-center gap-1" data-toggle="${p.id}"><span class="material-symbols-rounded text-base">toggle_on</span>${p.published?'Unpublish':'Publish'}</button>
+            </td>`;
           tableBody.appendChild(tr);
         }
       }
 
-      function escapeHtml(s){ return (s||'').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
-
-      tableBody.addEventListener('click', (e) => {
-        const t = e.target.closest('button');
-        if (!t) return;
-        const list = load();
-        if (t.dataset.edit) {
-          const p = list.find(x => x.id === t.dataset.edit);
-          if (!p) return;
-          postId.value = p.id;
-          title.value = p.title;
-          date.value = p.date || new Date().toISOString().slice(0,10);
-          published.value = p.published ? 'true' : 'false';
-          summary.value = p.summary || '';
-          imgAlt.value = p.imgAlt || '';
-          content.value = p.content || '';
-          if (p.imgDataUrl) { preview.src = p.imgDataUrl; preview.style.display = 'block'; } else { preview.src=''; preview.style.display='none'; }
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        } else if (t.dataset.del) {
-          const id = t.dataset.del;
-          if (!confirm('Delete this post?')) return;
-          save(list.filter(x => x.id !== id));
-        } else if (t.dataset.toggle) {
-          const id = t.dataset.toggle;
-          const idx = list.findIndex(x => x.id === id);
-          if (idx >= 0) { list[idx].published = !list[idx].published; list[idx].updatedAt = new Date().toISOString(); save(list); }
+      tableBody.addEventListener('click', e=>{
+        const t=e.target.closest('button'); if(!t) return;
+        const list=load();
+        if(t.dataset.edit){
+          const p=list.find(x=>x.id===t.dataset.edit); if(!p) return;
+          postId.value=p.id; title.value=p.title; date.value=p.date||new Date().toISOString().slice(0,10);
+          published.value=p.published?'true':'false'; summary.value=p.summary||''; imgAlt.value=p.imgAlt||''; content.value=p.content||'';
+          if(p.imgDataUrl){ preview.src=p.imgDataUrl; preview.classList.remove('hidden'); } else { preview.src=''; preview.classList.add('hidden'); }
+          window.scrollTo({top:0,behavior:'smooth'});
+        } else if(t.dataset.del){
+          const id=t.dataset.del; if(!confirm('Delete this post?')) return; save(list.filter(x=>x.id!==id));
+        } else if(t.dataset.toggle){
+          const id=t.dataset.toggle; const idx=list.findIndex(x=>x.id===id); if(idx>=0){ list[idx].published=!list[idx].published; list[idx].updatedAt=new Date().toISOString(); save(list); }
         }
       });
 
-      // Export / Import
-      exportBtn.addEventListener('click', () => {
-        const blob = new Blob([JSON.stringify(load(), null, 2)], {type:'application/json'});
-        const a = document.createElement('a');
-        a.href = URL.createObjectURL(blob);
-        a.download = `bit_news_backup_${new Date().toISOString().slice(0,10)}.json`;
-        a.click();
-        URL.revokeObjectURL(a.href);
+      exportBtn.addEventListener('click', ()=>{
+        const blob=new Blob([JSON.stringify(load(),null,2)],{type:'application/json'});
+        const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='bit_news_backup.json'; a.click(); URL.revokeObjectURL(a.href);
       });
-      importFile.addEventListener('change', () => {
-        const file = importFile.files?.[0];
-        if (!file) return;
-        const reader = new FileReader();
-        reader.onload = e => {
-          try {
-            const imported = JSON.parse(e.target.result);
-            if (!Array.isArray(imported)) throw new Error('Invalid file');
-            localStorage.setItem(LS_KEY, JSON.stringify(imported));
-            renderTable();
-            alert('Import complete.');
-          } catch {
-            alert('Invalid backup file.');
-          }
-        };
-        reader.readAsText(file);
+      importFile.addEventListener('change', ()=>{
+        const f=importFile.files?.[0]; if(!f) return;
+        const reader=new FileReader(); reader.onload=e=>{ try{ const data=JSON.parse(e.target.result); if(!Array.isArray(data)) throw 0; localStorage.setItem(LS_KEY, JSON.stringify(data)); renderTable(); alert('Import complete.'); } catch{ alert('Invalid backup file.'); } };
+        reader.readAsText(f);
       });
-
-      // Simple (optional) “admin key” gate — very light protection
-      const ADMIN_KEY = ''; // e.g., set to 'mysupersecret' then open admin.html#mysupersecret
-      if (ADMIN_KEY && location.hash.replace('#','') !== ADMIN_KEY) {
-        document.body.innerHTML = '<div style="display:grid;place-items:center;height:100vh"><div class="card" style="max-width:420px"><h2>Access Denied</h2><p class="muted">Invalid admin key.</p></div></div>';
-        return;
-      }
 
       renderTable();
     })();
+  </script>
+
+  <!-- Simple passcode lock (unchanged) -->
+  <script>
+  const PAGE_TITLE = 'Admin Dashboard';
+  const PASSCODE_SHA256 = '6f76cfd8fc55b42e7a08cbe2642a3cd41730d109618c82b9273e66a23f3367b8';
+  const MAX_TRIES = 5;
+
+  async function sha256Hex(str){
+    const data=new TextEncoder().encode(str);
+    const digest=await crypto.subtle.digest('SHA-256', data);
+    return [...new Uint8Array(digest)].map(b=>b.toString(16).padStart(2,'0')).join('');
+  }
+
+  if(sessionStorage.getItem('admin_ok')!=='1'){
+    const lock=document.createElement('div');
+    lock.innerHTML = `
+      <div style="position:fixed;inset:0;z-index:9999;background:#fff;display:grid;place-items:center;padding:16px">
+        <div style="width:100%;max-width:420px;border:1px solid #eee;border-radius:14px;box-shadow:0 10px 25px rgba(0,0,0,.07);overflow:hidden">
+          <div style="padding:14px 18px;background:linear-gradient(90deg,#550000,#800000);color:#fff;">
+            <div style="font-weight:700">Enter Passcode</div>
+            <div style="opacity:.9;font-size:13px">Protected • ${PAGE_TITLE}</div>
+          </div>
+          <form id="lockForm" style="padding:18px">
+            <label style="font-weight:600;display:block;margin-bottom:6px">Passcode</label>
+            <input id="lockPw" type="password" autocomplete="current-password"
+                   style="width:100%;padding:10px 12px;border:1px solid #ddd;border-radius:10px;outline:none"
+                   placeholder="••••••••" required />
+            <div id="lockMsg" style="color:#b00020;font-size:13px;margin-top:8px;min-height:18px"></div>
+            <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:12px">
+              <button type="submit"
+                style="background:#800000;border:none;color:white;padding:8px 14px;border-radius:10px;cursor:pointer">Unlock</button>
+            </div>
+          </form>
+        </div>
+      </div>`;
+    document.body.appendChild(lock);
+
+    let tries=0;
+    const form=lock.querySelector('#lockForm');
+    const inp=lock.querySelector('#lockPw');
+    const msg=lock.querySelector('#lockMsg');
+    inp.focus();
+
+    form.addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      const hash=await sha256Hex(inp.value);
+      if(hash===PASSCODE_SHA256){
+        sessionStorage.setItem('admin_ok','1');
+        lock.remove();
+      }else{
+        tries++;
+        msg.textContent = `Incorrect passcode. (${tries}/${MAX_TRIES})`;
+        inp.value='';
+        if(tries>=MAX_TRIES){
+          msg.textContent='Too many attempts. Reload the page later.';
+          inp.disabled=true;
+          setTimeout(()=>location.href='home.html', 1500);
+        }
+      }
+    });
+  }
   </script>
 </body>
 </html>
