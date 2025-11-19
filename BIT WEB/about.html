@@ -4,6 +4,18 @@
   <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Bachelor in Industrial Technology (Major in Computer Technology) - About</title>
 
+  <!-- tanggal na ang sakong at balakubak -->
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      min-height: 100%;
+      background-color: #4a0000; 
+      overflow-x: hidden;
+      overscroll-behavior: none;
+    }
+  </style>
+
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = { theme: { extend: { colors: {
@@ -24,241 +36,367 @@
     .no-scrollbar{-ms-overflow-style:none;scrollbar-width:none}
   </style>
 </head>
-<body class="text-zinc-800 bg-[url('assets/img/bgnew.png')] bg-cover bg-fixed bg-center">
-  <!-- Header -->
-  <header class="sticky top-0 z-50 bg-secondary text-white shadow">
-    <div class="max-w-6xl mx-auto px-4">
-      <nav class="flex items-center justify-between py-3">
-        <!-- Logo + Title -->
-        <a href="index.html" aria-label="Home" class="flex items-center gap-3">
-          <img src="assets/img/logo-placeholder.png" alt="logo"
-               class="w-14 h-14 md:w-16 md:h-16 rounded-full object-cover border-2 border-white/70 shadow">
-          <span class="text-lg md:text-xl font-semibold" style="font-family:'Times New Roman', Times, serif;">
-            Southern Luzon State University
-          </span>
-        </a>
 
-        <!-- Nav links (unchanged) -->
-        <ul class="hidden md:flex items-center gap-8 font-semibold">
-          <li>
-            <a href="index.html" class="text-white/90 px-3 py-1 rounded-md transition hover:bg-white hover:text-secondary">
-              Home
-            </a>
-          </li>
-          <li>
-            <a href="about.html" aria-current="page"
-               class="px-3 py-1 rounded-md bg-white/90 text-secondary transition hover:bg-white">
-              About
-            </a>
-          </li>
-          <li>
-            <a href="news.html" class="text-white/90 px-3 py-1 rounded-md transition hover:bg-white hover:text-secondary">
-              News &amp; Events
-            </a>
-          </li>
-          <li>
-            <a href="#contact" class="text-white/90 px-3 py-1 rounded-md transition hover:bg-white hover:text-secondary">
-              Contact
-            </a>
-          </li>
+<!-- FLEX LAYOUT: para footer laging nasa baba pero scrollable pa rin -->
+<body class="min-h-screen flex flex-col text-zinc-800 bg-[url('assets/img/bgnew.png')] bg-cover bg-fixed bg-center">
+
+  <!-- MAIN CONTENT -->
+  <main class="flex-1">
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-secondary text-white shadow">
+      <div class="max-w-6xl mx-auto px-4">
+        <nav class="flex items-center justify-between py-3">
+          <!-- Logo + Title -->
+          <a href="index.html" aria-label="Home" class="flex items-center gap-3">
+            <img src="assets/img/logo-placeholder.png" alt="logo"
+                 class="w-14 h-14 md:w-16 md:h-16 rounded-full object-cover border-2 border-white/70 shadow">
+            <span class="text-lg md:text-xl font-semibold" style="font-family:'Times New Roman', Times, serif;">
+              Southern Luzon State University
+            </span>
+          </a>
+
+          <!-- Nav links (unchanged) -->
+          <ul class="hidden md:flex items-center gap-8 font-semibold">
+            <li>
+              <a href="index.html" class="text-white/90 px-3 py-1 rounded-md transition hover:bg-white hover:text-secondary">
+                Home
+              </a>
+            </li>
+            <li>
+              <a href="about.html" aria-current="page"
+                 class="px-3 py-1 rounded-md bg-white/90 text-secondary transition hover:bg-white">
+                About
+              </a>
+            </li>
+            <li>
+              <a href="news.html" class="text-white/90 px-3 py-1 rounded-md transition hover:bg-white hover:text-secondary">
+                News &amp; Events
+              </a>
+            </li>
+            <li>
+              <a href="#contact" class="text-white/90 px-3 py-1 rounded-md transition hover:bg-white hover:text-secondary">
+                Contact
+              </a>
+            </li>
+          </ul>
+
+          <!-- Mobile menu -->
+          <button id="burger" class="md:hidden flex flex-col gap-1.5" aria-label="Menu" aria-expanded="false">
+            <span class="w-7 h-[3px] bg-white"></span>
+            <span class="w-7 h-[3px] bg-white"></span>
+            <span class="w-7 h-[3px] bg-white"></span>
+          </button>
+        </nav>
+
+        <!-- Mobile Nav -->
+        <ul id="mobileNav" class="hidden flex-col items-center gap-4 pb-4 font-semibold md:hidden text-white">
+          <li><a class="hover:text-white" href="index.html">Home</a></li>
+          <li><a class="text-white" href="about.html">About</a></li>
+          <li><a class="hover:text-white" href="news.html">News & Events</a></li>
+          <li><a class="hover:text-white" href="#contact">Contact</a></li>
         </ul>
+      </div>
+    </header>
 
-        <!-- Mobile menu -->
-        <button id="burger" class="md:hidden flex flex-col gap-1.5" aria-label="Menu" aria-expanded="false">
-          <span class="w-7 h-[3px] bg-white"></span>
-          <span class="w-7 h-[3px] bg-white"></span>
-          <span class="w-7 h-[3px] bg-white"></span>
-        </button>
-      </nav>
+    <!-- Hero -->
+    <section class="relative">
+      <div class="absolute inset-0 bg-primary/85"></div>
+      <div class="relative max-w-6xl mx-auto px-4 py-16 md:py-24 text-white">
+        <div class="grid lg:grid-cols-[1.2fr,1fr] gap-8 items-center">
+          <div>
+            <h1 class="text-3xl md:text-5xl font-bold">
+              About Bachelor in Industrial Technology (Major in Computer Technology)
+            </h1>
 
-      <!-- Mobile Nav -->
-      <ul id="mobileNav" class="hidden flex-col items-center gap-4 pb-4 font-semibold md:hidden text-white">
-        <li><a class="hover:text-white" href="index.html">Home</a></li>
-        <li><a class="text-white" href="about.html">About</a></li>
-        <li><a class="hover:text-white" href="news.html">News & Events</a></li>
-        <li><a class="hover:text-white" href="#contact">Contact</a></li>
-      </ul>
-    </div>
-  </header>
-
-  <!-- Hero -->
-  <section class="relative">
-    <div class="absolute inset-0 bg-primary/85"></div>
-    <div class="relative max-w-6xl mx-auto px-4 py-16 md:py-24 text-white">
-      <div class="grid lg:grid-cols-[1.2fr,1fr] gap-8 items-center">
-        <div>
-          <h1 class="text-3xl md:text-5xl font-bold">About Bachelor in Industrial Technology (Major in Computer Technology)</h1>
-
-          <p class="mt-4 text-white/95 max-w-2xl">The Bachelor of Information Technology builds problem solvers ready for software, systems, data, and emerging tech — grounded in hands-on learning and strong industry collaboration.</p>
-          <div class="mt-6 flex flex-wrap gap-3">
-            <span class="px-3 py-1 rounded-full bg-white/15 border border-white/20 inline-flex items-center gap-2"><span class="material-symbols-rounded">code</span> Software</span>
-            <span class="px-3 py-1 rounded-full bg-white/15 border border-white/20 inline-flex items-center gap-2"><span class="material-symbols-rounded">storage</span> Data</span>
-            <span class="px-3 py-1 rounded-full bg-white/15 border border-white/20 inline-flex items-center gap-2"><span class="material-symbols-rounded">cloud</span> Cloud</span>
-            <span class="px-3 py-1 rounded-full bg-white/15 border border-white/20 inline-flex items-center gap-2"><span class="material-symbols-rounded">shield</span> Security</span>
+            <p class="mt-4 text-white/95 max-w-2xl">
+              The Bachelor of Information Technology builds problem solvers ready for software, systems, data, and emerging tech — grounded in hands-on learning and strong industry collaboration.
+            </p>
+            <div class="mt-6 flex flex-wrap gap-3">
+              <span class="px-3 py-1 rounded-full bg-white/15 border border-white/20 inline-flex items-center gap-2">
+                <span class="material-symbols-rounded">code</span> Software
+              </span>
+              <span class="px-3 py-1 rounded-full bg-white/15 border border-white/20 inline-flex items-center gap-2">
+                <span class="material-symbols-rounded">storage</span> Data
+              </span>
+              <span class="px-3 py-1 rounded-full bg-white/15 border border-white/20 inline-flex items-center gap-2">
+                <span class="material-symbols-rounded">cloud</span> Cloud
+              </span>
+              <span class="px-3 py-1 rounded-full bg-white/15 border border-white/20 inline-flex items-center gap-2">
+                <span class="material-symbols-rounded">shield</span> Security
+              </span>
+            </div>
+          </div>
+          <div class="bg-white/10 backdrop-blur rounded-xl p-5 border border-white/20">
+            <h3 class="font-bold text-lg">Program at a glance</h3>
+            <ul class="mt-3 space-y-2 text-white/90">
+              <li class="flex items-start gap-2">
+                <span class="material-symbols-rounded">schedule</span>
+                4-year program with capstone & internship
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="material-symbols-rounded">science</span>
+                Project-based courses and labs
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="material-symbols-rounded">diversity_3</span>
+                Industry mentors and workshops
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="material-symbols-rounded">workspace_premium</span>
+                Career-ready portfolio on graduation
+              </li>
+            </ul>
           </div>
         </div>
-        <div class="bg-white/10 backdrop-blur rounded-xl p-5 border border-white/20">
-          <h3 class="font-bold text-lg">Program at a glance</h3>
-          <ul class="mt-3 space-y-2 text-white/90">
-            <li class="flex items-start gap-2"><span class="material-symbols-rounded">schedule</span> 4-year program with capstone & internship</li>
-            <li class="flex items-start gap-2"><span class="material-symbols-rounded">science</span> Project-based courses and labs</li>
-            <li class="flex items-start gap-2"><span class="material-symbols-rounded">diversity_3</span> Industry mentors and workshops</li>
-            <li class="flex items-start gap-2"><span class="material-symbols-rounded">workspace_premium</span> Career-ready portfolio on graduation</li>
-          </ul>
+      </div>
+    </section>
+
+    <!-- Highlights -->
+    <section class="py-14 bg-white/90">
+      <div class="max-w-6xl mx-auto px-4">
+        <h2 class="text-2xl md:text-3xl font-bold text-center">What makes BIT different?</h2>
+        <div class="mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="bg-white rounded-xl p-6 shadow hover:shadow-lg transition">
+            <span class="material-symbols-rounded text-4xl text-secondary">explore</span>
+            <h3 class="mt-3 font-bold text-primary">Outcome-based</h3>
+            <p class="text-sm mt-1">Clear skill outcomes aligned to in-demand roles.</p>
+          </div>
+          <div class="bg-white rounded-xl p-6 shadow hover:shadow-lg transition">
+            <span class="material-symbols-rounded text-4xl text-secondary">handshake</span>
+            <h3 class="mt-3 font-bold text-primary">Industry ties</h3>
+            <p class="text-sm mt-1">Talks, internships, and partner-driven projects.</p>
+          </div>
+          <div class="bg-white rounded-xl p-6 shadow hover:shadow-lg transition">
+            <span class="material-symbols-rounded text-4xl text-secondary">build</span>
+            <h3 class="mt-3 font-bold text-primary">Hands-on labs</h3>
+            <p class="text-sm mt-1">Code, deploy, and iterate in real scenarios.</p>
+          </div>
+          <div class="bg-white rounded-xl p-6 shadow hover:shadow-lg transition">
+            <span class="material-symbols-rounded text-4xl text-secondary">rocket_launch</span>
+            <h3 class="mt-3 font-bold text-primary">Career focus</h3>
+            <p class="text-sm mt-1">Portfolio, mock interviews, and job readiness.</p>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Highlights -->
-  <section class="py-14 bg-white/90">
-    <div class="max-w-6xl mx-auto px-4">
-      <h2 class="text-2xl md:text-3xl font-bold text-center">What makes BIT different?</h2>
-      <div class="mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div class="bg-white rounded-xl p-6 shadow hover:shadow-lg transition">
-          <span class="material-symbols-rounded text-4xl text-secondary">explore</span>
-          <h3 class="mt-3 font-bold text-primary">Outcome-based</h3>
-          <p class="text-sm mt-1">Clear skill outcomes aligned to in-demand roles.</p>
-        </div>
-        <div class="bg-white rounded-xl p-6 shadow hover:shadow-lg transition">
-          <span class="material-symbols-rounded text-4xl text-secondary">handshake</span>
-          <h3 class="mt-3 font-bold text-primary">Industry ties</h3>
-          <p class="text-sm mt-1">Talks, internships, and partner-driven projects.</p>
-        </div>
-        <div class="bg-white rounded-xl p-6 shadow hover:shadow-lg transition">
-          <span class="material-symbols-rounded text-4xl text-secondary">build</span>
-          <h3 class="mt-3 font-bold text-primary">Hands-on labs</h3>
-          <p class="text-sm mt-1">Code, deploy, and iterate in real scenarios.</p>
-        </div>
-        <div class="bg-white rounded-xl p-6 shadow hover:shadow-lg transition">
-          <span class="material-symbols-rounded text-4xl text-secondary">rocket_launch</span>
-          <h3 class="mt-3 font-bold text-primary">Career focus</h3>
-          <p class="text-sm mt-1">Portfolio, mock interviews, and job readiness.</p>
+    <!-- Curriculum + Experiential Learning (BACKGROUND NOW SOLID WHITE) -->
+    <section class="py-10 bg-white">
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="grid lg:grid-cols-2 gap-8">
+          <!-- Left card -->
+          <div class="rounded-2xl bg-white shadow p-6 border border-zinc-100">
+            <h3 class="text-xl font-bold text-secondary flex items-center gap-2">
+              <span class="material-symbols-rounded">menu_book</span> Core Courses
+            </h3>
+            <ul class="mt-4 space-y-3 text-zinc-800">
+              <li class="flex items-start gap-3">
+                <span class="material-symbols-rounded text-secondary">chevron_right</span>
+                Programming Fundamentals (Python/JS)
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="material-symbols-rounded text-secondary">data_object</span>
+                Data Structures & Algorithms
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="material-symbols-rounded text-secondary">table</span>
+                Databases & SQL
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="material-symbols-rounded text-secondary">lan</span>
+                Computer Networks
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="material-symbols-rounded text-secondary">memory_alt</span>
+                Operating Systems
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="material-symbols-rounded text-secondary">language</span>
+                Web Dev (Frontend & Backend)
+              </li>
+            </ul>
+
+            <h4 class="mt-6 text-xl font-bold text-secondary flex items-center gap-2">
+              <span class="material-symbols-rounded">settings_heart</span> Specializations
+            </h4>
+            <ul class="mt-3 space-y-3 text-zinc-800">
+              <li class="flex items-start gap-3">
+                <span class="material-symbols-rounded text-secondary">phone_iphone</span>
+                Mobile & Cloud Computing
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="material-symbols-rounded text-secondary">monitoring</span>
+                Data Analytics & Visualization
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="material-symbols-rounded text-secondary">verified_user</span>
+                Cybersecurity & Governance
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="material-symbols-rounded text-secondary">brush</span>
+                UI/UX & Product Engineering
+              </li>
+            </ul>
+          </div>
+
+          <!-- Right card -->
+          <div class="rounded-2xl bg-white shadow p-6 border border-zinc-100">
+            <h3 class="text-xl font-bold text-secondary flex items-center gap-2">
+              <span class="material-symbols-rounded">work</span> Experiential Learning
+            </h3>
+            <ul class="mt-4 space-y-3 text-zinc-800">
+              <li class="flex items-start gap-3">
+                <span class="material-symbols-rounded text-secondary">science</span>
+                Lab-intensive courses every semester
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="material-symbols-rounded text-secondary">handyman</span>
+                Industry projects with real clients
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="material-symbols-rounded text-secondary">badge</span>
+                Internship (OJT) and mentoring
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="material-symbols-rounded text-secondary">rocket_launch</span>
+                Capstone research/product build
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="material-symbols-rounded text-secondary">workspace_premium</span>
+                Portfolio & career workshops
+              </li>
+            </ul>
+
+            <button class="mt-5 inline-flex items-center gap-2 bg-secondary hover:bg-primary text-white font-semibold px-5 py-2.5 rounded transition">
+              <span class="material-symbols-rounded">view_list</span> See student stories
+            </button>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Curriculum + Experiential Learning (BACKGROUND NOW SOLID WHITE) -->
-  <section class="py-10 bg-white">
-    <div class="max-w-6xl mx-auto px-4">
-      <div class="grid lg:grid-cols-2 gap-8">
-        <!-- Left card -->
-        <div class="rounded-2xl bg-white shadow p-6 border border-zinc-100">
-          <h3 class="text-xl font-bold text-secondary flex items-center gap-2">
-            <span class="material-symbols-rounded">menu_book</span> Core Courses
-          </h3>
-          <ul class="mt-4 space-y-3 text-zinc-800">
-            <li class="flex items-start gap-3"><span class="material-symbols-rounded text-secondary">chevron_right</span> Programming Fundamentals (Python/JS)</li>
-            <li class="flex items-start gap-3"><span class="material-symbols-rounded text-secondary">data_object</span> Data Structures & Algorithms</li>
-            <li class="flex items-start gap-3"><span class="material-symbols-rounded text-secondary">table</span> Databases & SQL</li>
-            <li class="flex items-start gap-3"><span class="material-symbols-rounded text-secondary">lan</span> Computer Networks</li>
-            <li class="flex items-start gap-3"><span class="material-symbols-rounded text-secondary">memory_alt</span> Operating Systems</li>
-            <li class="flex items-start gap-3"><span class="material-symbols-rounded text-secondary">language</span> Web Dev (Frontend & Backend)</li>
-          </ul>
+    <!-- Faculty carousel -->
+    <section id="faculty" class="py-16 bg-zinc-50/90">
+      <div class="max-w-6xl mx-auto px-4">
+        <h2 class="text-2xl md:text-3xl font-bold text-center">Meet the BIT Faculty</h2>
+        <p class="text-center text-zinc-600 mt-2 max-w-2xl mx-auto">
+          Our faculty blends academic excellence with real-world experience across software engineering, data, networks, and emerging technologies.
+        </p>
 
-          <h4 class="mt-6 text-xl font-bold text-secondary flex items-center gap-2">
-            <span class="material-symbols-rounded">settings_heart</span> Specializations
-          </h4>
-          <ul class="mt-3 space-y-3 text-zinc-800">
-            <li class="flex items-start gap-3"><span class="material-symbols-rounded text-secondary">phone_iphone</span> Mobile & Cloud Computing</li>
-            <li class="flex items-start gap-3"><span class="material-symbols-rounded text-secondary">monitoring</span> Data Analytics & Visualization</li>
-            <li class="flex items-start gap-3"><span class="material-symbols-rounded text-secondary">verified_user</span> Cybersecurity & Governance</li>
-            <li class="flex items-start gap-3"><span class="material-symbols-rounded text-secondary">brush</span> UI/UX & Product Engineering</li>
-          </ul>
+        <div class="relative mt-8">
+          <div class="overflow-hidden rounded-xl">
+            <div id="facultyTrack" class="flex transition-transform duration-500 ease-out"></div>
+          </div>
+
+          <button id="facPrev" class="absolute -left-4 top-1/2 -translate-y-1/2 bg-white text-secondary border border-secondary/20 hover:bg-secondary hover:text-white w-10 h-10 rounded-full shadow grid place-items-center">
+            <span class="material-symbols-rounded">chevron_left</span>
+          </button>
+          <button id="facNext" class="absolute -right-4 top-1/2 -translate-y-1/2 bg-white text-secondary border border-secondary/20 hover:bg-secondary hover:text-white w-10 h-10 rounded-full shadow grid place-items-center">
+            <span class="material-symbols-rounded">chevron_right</span>
+          </button>
+
+          <div id="facDots" class="mt-6 flex items-center justify-center gap-2"></div>
         </div>
 
-        <!-- Right card -->
-        <div class="rounded-2xl bg-white shadow p-6 border border-zinc-100">
-          <h3 class="text-xl font-bold text-secondary flex items-center gap-2">
-            <span class="material-symbols-rounded">work</span> Experiential Learning
-          </h3>
-          <ul class="mt-4 space-y-3 text-zinc-800">
-            <li class="flex items-start gap-3"><span class="material-symbols-rounded text-secondary">science</span> Lab-intensive courses every semester</li>
-            <li class="flex items-start gap-3"><span class="material-symbols-rounded text-secondary">handyman</span> Industry projects with real clients</li>
-            <li class="flex items-start gap-3"><span class="material-symbols-rounded text-secondary">badge</span> Internship (OJT) and mentoring</li>
-            <li class="flex items-start gap-3"><span class="material-symbols-rounded text-secondary">rocket_launch</span> Capstone research/product build</li>
-            <li class="flex items-start gap-3"><span class="material-symbols-rounded text-secondary">workspace_premium</span> Portfolio & career workshops</li>
-          </ul>
+        <p class="mt-6 text-center text-sm text-zinc-600">Use the arrows or swipe/drag to browse.</p>
+      </div>
+    </section>
+  </main>
 
-          <button class="mt-5 inline-flex items-center gap-2 bg-secondary hover:bg-primary text-white font-semibold px-5 py-2.5 rounded transition">
-            <span class="material-symbols-rounded">view_list</span> See student stories
+ <!-- Footer (SCROLLS WITH PAGE, WALANG WHITE SA BABA) -->
+  <footer
+    id="contact"
+    class="bg-secondary text-white text-xs md:text-sm shadow-[0_-4px_10px_rgba(0,0,0,0.35)]"
+  >
+    <div class="max-w-6xl mx-auto px-4">
+      
+      <!-- Top Row -->
+      <div class="py-3 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+        
+        <!-- Program Info -->
+        <div class="space-y-1">
+          <h3 class="font-semibold leading-snug text-sm md:text-base">
+            BIT – Industrial Technology
+            <span class="font-normal text-[11px] md:text-sm">
+              (Major in Computer Technology)
+            </span>
+          </h3>
+          <p class="text-white/75 max-w-md text-[11px] md:text-sm">
+            Shaping skilled, industry-ready computer technology professionals.
+          </p>
+        </div>
+
+        <!-- Quick Links -->
+        <nav class="flex flex-wrap items-center gap-2 text-[11px] md:text-sm">
+          <a href="index.html"
+            class="px-3 py-1.5 rounded-full bg-white/10 hover:bg-white/20 border border-white/15 transition">
+            Home
+          </a>
+          <a href="about.html"
+            class="px-3 py-1.5 rounded-full bg-white/10 hover:bg-white/20 border border-white/15 transition">
+            About
+          </a>
+          <a href="news.html"
+            class="px-3 py-1.5 rounded-full bg-white/10 hover:bg-white/20 border border-white/15 transition">
+            News &amp; Events
+          </a>
+        </nav>
+
+        <!-- Contact + Bigger Subscribe -->
+        <div class="space-y-1.5 text-white/90 text-[11px] md:text-sm">
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-rounded text-[18px]">mail</span>
+            <span>buenaventuraalex04@gmail.com</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-rounded text-[18px]">call</span>
+            <span>0930 176 6534</span>
+          </div>
+
+          <!-- BIGGER SUBSCRIBE BUTTON -->
+          <button
+            id="openSubscribe"
+            class="mt-1 inline-flex items-center gap-2 px-5 py-2 rounded-lg bg-white/15 hover:bg-white/25 border border-white/20 font-semibold text-xs md:text-sm tracking-wide transition"
+          >
+            <span class="material-symbols-rounded text-[20px]">subscriptions</span>
+            Subscribe
           </button>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- Faculty carousel (unchanged) -->
-  <section id="faculty" class="py-16 bg-zinc-50/90">
-    <div class="max-w-6xl mx-auto px-4">
-      <h2 class="text-2xl md:text-3xl font-bold text-center">Meet the BIT Faculty</h2>
-      <p class="text-center text-zinc-600 mt-2 max-w-2xl mx-auto">
-        Our faculty blends academic excellence with real-world experience across software engineering, data, networks, and emerging technologies.
-      </p>
+      <!-- Bottom Bar -->
+      <div class="border-t border-white/10 py-1.5 flex flex-col gap-1 md:flex-row md:items-center md:justify-between">
+        <p class="text-white/70 text-[10px] md:text-[11px]">
+          &copy; 2025 Bachelor in Industrial Technology (Major in Computer Technology). All rights reserved.  Images & trademarks belong to their respective owners.
+        </p>
 
-      <div class="relative mt-8">
-        <div class="overflow-hidden rounded-xl">
-          <div id="facultyTrack" class="flex transition-transform duration-500 ease-out"></div>
-        </div>
-
-        <button id="facPrev" class="absolute -left-4 top-1/2 -translate-y-1/2 bg-white text-secondary border border-secondary/20 hover:bg-secondary hover:text-white w-10 h-10 rounded-full shadow grid place-items-center">
-          <span class="material-symbols-rounded">chevron_left</span>
-        </button>
-        <button id="facNext" class="absolute -right-4 top-1/2 -translate-y-1/2 bg-white text-secondary border border-secondary/20 hover:bg-secondary hover:text-white w-10 h-10 rounded-full shadow grid place-items-center">
-          <span class="material-symbols-rounded">chevron_right</span>
-        </button>
-
-        <div id="facDots" class="mt-6 flex items-center justify-center gap-2"></div>
-      </div>
-
-      <p class="mt-6 text-center text-sm text-zinc-600">Use the arrows or swipe/drag to browse.</p>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer id="contact" class="bg-secondary text-white pt-14 pb-6">
-    <div class="max-w-6xl mx-auto px-4">
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
-        <div><h3 class="font-bold text-lg mb-3">Bachelor in Industrial Technology (Major in Computer Technology)</h3>
-          <p class="text-white/90">Empowering the next generation of IT professionals with cutting-edge knowledge and practical skills.</p></div>
-        <div>
-          <h3 class="font-bold text-lg mb-3">Quick Links</h3>
-          <ul class="space-y-2 text-white/90">
-            <li><a class="hover:text-white" href="index.html">Home</a></li>
-            <li><a class="hover:text-white" href="about.html">About</a></li>
-            <li><a class="hover:text-white" href="news.html">News & Events</a></li>
-          </ul>
-        </div>
-        <div>
-          <h3 class="font-bold text-lg mb-3">Contact</h3>
-          <div class="space-y-2 text-white/90">
-            <div class="flex gap-2 items-center"><span class="material-symbols-rounded">mail</span><span class="font-semibold">Email:</span><span>buenaventuraalex04@gmail.com</span></div>
-            <div class="flex gap-2 items-center"><span class="material-symbols-rounded">call</span><span class="font-semibold">Phone:</span><span>09301766534</span></div>
-            <div class="flex gap-2 items-center"><span class="material-symbols-rounded">location_on</span><span class="font-semibold">Address:</span><span>Brgy. Ibabang Dupay, Lucena City, Quezon, Philippines 4301</span></div>
-          </div>
+        <div class="flex flex-wrap items-center gap-2 text-white/60 text-[10px] md:text-[11px]">
+          <span class="material-symbols-rounded text-[14px]">shield</span>
+          <span>Secure &amp; Quality Education</span>
         </div>
       </div>
-      <p class="mt-10 pt-5 border-t border-white/10 text-center text-sm text-white/90">&copy; 2025 Bachelor in Industrial Technology (Major in Computer Technology). All rights reserved.</p>
-      <p class="text-center text-sm text-white/90"><small>Photos & images: <strong>The Technolator</strong>. No reuse without permission.</small></p>
+
     </div>
   </footer>
-
   <script>
+
     // Mobile nav
     const burger=document.getElementById('burger'), mobileNav=document.getElementById('mobileNav');
-    burger?.addEventListener('click',()=>{ const open=mobileNav.classList.toggle('hidden')===false; burger.setAttribute('aria-expanded',String(open)); });
+    burger?.addEventListener('click',()=>{
+      const open=mobileNav.classList.toggle('hidden')===false;
+      burger.setAttribute('aria-expanded',String(open));
+    });
 
     // Faculty carousel data (placeholder images)
     const FACULTY = [
-      {name:'Prof. Jess Mark L. Alinea',     role:'University Director • Technology Research,',img:'assets/img/Sirjess.jpg'},
-      {name:'Prof. Joriel Flynn V. Mazo',    role:'Program Chair • Database & Data Science',   img:'assets/img/Sirmazo.jpg'},
-      {name:'Prof. Roland A. Calderon',      role:'Associate Prof • Computer Programming',     img:'assets/img/Sironas.jpg'},
-      {name:'Ins. Wilnes John V. Abelido',  role:'Instructor • Embedded Systems',             img:'assets/img/Sirwilnes.jpg'},
-      {name:'Ins. Jerold B. Oticio',        role:'Instructor • Networking & Troubleshooting', img:'assets/img/Sirjerold.jpg'},
-      {name:'Ins. John Paul C. Perez',      role:'Instructor• Computer Hardware & Software',  img:'assets/img/Sirpaul.jpg'},
-      {name:'Ins. Jerome A. Yanga',         role:'Instructor • Game & Web Development',       img:'assets/img/Sirjerome.jpg'},
-      {name:'Ins. Maila Jerrielyn D. Caliao', role:'Instructor • Computer Programming',       img:'assets/img/Maammaila.jpg'},
+      {name:'Prof. Jess Mark L. Alinea',       role:'University Director • Technology Research,',           img:'assets/img/Sirjess.jpg'},
+      {name:'Prof. Joriel Flynn V. Mazo',      role:'Program Chair • Database & Data Science',             img:'assets/img/Sirmazo.jpg'},
+      {name:'Prof. Roland A. Calderon',        role:'Associate Prof • Computer Programming',               img:'assets/img/Sironas.jpg'},
+      {name:'Ins. Wilnes John V. Abelido',     role:'Instructor • Embedded Systems',                       img:'assets/img/Sirwilnes.jpg'},
+      {name:'Ins. Jerold B. Oticio',           role:'Instructor • Networking & Troubleshooting',          img:'assets/img/Sirjerold.jpg'},
+      {name:'Ins. John Paul C. Perez',         role:'Instructor• Computer Hardware & Software',           img:'assets/img/Sirpaul.jpg'},
+      {name:'Ins. Jerome A. Yanga',            role:'Instructor • Game & Web Development',                 img:'assets/img/Sirjerome.jpg'},
+      {name:'Ins. Maila Jerrielyn D. Caliao',  role:'Instructor • Computer Programming',                   img:'assets/img/Maammaila.jpg'},
     ];
 
     const chunk=(arr,size)=>arr.reduce((a,_,i)=>i%size? a : [...a, arr.slice(i,i+size)],[]);
@@ -267,7 +405,7 @@
     function cardHTML(p){
       const safeName = (p.name||'').replace(/</g,'&lt;').replace(/>/g,'&gt;');
       const safeRole = (p.role||'').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-      const img = p.img || 'assets/img/logo-placeholder.png';
+      const img = p.img || 'logo-placeholder.png';
       return `
         <div class="bg-white rounded-xl p-4 shadow hover:shadow-lg transition flex flex-col">
           <img src="${img}" alt="${safeName}" onerror="this.src='logo-placeholder.png'"
@@ -336,7 +474,10 @@
 
     (function dragSupport(){
       let startX=0, dx=0, dragging=false, w=0;
-      track.addEventListener('pointerdown', e=>{ dragging=true; startX=e.clientX; w=track.getBoundingClientRect().width; track.style.cursor='grabbing'; e.preventDefault(); });
+      track.addEventListener('pointerdown', e=>{
+        dragging=true; startX=e.clientX; w=track.getBoundingClientRect().width;
+        track.style.cursor='grabbing'; e.preventDefault();
+      });
       window.addEventListener('pointermove', e=>{
         if(!dragging) return;
         dx = e.clientX - startX;
@@ -354,7 +495,10 @@
     })();
 
     buildCarousel();
-    let rto; window.addEventListener('resize', ()=>{ clearTimeout(rto); rto=setTimeout(buildCarousel, 200); });
+    let rto; window.addEventListener('resize', ()=>{
+      clearTimeout(rto);
+      rto=setTimeout(buildCarousel, 200);
+    });
   </script>
 </body>
 </html>

@@ -4,6 +4,17 @@
   <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Bachelor in Industrial Technology (Major in Computer Technology) - Home</title>
   
+  <!-- tanggal na ang sakong at balakubak -->
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      min-height: 100%;
+      background-color: #4a0000; 
+      overflow-x: hidden;
+      overscroll-behavior: none;
+    }
+  </style>
 
   <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -27,155 +38,399 @@
     }
   </style>
 </head>
-<body class="text-zinc-800 bg-[url('assets/img/bgnew.png')] bg-cover bg-fixed bg-center">
-  <!-- Header -->
-  <header class="sticky top-0 z-50 bg-secondary text-white shadow">
-    <div class="max-w-6xl mx-auto px-4">
-      <nav class="flex items-center justify-between py-3">
-        <!-- Logo + Title -->
-        <a href="index.html" aria-label="Home" class="flex items-center gap-3">
-          <img src="assets/img/logo-placeholder.png" alt="logo"
-               class="w-14 h-14 md:w-16 md:h-16 rounded-full object-cover border-2 border-white/70 shadow">
-          <span class="text-lg md:text-xl font-semibold" style="font-family:'Times New Roman', Times, serif;">
-            Southern Luzon State University
-          </span>
-        </a>
 
-        <!-- Nav links -->
-        <ul class="hidden md:flex items-center gap-8 font-semibold">
-          <li>
-            <!-- ACTIVE: Home -->
-            <a href="index.html" aria-current="page"
-               class="px-3 py-1 rounded-md bg-white/90 text-secondary transition hover:bg-white">
-              Home
-            </a>
-          </li>
-          <li>
-            <a href="about.html"
-               class="text-white px-3 py-1 rounded-md transition hover:bg-white hover:text-secondary">
-              About
-            </a>
-          </li>
-          <li>
-            <a href="news.html"
-               class="text-white/90 px-3 py-1 rounded-md transition hover:bg-white hover:text-secondary">
-              News &amp; Events
-            </a>
-          </li>
-          <li>
-            <a href="#contact"
-               class="text-white/90 px-3 py-1 rounded-md transition hover:bg-white hover:text-secondary">
-              Contact
-            </a>
-          </li>
-        </ul>
+<!-- IMPORTANT: flex layout para laging nasa baba ang footer pero scrollable pa rin -->
+<body class="min-h-screen flex flex-col text-zinc-800 bg-[url('assets/img/bgnew.png')] bg-cover bg-fixed bg-center">
 
-        <!-- Mobile menu -->
-        <button id="burger" class="md:hidden flex flex-col gap-1.5" aria-label="Menu" aria-expanded="false">
-          <span class="w-7 h-[3px] bg-white"></span>
-          <span class="w-7 h-[3px] bg-white"></span>
-          <span class="w-7 h-[3px] bg-white"></span>
-        </button>
-      </nav>
+  <!-- MAIN CONTENT (flex-1) -->
+  <main class="flex-1">
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-secondary text-white shadow">
+      <div class="max-w-6xl mx-auto px-4">
+        <nav class="flex items-center justify-between py-3">
+          <!-- Logo + Title -->
+          <a href="index.html" aria-label="Home" class="flex items-center gap-3">
+            <img src="assets/img/logo-placeholder.png" alt="logo"
+                class="w-14 h-14 md:w-16 md:h-16 rounded-full object-cover border-2 border-white/70 shadow">
+            <span class="text-lg md:text-xl font-semibold" style="font-family:'Times New Roman', Times, serif;">
+              Southern Luzon State University
+            </span>
+          </a>
 
-      <!-- Mobile Nav -->
-      <ul id="mobileNav" class="hidden flex-col items-center gap-4 pb-4 font-semibold md:hidden text-white">
-        <li><a class="hover:text-white" href="index.html">Home</a></li>
-        <li><a class="text-white" href="about.html">About</a></li>
-        <li><a class="hover:text-white" href="news.html">News & Events</a></li>
-        <li><a class="hover:text-white" href="#contact">Contact</a></li>
-      </ul>
-    </div>
-  </header>
-
-  <!-- Hero -->
-  <section class="relative">
-    <!-- Slightly more transparent overlay: 85% -> 75% -->
-    <div class="absolute inset-0 bg-primary/75"></div>
-    <div class="relative max-w-6xl mx-auto px-4 py-24 md:py-32 text-center text-white">
-      <h1 class="text-3xl md:text-5xl font-bold">Bachelor in Industrial Technology </h1>
-      <h3 class="text-2xl md:text-4xl font-bold">(Major in Computer Technology) </h3>
-
-      <p class="mt-4 max-w-2xl mx-auto text-lg opacity-95">
-        Empowering the next generation of IT professionals with cutting-edge knowledge, practical skills, and innovative thinking.
-      </p>
-
-      <div class="mt-6 flex flex-wrap gap-3 justify-center">
-        <span class="px-3 py-1 rounded-full bg-white/15 border border-white/20 inline-flex items-center gap-2">
-          <span class="material-symbols-rounded">code</span> Software
-        </span>
-        <span class="px-3 py-1 rounded-full bg-white/15 border border-white/20 inline-flex items-center gap-2">
-          <span class="material-symbols-rounded">storage</span> Data
-        </span>
-        <span class="px-3 py-1 rounded-full bg-white/15 border border-white/20 inline-flex items-center gap-2">
-          <span class="material-symbols-rounded">cloud</span> Cloud
-        </span>
-        <span class="px-3 py-1 rounded-full bg-white/15 border border-white/20 inline-flex items-center gap-2">
-          <span class="material-symbols-rounded">shield</span> Security
-        </span>
-      </div>
-
-      <a href="#contact" class="mt-8 inline-flex items-center gap-2 bg-secondary hover:bg-primary text-white font-semibold px-6 py-3 rounded shadow transition">
-        <span class="material-symbols-rounded">mail</span> Contact us
-      </a>
-    </div>
-  </section>
-
-  <!-- Why choose -->
-  <section class="py-16 bg-white/90">
-    <div class="max-w-6xl mx-auto px-4">
-      <h2 class="text-2xl md:text-3xl font-bold text-center">Why Choose BIT?</h2>
-      <div class="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div class="bg-white rounded-lg p-6 shadow hover:shadow-lg transition text-center">
-          <div class="mb-3"><span class="material-symbols-rounded text-4xl text-secondary">computer</span></div>
-          <h3 class="text-primary font-bold mb-2">Industry-Relevant Curriculum</h3>
-          <p>Designed with industry leaders so you gain the skills employers need.</p>
-        </div>
-        <div class="bg-white rounded-lg p-6 shadow hover:shadow-lg transition text-center">
-          <div class="mb-3"><span class="material-symbols-rounded text-4xl text-secondary">groups</span></div>
-          <h3 class="text-primary font-bold mb-2">Expert Faculty</h3>
-          <p>Learn from experienced professionals and passionate researchers.</p>
-        </div>
-        <div class="bg-white rounded-lg p-6 shadow hover:shadow-lg transition text-center">
-          <div class="mb-3"><span class="material-symbols-rounded text-4xl text-secondary">rocket_launch</span></div>
-          <h3 class="text-primary font-bold mb-2">Hands-On Learning</h3>
-          <p>Labs, projects, internships, and collaborations that build real skills.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer id="contact" class="bg-secondary text-white pt-14 pb-6">
-    <div class="max-w-6xl mx-auto px-4">
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
-        <div>
-          <h3 class="font-bold text-lg mb-3">Bachelor in Industrial Technology (Major in Computer Technology)</h3>
-          <p class="text-white/90">Empowering the next generation of IT professionals with cutting-edge knowledge and practical skills.</p>
-        </div>
-        <div>
-          <h3 class="font-bold text-lg mb-3">Quick Links</h3>
-          <ul class="space-y-2 text-white/90">
-            <li><a class="hover:text-white" href="index.html">Home</a></li>
-            <li><a class="hover:text-white" href="about.html">About</a></li>
-            <li><a class="hover:text-white" href="news.html">News & Events</a></li>
+          <!-- Nav links -->
+          <ul class="hidden md:flex items-center gap-8 font-semibold">
+            <li>
+              <!-- ACTIVE: Home -->
+              <a href="index.html" aria-current="page"
+                class="px-3 py-1 rounded-md bg-white/90 text-secondary transition hover:bg-white">
+                Home
+              </a>
+            </li>
+            <li>
+              <a href="about.html"
+                class="text-white px-3 py-1 rounded-md transition hover:bg-white hover:text-secondary">
+                About
+              </a>
+            </li>
+            <li>
+              <a href="news.html"
+                class="text-white/90 px-3 py-1 rounded-md transition hover:bg-white hover:text-secondary">
+                News &amp; Events
+              </a>
+            </li>
+            <li>
+              <a href="#contact"
+                class="text-white/90 px-3 py-1 rounded-md transition hover:bg-white hover:text-secondary">
+                Contact
+              </a>
+            </li>
           </ul>
+
+          <!-- Mobile menu -->
+          <button id="burger" class="md:hidden flex flex-col gap-1.5" aria-label="Menu" aria-expanded="false">
+            <span class="w-7 h-[3px] bg-white"></span>
+            <span class="w-7 h-[3px] bg-white"></span>
+            <span class="w-7 h-[3px] bg-white"></span>
+          </button>
+        </nav>
+
+        <!-- Mobile Nav -->
+        <ul id="mobileNav" class="hidden flex-col items-center gap-4 pb-4 font-semibold md:hidden text-white">
+          <li><a class="hover:text-white" href="index.html">Home</a></li>
+          <li><a class="text-white" href="about.html">About</a></li>
+          <li><a class="hover:text-white" href="news.html">News & Events</a></li>
+          <li><a class="hover:text-white" href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="relative">
+      <!-- Slightly more transparent overlay: 85% -> 75% -->
+      <div class="absolute inset-0 bg-primary/75"></div>
+      <div class="relative max-w-6xl mx-auto px-4 py-24 md:py-32 text-center text-white">
+        <h1 class="text-3xl md:text-5xl font-bold">Bachelor in Industrial Technology </h1>
+        <h3 class="text-2xl md:text-4xl font-bold">(Major in Computer Technology) </h3>
+
+        <p class="mt-4 max-w-2xl mx-auto text-lg opacity-95">
+          Empowering the next generation of IT professionals with cutting-edge knowledge, practical skills, and innovative thinking.
+        </p>
+
+        <div class="mt-6 flex flex-wrap gap-3 justify-center">
+          <span class="px-3 py-1 rounded-full bg-white/15 border border-white/20 inline-flex items-center gap-2">
+            <span class="material-symbols-rounded">code</span> Software
+          </span>
+          <span class="px-3 py-1 rounded-full bg-white/15 border border-white/20 inline-flex items-center gap-2">
+            <span class="material-symbols-rounded">storage</span> Data
+          </span>
+          <span class="px-3 py-1 rounded-full bg-white/15 border border-white/20 inline-flex items-center gap-2">
+            <span class="material-symbols-rounded">cloud</span> Cloud
+          </span>
+          <span class="px-3 py-1 rounded-full bg-white/15 border border-white/20 inline-flex items-center gap-2">
+            <span class="material-symbols-rounded">shield</span> Security
+          </span>
         </div>
-        <div>
-          <h3 class="font-bold text-lg mb-3">Contact</h3>
-          <div class="space-y-2 text-white/90">
-            <div class="flex gap-2 items-center"><span class="material-symbols-rounded">mail</span><span class="font-semibold">Email:</span><span>buenaventuraalex04@gmail.com</span></div>
-            <div class="flex gap-2 items-center"><span class="material-symbols-rounded">call</span><span class="font-semibold">Phone:</span><span>09301766534</span></div>
-            <div class="flex gap-2 items-center"><span class="material-symbols-rounded">location_on</span><span class="font-semibold">Address:</span><span>Brgy. Ibabang Dupay, Lucena City, Quezon, Philippines 4301</span></div>
+
+        <a href="#contact" class="mt-8 inline-flex items-center gap-2 bg-secondary hover:bg-primary text-white font-semibold px-6 py-3 rounded shadow transition">
+          <span class="material-symbols-rounded">mail</span> Contact us
+        </a>
+      </div>
+    </section>
+
+    <!-- Why choose -->
+    <section class="py-16 bg-white/90">
+      <div class="max-w-6xl mx-auto px-4">
+        <h2 class="text-2xl md:text-3xl font-bold text-center">Why Choose BIT?</h2>
+        <div class="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="bg-white rounded-lg p-6 shadow hover:shadow-lg transition text-center">
+            <div class="mb-3"><span class="material-symbols-rounded text-4xl text-secondary">computer</span></div>
+            <h3 class="text-primary font-bold mb-2">Industry-Relevant Curriculum</h3>
+            <p>Designed with industry leaders so you gain the skills employers need.</p>
           </div>
-          <button id="openSubscribe" class="mt-4 inline-flex items-center gap-2 bg-white/15 hover:bg-white/25 text-white font-semibold px-5 py-2.5 rounded transition">
-            <span class="material-symbols-rounded">subscriptions</span> Subscribe
+          <div class="bg-white rounded-lg p-6 shadow hover:shadow-lg transition text-center">
+            <div class="mb-3"><span class="material-symbols-rounded text-4xl text-secondary">groups</span></div>
+            <h3 class="text-primary font-bold mb-2">Expert Faculty</h3>
+            <p>Learn from experienced professionals and passionate researchers.</p>
+          </div>
+          <div class="bg-white rounded-lg p-6 shadow hover:shadow-lg transition text-center">
+            <div class="mb-3"><span class="material-symbols-rounded text-4xl text-secondary">rocket_launch</span></div>
+            <h3 class="text-primary font-bold mb-2">Hands-On Learning</h3>
+            <p>Labs, projects, internships, and collaborations that build real skills.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BIT STUDENT SCHEDULES (NEW SECTION) -->
+    <section class="py-16 bg-dark/95 text-white">
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="text-center">
+          <h2 class="text-2xl md:text-3xl font-bold flex items-center justify-center gap-2">
+            <span class="material-symbols-rounded text-3xl md:text-4xl">schedule</span>
+            BIT Student Schedules
+          </h2>
+          <p class="mt-3 text-sm md:text-base text-white/80 max-w-2xl mx-auto">
+            A glimpse of the typical weekly class schedule for BIT – Computer Technology students
+            across different year levels. Actual sections may vary per semester.
+          </p>
+        </div>
+
+        <div class="mt-10 grid md:grid-cols-2 gap-6">
+          <!-- 1st Year -->
+          <div class="rounded-2xl bg-white/5 border border-white/15 shadow-lg p-5">
+            <div class="flex items-center justify-between gap-3">
+              <div>
+                <h3 class="text-lg font-semibold flex items-center gap-2">
+                  <span class="material-symbols-rounded text-secondary bg-white rounded-full p-1">looks_one</span>
+                  1st Year – Fundamentals
+                </h3>
+                <p class="text-xs md:text-sm text-white/75 mt-1">
+                  Focus on core computing concepts, programming basics, and general education.
+                </p>
+              </div>
+              <span class="px-3 py-1 rounded-full text-[11px] md:text-xs bg-white/10 border border-white/20">
+                Day &amp; Evening Sections
+              </span>
+            </div>
+
+            <div class="mt-4 rounded-xl bg-black/20 overflow-hidden">
+              <div class="grid grid-cols-[1.1fr,1.4fr,1.3fr] text-[11px] md:text-xs font-semibold bg-black/30">
+                <div class="px-3 py-2 border-b border-white/10">Day</div>
+                <div class="px-3 py-2 border-b border-white/10">Time</div>
+                <div class="px-3 py-2 border-b border-white/10">Course</div>
+              </div>
+              <div class="text-[11px] md:text-xs divide-y divide-white/10">
+                <div class="grid grid-cols-[1.1fr,1.4fr,1.3fr]">
+                  <div class="px-3 py-2">Mon &amp; Wed</div>
+                  <div class="px-3 py-2">7:30 AM – 9:00 AM</div>
+                  <div class="px-3 py-2">Intro to Computing</div>
+                </div>
+                <div class="grid grid-cols-[1.1fr,1.4fr,1.3fr] bg-white/5">
+                  <div class="px-3 py-2">Mon &amp; Wed</div>
+                  <div class="px-3 py-2">9:30 AM – 11:00 AM</div>
+                  <div class="px-3 py-2">Programming 1 (Python)</div>
+                </div>
+                <div class="grid grid-cols-[1.1fr,1.4fr,1.3fr]">
+                  <div class="px-3 py-2">Tue &amp; Thu</div>
+                  <div class="px-3 py-2">1:00 PM – 3:00 PM</div>
+                  <div class="px-3 py-2">Computer Hardware &amp; Servicing Lab</div>
+                </div>
+                <div class="grid grid-cols-[1.1fr,1.4fr,1.3fr] bg-white/5">
+                  <div class="px-3 py-2">Fri</div>
+                  <div class="px-3 py-2">8:00 AM – 11:00 AM</div>
+                  <div class="px-3 py-2">NSTP / PE / GE Course</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2nd & 3rd Year -->
+          <div class="rounded-2xl bg-white/5 border border-white/15 shadow-lg p-5">
+            <div class="flex items-center justify-between gap-3">
+              <div>
+                <h3 class="text-lg font-semibold flex items-center gap-2">
+                  <span class="material-symbols-rounded text-secondary bg-white rounded-full p-1">looks_two</span>
+                  2nd–3rd Year – Technical Core
+                </h3>
+                <p class="text-xs md:text-sm text-white/75 mt-1">
+                  Deeper technical courses in networking, databases, web development, and systems.
+                </p>
+              </div>
+              <span class="px-3 py-1 rounded-full text-[11px] md:text-xs bg-white/10 border border-white/20">
+                Lab-Intensive
+              </span>
+            </div>
+
+            <div class="mt-4 rounded-xl bg-black/20 overflow-hidden">
+              <div class="grid grid-cols-[1.1fr,1.4fr,1.3fr] text-[11px] md:text-xs font-semibold bg-black/30">
+                <div class="px-3 py-2 border-b border-white/10">Day</div>
+                <div class="px-3 py-2 border-b border-white/10">Time</div>
+                <div class="px-3 py-2 border-b border-white/10">Course</div>
+              </div>
+              <div class="text-[11px] md:text-xs divide-y divide-white/10">
+                <div class="grid grid-cols-[1.1fr,1.4fr,1.3fr]">
+                  <div class="px-3 py-2">Mon &amp; Wed</div>
+                  <div class="px-3 py-2">7:30 AM – 10:30 AM</div>
+                  <div class="px-3 py-2">Web Dev (HTML, CSS, JS, PHP)</div>
+                </div>
+                <div class="grid grid-cols-[1.1fr,1.4fr,1.3fr] bg-white/5">
+                  <div class="px-3 py-2">Tue</div>
+                  <div class="px-3 py-2">1:00 PM – 4:00 PM</div>
+                  <div class="px-3 py-2">Database Systems &amp; SQL Lab</div>
+                </div>
+                <div class="grid grid-cols-[1.1fr,1.4fr,1.3fr]">
+                  <div class="px-3 py-2">Thu</div>
+                  <div class="px-3 py-2">8:00 AM – 11:00 AM</div>
+                  <div class="px-3 py-2">Computer Networks</div>
+                </div>
+                <div class="grid grid-cols-[1.1fr,1.4fr,1.3fr] bg-white/5">
+                  <div class="px-3 py-2">Fri</div>
+                  <div class="px-3 py-2">1:00 PM – 3:00 PM</div>
+                  <div class="px-3 py-2">Professional Elective / GE Course</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4th Year – OJT -->
+          <div class="rounded-2xl bg-white/5 border border-white/15 shadow-lg p-5">
+            <div class="flex items-center justify-between gap-3">
+              <div>
+                <h3 class="text-lg font-semibold flex items-center gap-2">
+                  <span class="material-symbols-rounded text-secondary bg-white rounded-full p-1">looks_4</span>
+                  4th Year – OJT &amp; Capstone
+                </h3>
+                <p class="text-xs md:text-sm text-white/75 mt-1">
+                  Students spend most of their hours in partner industries and on capstone projects.
+                </p>
+              </div>
+              <span class="px-3 py-1 rounded-full text-[11px] md:text-xs bg-white/10 border border-white/20">
+                Industry-Based
+              </span>
+            </div>
+
+            <div class="mt-4 rounded-xl bg-black/20 overflow-hidden">
+              <div class="grid grid-cols-[1.1fr,1.4fr,1.3fr] text-[11px] md:text-xs font-semibold bg-black/30">
+                <div class="px-3 py-2 border-b border-white/10">Day</div>
+                <div class="px-3 py-2 border-b border-white/10">Time</div>
+                <div class="px-3 py-2 border-b border-white/10">Activity</div>
+              </div>
+              <div class="text-[11px] md:text-xs divide-y divide-white/10">
+                <div class="grid grid-cols-[1.1fr,1.4fr,1.3fr]">
+                  <div class="px-3 py-2">Mon – Thu</div>
+                  <div class="px-3 py-2">8:00 AM – 5:00 PM</div>
+                  <div class="px-3 py-2">On-the-Job Training (OJT)</div>
+                </div>
+                <div class="grid grid-cols-[1.1fr,1.4fr,1.3fr] bg-white/5">
+                  <div class="px-3 py-2">Fri</div>
+                  <div class="px-3 py-2">8:00 AM – 12:00 PM</div>
+                  <div class="px-3 py-2">Capstone Advising / Consultations</div>
+                </div>
+                <div class="grid grid-cols-[1.1fr,1.4fr,1.3fr]">
+                  <div class="px-3 py-2">Sat (as needed)</div>
+                  <div class="px-3 py-2">By Schedule</div>
+                  <div class="px-3 py-2">Defense Rehearsal / Project Work</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Notes Card -->
+          <div class="rounded-2xl bg-white/5 border border-white/15 shadow-lg p-5 flex flex-col justify-between">
+            <div>
+              <h3 class="text-lg font-semibold flex items-center gap-2">
+                <span class="material-symbols-rounded text-secondary bg-white rounded-full p-1">info</span>
+                Important Reminders
+              </h3>
+              <ul class="mt-3 space-y-2 text-[11px] md:text-sm text-white/80">
+                <li class="flex gap-2">
+                  <span class="material-symbols-rounded text-[18px] mt-[2px]">check_circle</span>
+                  <span>Exact schedule depends on section assignment, lab availability, and semester offerings.</span>
+                </li>
+                <li class="flex gap-2">
+                  <span class="material-symbols-rounded text-[18px] mt-[2px]">check_circle</span>
+                  <span>Regular announcements are posted through official channels and your class advisers.</span>
+                </li>
+                <li class="flex gap-2">
+                  <span class="material-symbols-rounded text-[18px] mt-[2px]">check_circle</span>
+                  <span>Always double-check room assignments and any updated memos from the department.</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="mt-6 text-center">
+              <!-- BUTTON TEXT AS REQUESTED -->
+              <a
+                href="#"
+                class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-secondary hover:bg-primary text-white text-xs md:text-sm font-semibold tracking-[0.15em] uppercase shadow-lg transition"
+              >
+                <span class="material-symbols-rounded text-[20px]">open_in_new</span>
+                GO TO THIS WEBSITE TO LEARN MORE
+              </a>
+              <!-- NOTE: Palitan mo ang href="#" kung may actual department / school link ka -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer (SCROLLS WITH PAGE, WALANG WHITE SA BABA) -->
+  <footer
+    id="contact"
+    class="bg-secondary text-white text-xs md:text-sm shadow-[0_-4px_10px_rgba(0,0,0,0.35)]"
+  >
+    <div class="max-w-6xl mx-auto px-4">
+      
+      <!-- Top Row -->
+      <div class="py-3 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+        
+        <!-- Program Info -->
+        <div class="space-y-1">
+          <h3 class="font-semibold leading-snug text-sm md:text-base">
+            BIT – Industrial Technology
+            <span class="font-normal text-[11px] md:text-sm">
+              (Major in Computer Technology)
+            </span>
+          </h3>
+          <p class="text-white/75 max-w-md text-[11px] md:text-sm">
+            Shaping skilled, industry-ready computer technology professionals.
+          </p>
+        </div>
+
+        <!-- Quick Links -->
+        <nav class="flex flex-wrap items-center gap-2 text-[11px] md:text-sm">
+          <a href="index.html"
+            class="px-3 py-1.5 rounded-full bg-white/10 hover:bg-white/20 border border-white/15 transition">
+            Home
+          </a>
+          <a href="about.html"
+            class="px-3 py-1.5 rounded-full bg-white/10 hover:bg-white/20 border border-white/15 transition">
+            About
+          </a>
+          <a href="news.html"
+            class="px-3 py-1.5 rounded-full bg-white/10 hover:bg-white/20 border border-white/15 transition">
+            News &amp; Events
+          </a>
+        </nav>
+
+        <!-- Contact + Bigger Subscribe -->
+        <div class="space-y-1.5 text-white/90 text-[11px] md:text-sm">
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-rounded text-[18px]">mail</span>
+            <span>buenaventuraalex04@gmail.com</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-rounded text-[18px]">call</span>
+            <span>0930 176 6534</span>
+          </div>
+
+          <!-- BIGGER SUBSCRIBE BUTTON -->
+          <button
+            id="openSubscribe"
+            class="mt-1 inline-flex items-center gap-2 px-5 py-2 rounded-lg bg-white/15 hover:bg-white/25 border border-white/20 font-semibold text-xs md:text-sm tracking-wide transition"
+          >
+            <span class="material-symbols-rounded text-[20px]">subscriptions</span>
+            Subscribe
           </button>
         </div>
       </div>
-      <p class="mt-10 pt-5 border-t border-white/10 text-center text-sm text-white/90">&copy; 2025 Bachelor in Industrial Technology (Major in Computer Technology). All rights reserved.</p>
+
+      <!-- Bottom Bar -->
+      <div class="border-t border-white/10 py-1.5 flex flex-col gap-1 md:flex-row md:items-center md:justify-between">
+        <p class="text-white/70 text-[10px] md:text-[11px]">
+          &copy; 2025 Bachelor in Industrial Technology (Major in Computer Technology). All rights reserved.  Images & trademarks belong to their respective owners.
+        </p>
+
+        <div class="flex flex-wrap items-center gap-2 text-white/60 text-[10px] md:text-[11px]">
+          <span class="material-symbols-rounded text-[14px]">shield</span>
+          <span>Secure &amp; Quality Education</span>
+        </div>
+      </div>
+
     </div>
   </footer>
+
 
   <!-- Subscribe Modal (centered) -->
   <div id="subscribeModal" class="fixed inset-0 hidden grid place-items-center bg-black/60 p-4 z-[60]" role="dialog" aria-modal="true" tabindex="-1">
@@ -189,7 +444,7 @@
         <div class="relative">
           <span class="material-symbols-rounded absolute left-3 top-1/2 -translate-y-1/2 text-zinc-400">mail</span>
           <input id="subEmail" type="email" required placeholder="you@example.com"
-                 class="w-full border rounded-lg pl-10 pr-3 py-2 focus:outline-none focus:ring-2 focus:ring-secondary"/>
+                class="w-full border rounded-lg pl-10 pr-3 py-2 focus:outline-none focus:ring-2 focus:ring-secondary"/>
         </div>
         <div class="mt-4 flex justify-end gap-2">
           <button type="button" id="cancelSubscribe" class="px-4 py-2 rounded bg-zinc-100 hover:bg-zinc-200">Cancel</button>

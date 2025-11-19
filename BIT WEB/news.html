@@ -4,126 +4,196 @@
   <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Bachelor in Industrial Technology (Major in Computer Technology) - News & Events</title>
 
+  <!-- FIX: tanggal white spaces sa pinaka-taas / pinaka-baba -->
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      min-height: 100%;
+      background-color: #4a0000; /* dark fallback para hindi white yung overscroll background */
+      overflow-x: hidden;
+      overscroll-behavior: none;
+    }
+  </style>
+
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>tailwind.config={theme:{extend:{colors:{primary:'#550000',secondary:'#800000',dark:'#4a0000',light:'#faeef0'}}}};</script>
+  <script>
+    tailwind.config={
+      theme:{
+        extend:{
+          colors:{
+            primary:'#550000',
+            secondary:'#800000',
+            dark:'#4a0000',
+            light:'#faeef0'
+          }
+        }
+      }
+    };
+  </script>
 
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24..48,400..700,0..1,-50..200" />
-  <style>.material-symbols-rounded{font-family:'Material Symbols Rounded' !important;font-variation-settings:'FILL' 1,'wght' 600,'GRAD' 0,'opsz' 24;display:inline-block;line-height:1;vertical-align:middle;-webkit-font-feature-settings:'liga';-webkit-font-smoothing:antialiased}</style>
+  <style>
+    .material-symbols-rounded{
+      font-family:'Material Symbols Rounded' !important;
+      font-variation-settings:'FILL' 1,'wght' 600,'GRAD' 0,'opsz' 24;
+      display:inline-block;
+      line-height:1;
+      vertical-align:middle;
+      -webkit-font-feature-settings:'liga';
+      -webkit-font-smoothing:antialiased;
+    }
+  </style>
 </head>
-<body class="text-zinc-800 bg-[url('assets/img/bgnew.png')] bg-cover bg-fixed bg-center">
-  <!-- Header -->
- <header class="sticky top-0 z-50 bg-secondary text-white shadow">
-  <div class="max-w-6xl mx-auto px-4">
-    <nav class="flex items-center justify-between py-3">
-      <!-- Logo + Title -->
-      <a href="index.html" aria-label="Home" class="flex items-center gap-3">
-        <img src="assets/img/logo-placeholder.png" alt="logo"
-             class="w-14 h-14 md:w-16 md:h-16 rounded-full object-cover border-2 border-white/70 shadow">
-        <span class="text-lg md:text-xl font-semibold" style="font-family:'Times New Roman', Times, serif;">
-          Southern Luzon State University
-        </span>
-      </a>
 
-      <!-- Nav links -->
-      <ul class="hidden md:flex items-center gap-8 font-semibold">
-        <li>
-          <a href="index.html" class="text-white/90 px-3 py-1 rounded-md transition hover:bg-white hover:text-secondary">
+<!-- FLEX LAYOUT para footer laging nasa baba -->
+<body class="min-h-screen flex flex-col text-zinc-800 bg-[url('assets/img/bgnew.png')] bg-cover bg-fixed bg-center">
+
+  <!-- MAIN CONTENT -->
+  <main class="flex-1">
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-secondary text-white shadow">
+      <div class="max-w-6xl mx-auto px-4">
+        <nav class="flex items-center justify-between py-3">
+          <!-- Logo + Title -->
+          <a href="index.html" aria-label="Home" class="flex items-center gap-3">
+            <img src="assets/img/logo-placeholder.png" alt="logo"
+                 class="w-14 h-14 md:w-16 md:h-16 rounded-full object-cover border-2 border-white/70 shadow">
+            <span class="text-lg md:text-xl font-semibold" style="font-family:'Times New Roman', Times, serif;">
+              Southern Luzon State University
+            </span>
+          </a>
+
+          <!-- Nav links -->
+          <ul class="hidden md:flex items-center gap-8 font-semibold">
+            <li>
+              <a href="index.html" class="text-white/90 px-3 py-1 rounded-md transition hover:bg-white hover:text-secondary">
+                Home
+              </a>
+            </li>
+            <li>
+              <a href="about.html" class="text-white px-3 py-1 rounded-md transition hover:bg-white hover:text-secondary">
+                About
+              </a>
+            </li>
+            <li>
+              <!-- ACTIVE: News & Events -->
+              <a href="news.html" aria-current="page"
+                 class="px-3 py-1 rounded-md bg-white text-secondary transition hover:bg-white hover:text-secondary">
+                News &amp; Events
+              </a>
+            </li>
+            <li>
+              <a href="#contact" class="text-white/90 px-3 py-1 rounded-md transition hover:bg-white hover:text-secondary">
+                Contact
+              </a>
+            </li>
+          </ul>
+
+          <!-- Mobile menu -->
+          <button id="burger" class="md:hidden flex flex-col gap-1.5" aria-label="Menu" aria-expanded="false">
+            <span class="w-7 h-[3px] bg-white"></span>
+            <span class="w-7 h-[3px] bg-white"></span>
+            <span class="w-7 h-[3px] bg-white"></span>
+          </button>
+        </nav>
+
+        <!-- Mobile Nav -->
+        <ul id="mobileNav" class="hidden flex-col items-center gap-4 pb-4 font-semibold md:hidden text-white">
+          <li><a class="hover:text-white" href="index.html">Home</a></li>
+          <li><a class="text-white" href="about.html">About</a></li>
+          <li><a class="hover:text-white" href="news.html">News & Events</a></li>
+          <li><a class="hover:text-white" href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </header>
+
+    <!-- News -->
+    <section class="py-16 bg-white/90">
+      <div class="max-w-6xl mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center">Latest News & Events</h2>
+        <div id="newsGrid" class="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+        <!-- No fallback: blank if no posts -->
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer (SCROLLS WITH PAGE, WALANG WHITE SA BABA) -->
+  <footer
+    id="contact"
+    class="bg-secondary text-white text-xs md:text-sm shadow-[0_-4px_10px_rgba(0,0,0,0.35)]"
+  >
+    <div class="max-w-6xl mx-auto px-4">
+      
+      <!-- Top Row -->
+      <div class="py-3 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+        
+        <!-- Program Info -->
+        <div class="space-y-1">
+          <h3 class="font-semibold leading-snug text-sm md:text-base">
+            BIT – Industrial Technology
+            <span class="font-normal text-[11px] md:text-sm">
+              (Major in Computer Technology)
+            </span>
+          </h3>
+          <p class="text-white/75 max-w-md text-[11px] md:text-sm">
+            Shaping skilled, industry-ready computer technology professionals.
+          </p>
+        </div>
+
+        <!-- Quick Links -->
+        <nav class="flex flex-wrap items-center gap-2 text-[11px] md:text-sm">
+          <a href="index.html"
+            class="px-3 py-1.5 rounded-full bg-white/10 hover:bg-white/20 border border-white/15 transition">
             Home
           </a>
-        </li>
-        <li>
-          <a href="about.html" class="text-white px-3 py-1 rounded-md transition hover:bg-white hover:text-secondary">
+          <a href="about.html"
+            class="px-3 py-1.5 rounded-full bg-white/10 hover:bg-white/20 border border-white/15 transition">
             About
           </a>
-        </li>
-        <li>
-          <!-- ACTIVE: News & Events -->
-          <a href="news.html" aria-current="page"
-             class="px-3 py-1 rounded-md bg-white text-secondary transition hover:bg-white hover:text-secondary">
+          <a href="news.html"
+            class="px-3 py-1.5 rounded-full bg-white/10 hover:bg-white/20 border border-white/15 transition">
             News &amp; Events
           </a>
-        </li>
-        <li>
-          <a href="#contact" class="text-white/90 px-3 py-1 rounded-md transition hover:bg-white hover:text-secondary">
-            Contact
-          </a>
-        </li>
-      </ul>
+        </nav>
 
-      <!-- Mobile menu -->
-      <button id="burger" class="md:hidden flex flex-col gap-1.5" aria-label="Menu" aria-expanded="false">
-        <span class="w-7 h-[3px] bg-white"></span>
-        <span class="w-7 h-[3px] bg-white"></span>
-        <span class="w-7 h-[3px] bg-white"></span>
-      </button>
-    </nav>
-
-    <!-- Mobile Nav -->
-    <ul id="mobileNav" class="hidden flex-col items-center gap-4 pb-4 font-semibold md:hidden text-white">
-      <li><a class="hover:text-white" href="index.html">Home</a></li>
-      <li><a class="text-white" href="about.html">About</a></li>
-      <li><a class="hover:text-white" href="news.html">News & Events</a></li>
-      <li><a class="hover:text-white" href="#contact">Contact</a></li>
-    </ul>
-  </div>
-</header>
-
-
-
-
-  <!-- News -->
-  <section class="py-16 bg-white/90">
-    <div class="max-w-6xl mx-auto px-4">
-      <h2 class="text-3xl font-bold text-center">Latest News & Events</h2>
-      <div id="newsGrid" class="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
-      <!-- No fallback: blank if no posts -->
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer id="contact" class="bg-secondary text-white pt-14 pb-6">
-    <div class="max-w-6xl mx-auto px-4">
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
-        <div>
-          <h3 class="font-bold text-lg mb-3">Bachelor in Industrial Technology (Major in Computer Technology)</h3>
-
-          <p class="text-white/90">Empowering the next generation of IT professionals.</p>
-          <div class="flex gap-3 mt-4">
-            <a href="#" aria-label="Facebook" class="w-10 h-10 rounded-full bg-white/10 grid place-items-center hover:bg-white/20 transition">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" class="w-6 h-6 fill-white"><path d="M232 128a104 104 0 1 0-120 102.39V160H88a8 8 0 0 1 0-16h24v-24c0-22.06 13.48-40 40-40h24a8 8 0 0 1 0 16h-24c-14.23 0-24 9.77-24 24v24h40a8 8 0 0 1 0 16h-40v70.39A104.12 104.12 0 0 0 232 128Z"/></svg>
-            </a>
-            <a href="#" aria-label="Instagram" class="w-10 h-10 rounded-full bg-white/10 grid place-items-center hover:bg-white/20 transition">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" class="w-6 h-6 fill-white"><path d="M128 80a48 48 0 1 0 48 48a48.05 48.05 0 0 0-48-48Zm0 80a32 32 0 1 1 32-32a32 32 0 0 1-32 32Zm44-116H84a44 44 0 0 0-44 44v88a44 44 0 0 0 44 44h88a44 44 0 0 0 44-44V88a44 44 0 0 0-44-44Zm28 132a28 28 0 0 1-28 28H84a28 28 0 0 1-28-28V88a28 28 0 0 1 28-28h88a28 28 0 0 1 28 28Zm-12-92a12 12 0 1 1-12-12a12 12 0 0 1 12 12Z"/></svg>
-            </a>
+        <!-- Contact + Bigger Subscribe -->
+        <div class="space-y-1.5 text-white/90 text-[11px] md:text-sm">
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-rounded text-[18px]">mail</span>
+            <span>buenaventuraalex04@gmail.com</span>
           </div>
-        </div>
-        <div>
-          <h3 class="font-bold text-lg mb-3">Quick Links</h3>
-          <ul class="space-y-2 text-white/90">
-            <li><a class="hover:text-white" href="index.html">Home</a></li>
-            <li><a class="hover:text-white" href="about.html">About</a></li>
-            <li><a class="hover:text-white" href="news.html">News & Events</a></li>
-          </ul>
-        </div>
-        <div>
-          <h3 class="font-bold text-lg mb-3">Contact</h3>
-          <div class="space-y-2 text-white/90">
-            <div class="flex gap-2 items-center"><span class="material-symbols-rounded">mail</span><span class="font-semibold">Email:</span><span>buenaventuraalex04@gmail.com</span></div>
-            <div class="flex gap-2 items-center"><span class="material-symbols-rounded">call</span><span class="font-semibold">Phone:</span><span>09301766534</span></div>
-            <div class="flex gap-2 items-center"><span class="material-symbols-rounded">location_on</span><span class="font-semibold">Address:</span><span>Brgy. Ibabang Dupay, Lucena City, Quezon, Philippines 4301</span></div>
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-rounded text-[18px]">call</span>
+            <span>0930 176 6534</span>
           </div>
-          <button id="openSubscribe" class="mt-4 inline-flex items-center gap-2 bg-white/15 hover:bg白/25 text-white font-semibold px-5 py-2.5 rounded transition">
-            <span class="material-symbols-rounded">subscriptions</span> Subscribe
+
+          <!-- BIGGER SUBSCRIBE BUTTON -->
+          <button
+            id="openSubscribe"
+            class="mt-1 inline-flex items-center gap-2 px-5 py-2 rounded-lg bg-white/15 hover:bg-white/25 border border-white/20 font-semibold text-xs md:text-sm tracking-wide transition"
+          >
+            <span class="material-symbols-rounded text-[20px]">subscriptions</span>
+            Subscribe
           </button>
         </div>
       </div>
-      <p class="mt-10 pt-5 border-t border-white/10 text-center text-sm text-white/90">&copy; 2025 Bachelor in Industrial Technology (Major in Computer Technology). All rights reserved.</p>
-      <p class="text-center text-sm text-white/90"><small>Photos & images: <strong>The Technolator</strong>. No reuse without permission.</small></p>
+
+      <!-- Bottom Bar -->
+      <div class="border-t border-white/10 py-1.5 flex flex-col gap-1 md:flex-row md:items-center md:justify-between">
+        <p class="text-white/70 text-[10px] md:text-[11px]">
+          &copy; 2025 Bachelor in Industrial Technology (Major in Computer Technology). All rights reserved.  Images & trademarks belong to their respective owners.
+        </p>
+
+        <div class="flex flex-wrap items-center gap-2 text-white/60 text-[10px] md:text-[11px]">
+          <span class="material-symbols-rounded text-[14px]">shield</span>
+          <span>Secure &amp; Quality Education</span>
+        </div>
+      </div>
 
     </div>
   </footer>
-
   <!-- Subscribe Modal (centered) -->
   <div id="subscribeModal" class="fixed inset-0 hidden grid place-items-center bg-black/60 p-4 z-[60]" role="dialog" aria-modal="true" tabindex="-1">
     <div class="w-full max-w-md bg-white rounded-xl shadow-xl max-h-[90vh] flex flex-col">
@@ -146,20 +216,37 @@
     </div>
   </div>
 
-  <div id="toast" class="fixed left-1/2 -translate-x-1/2 bottom-6 bg-zinc-900 text-white px-4 py-2 rounded-lg opacity-0 pointer-events-none transition">Subscribed!</div>
+  <div id="toast" class="fixed left-1/2 -translate-x-1/2 bottom-6 bg-zinc-900 text-white px-4 py-2 rounded-lg opacity-0 pointer-events-none transition">
+    Subscribed!
+  </div>
 
   <script>
-    const burger=document.getElementById('burger'), mobileNav=document.getElementById('mobileNav');
-    burger?.addEventListener('click',()=>{ const open=mobileNav.classList.toggle('hidden')===false; burger.setAttribute('aria-expanded',String(open)); });
+    const burger=document.getElementById('burger'),
+          mobileNav=document.getElementById('mobileNav');
+    burger?.addEventListener('click',()=>{
+      const open=mobileNav.classList.toggle('hidden')===false;
+      burger.setAttribute('aria-expanded',String(open));
+    });
 
     const openBtn=document.getElementById('openSubscribe'), modal=document.getElementById('subscribeModal'),
           closeBtn=document.getElementById('closeSubscribe'), cancelBtn=document.getElementById('cancelSubscribe'),
           form=document.getElementById('subscribeForm'), emailInp=document.getElementById('subEmail'),
           toast=document.getElementById('toast');
 
-    function openModal(){ modal.classList.remove('hidden'); document.body.classList.add('overflow-hidden'); setTimeout(()=>emailInp.focus(),50); }
-    function closeModal(){ modal.classList.add('hidden'); document.body.classList.remove('overflow-hidden'); }
-    function showToast(msg){ toast.textContent=msg; toast.classList.remove('opacity-0'); setTimeout(()=>toast.classList.add('opacity-0'),1800); }
+    function openModal(){
+      modal.classList.remove('hidden');
+      document.body.classList.add('overflow-hidden');
+      setTimeout(()=>emailInp.focus(),50);
+    }
+    function closeModal(){
+      modal.classList.add('hidden');
+      document.body.classList.remove('overflow-hidden');
+    }
+    function showToast(msg){
+      toast.textContent=msg;
+      toast.classList.remove('opacity-0');
+      setTimeout(()=>toast.classList.add('opacity-0'),1800);
+    }
 
     openBtn?.addEventListener('click',openModal);
     closeBtn?.addEventListener('click',closeModal);
@@ -170,26 +257,39 @@
     // Render posts (no fallback)
     (function(){
       const grid=document.getElementById('newsGrid');
-      function load(){ try{return JSON.parse(localStorage.getItem('bit_news')||'[]');}catch{return[];} }
+      function load(){
+        try{
+          return JSON.parse(localStorage.getItem('bit_news')||'[]');
+        }catch{
+          return[];
+        }
+      }
       const posts=load().filter(p=>p.published).sort((a,b)=>(b.date||'').localeCompare(a.date||''));
       if(!posts.length){ return; } // leave blank
       for(const p of posts){
         const card=document.createElement('div');
         card.className='bg-white rounded-lg overflow-hidden shadow hover:shadow-lg transition';
-        const imgHtml=p.imgDataUrl?`<img src="${p.imgDataUrl}" alt="${(p.imgAlt||'').replace(/"/g,'&quot;')}" class="w-full h-52 object-cover">`:'';
+        const imgHtml=p.imgDataUrl
+          ? `<img src="${p.imgDataUrl}" alt="${(p.imgAlt||'').replace(/"/g,'&quot;')}" class="w-full h-52 object-cover">`
+          : '';
         card.innerHTML = `
           ${imgHtml}
           <div class="p-4">
             <span class="text-secondary text-sm block mb-1">${p.date||''}</span>
             <h3 class="font-bold mb-2">${escapeHtml(p.title)}</h3>
             <p class="text-sm">${escapeHtml(p.summary)}</p>
-            <a href="news-detail.html?id=${encodeURIComponent(p.id)}" class="inline-flex items-center gap-2 mt-3 bg-secondary hover:bg-primary text-white px-4 py-2 rounded transition">
+            <a href="news-detail.html?id=${encodeURIComponent(p.id)}"
+               class="inline-flex items-center gap-2 mt-3 bg-secondary hover:bg-primary text-white px-4 py-2 rounded transition">
               <span class="material-symbols-rounded">read_more</span> Read More
             </a>
           </div>`;
         grid.appendChild(card);
       }
-      function escapeHtml(s){return (s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+      function escapeHtml(s){
+        return (s||'').replace(/[&<>"']/g,c=>({
+          '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+        }[c]));
+      }
     })();
   </script>
 </body>
