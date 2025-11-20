@@ -1,0 +1,45 @@
+[
+  {
+    "id": "news1",
+    "title": "BIT-CT General Orientation",
+    "summary": "Orientation for all BIT – Industrial Technology (Major in CT) students.",
+    "date": "2025-11-05",
+    "imgUrl": "assets/img/orientation.jpg",
+    "imgAlt": "Orientation event",
+    "published": true
+  },
+  {
+    "id": "news2",
+    "title": "Industry Talk: Trends in Computer Technology",
+    "summary": "Guest speaker from the IT industry discusses current trends.",
+    "date": "2025-11-12",
+    "imgUrl": "assets/img/industry-talk.jpg",
+    "imgAlt": "Industry talk",
+    "published": true
+  },
+    {
+    "id": "news2",
+    "title": "Industry Talk: Trends in Computer Technology",
+    "summary": "Guest speaker from the IT industry discusses current trends.",
+    "date": "2025-11-17",
+    "imgUrl": "assets/img/industry-talk.jpg",
+    "imgAlt": "Industry talk",
+    "published": true
+  },  {
+    "id": "news2",
+    "title": "Industry Talk: Trends in Computer Technology",
+    "summary": "Guest speaker from the IT industry discusses current trends.",
+    "date": "2025-11-19",
+    "imgUrl": "assets/img/industry-talk.jpg",
+    "imgAlt": "Industry talk",
+    "published": true
+  },  {
+    "id": "news2",
+    "title": "Industry Talk: Trends in Computer Technology",
+    "summary": "Guest speaker from the IT industry discusses current trends.",
+    "date": "2025-11-2",
+    "imgUrl": "assets/img/industry-talk.jpg",
+    "imgAlt": "Industry talk",
+    "published": true
+  }
+]

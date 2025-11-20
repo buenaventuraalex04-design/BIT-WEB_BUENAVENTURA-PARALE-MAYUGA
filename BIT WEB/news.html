@@ -47,7 +47,6 @@
   </style>
 </head>
 
-<!-- FLEX LAYOUT para footer laging nasa baba -->
 <body class="min-h-screen flex flex-col text-zinc-800 bg-[url('assets/img/bgnew.png')] bg-cover bg-fixed bg-center">
 
   <!-- MAIN CONTENT -->
@@ -109,27 +108,97 @@
       </div>
     </header>
 
-    <!-- News -->
-    <section class="py-16 bg-white/90">
-      <div class="max-w-6xl mx-auto px-4">
-        <h2 class="text-3xl font-bold text-center">Latest News & Events</h2>
-        <div id="newsGrid" class="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
-        <!-- No fallback: blank if no posts -->
+    <!-- Calendar + Events -->
+    <section class="py-16 bg-gradient-to-b from-light/60 via-white/90 to-white/95">
+      <div class="max-w-6xl mx-auto px-4 md:px-6">
+        <!-- Header text -->
+        <div class="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+          <div>
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary/10 border border-secondary/20 text-[11px] md:text-xs text-secondary mb-2">
+              <span class="material-symbols-rounded text-[16px]">campaign</span>
+              <span>BIT – Industrial Technology • AY 2025–2026</span>
+            </div>
+            <h2 class="text-3xl md:text-4xl font-bold text-secondary drop-shadow-sm">
+              News &amp; Events
+            </h2>
+            <p class="mt-1 text-sm md:text-base text-zinc-700 max-w-xl">
+              Tap a highlighted date in the calendar to view the news or events for that day.
+            </p>
+          </div>
+
+          <div class="flex items-center gap-3 text-xs md:text-sm text-zinc-600 mt-2 md:mt-0">
+            <div class="flex items-center gap-1">
+              <span class="inline-block w-2 h-2 rounded-full bg-secondary"></span>
+              <span>Dates with events</span>
+            </div>
+            <div class="hidden sm:flex items-center gap-1">
+              <span class="material-symbols-rounded text-[16px]">touch_app</span>
+              <span>Tap a date to show events</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Layout: calendar left, events right (same width & height) -->
+        <div id="calendarEventsLayout" class="mt-8 lg:mt-10 flex flex-col lg:flex-row lg:items-stretch lg:gap-6">
+          <!-- Calendar shell -->
+          <aside
+            id="calendarShell"
+            class="bg-white/95 rounded-2xl shadow-lg shadow-zinc-200/60 border border-zinc-100 p-5
+                   max-w-3xl w-full mx-auto lg:mx-0 lg:max-w-none
+                   lg:flex-1 flex flex-col h-full
+                   min-h-[420px] sm:min-h-[440px] md:min-h-[460px]
+                   backdrop-blur-sm transition-all duration-300"
+          >
+            <div id="calendarInner"><!-- Calendar will be rendered by JS --></div>
+          </aside>
+
+          <!-- Events panel -->
+          <section
+            id="eventsPanel"
+            class="hidden w-full lg:flex-1 mt-6 lg:mt-0 bg-white/95 rounded-2xl shadow-lg border border-zinc-100 p-4 md:p-5
+                   opacity-0 translate-x-4 transition-all duration-300
+                   flex flex-col h-full overflow-hidden
+                   min-h-[420px] sm:min-h-[440px] md:min-h-[460px]"
+          >
+            <div class="flex items-start justify-between gap-3">
+              <div>
+                <h3 id="newsHeading" class="font-semibold text-lg md:text-xl text-zinc-900">
+                  All news &amp; events
+                </h3>
+                <p class="mt-0.5 text-[11px] md:text-xs text-zinc-500">
+                  Tap a date in the calendar or use "Show all events" to view announcements.
+                </p>
+              </div>
+              <button
+                id="closeEvents"
+                type="button"
+                class="inline-flex items-center gap-1 rounded-full border border-zinc-200 px-2.5 py-1 text-[11px] text-zinc-500 hover:bg-zinc-100"
+              >
+                <span class="material-symbols-rounded text-[16px]">close</span>
+                Exit
+              </button>
+            </div>
+
+            <div id="eventsCount" class="mt-2 text-[11px] md:text-xs text-zinc-500"></div>
+
+            <div
+              id="newsGrid"
+              class="mt-4 space-y-6 flex-1 overflow-y-auto pr-1"
+              aria-live="polite"
+            ></div>
+          </section>
+        </div>
       </div>
     </section>
   </main>
 
-  <!-- Footer (SCROLLS WITH PAGE, WALANG WHITE SA BABA) -->
+  <!-- Footer -->
   <footer
     id="contact"
     class="bg-secondary text-white text-xs md:text-sm shadow-[0_-4px_10px_rgba(0,0,0,0.35)]"
   >
     <div class="max-w-6xl mx-auto px-4">
-      
-      <!-- Top Row -->
       <div class="py-3 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
-        
-        <!-- Program Info -->
         <div class="space-y-1">
           <h3 class="font-semibold leading-snug text-sm md:text-base">
             BIT – Industrial Technology
@@ -142,7 +211,6 @@
           </p>
         </div>
 
-        <!-- Quick Links -->
         <nav class="flex flex-wrap items-center gap-2 text-[11px] md:text-sm">
           <a href="index.html"
             class="px-3 py-1.5 rounded-full bg-white/10 hover:bg-white/20 border border-white/15 transition">
@@ -158,7 +226,6 @@
           </a>
         </nav>
 
-        <!-- Contact + Bigger Subscribe -->
         <div class="space-y-1.5 text-white/90 text-[11px] md:text-sm">
           <div class="flex items-center gap-2">
             <span class="material-symbols-rounded text-[18px]">mail</span>
@@ -169,7 +236,6 @@
             <span>0930 176 6534</span>
           </div>
 
-          <!-- BIGGER SUBSCRIBE BUTTON -->
           <button
             id="openSubscribe"
             class="mt-1 inline-flex items-center gap-2 px-5 py-2 rounded-lg bg-white/15 hover:bg-white/25 border border-white/20 font-semibold text-xs md:text-sm tracking-wide transition"
@@ -180,10 +246,9 @@
         </div>
       </div>
 
-      <!-- Bottom Bar -->
       <div class="border-t border-white/10 py-1.5 flex flex-col gap-1 md:flex-row md:items-center md:justify-between">
         <p class="text-white/70 text-[10px] md:text-[11px]">
-          &copy; 2025 Bachelor in Industrial Technology (Major in Computer Technology). All rights reserved.  Images & trademarks belong to their respective owners.
+          &copy; 2025 Bachelor in Industrial Technology (Major in Computer Technology). All rights reserved. Images & trademarks belong to their respective owners.
         </p>
 
         <div class="flex flex-wrap items-center gap-2 text-white/60 text-[10px] md:text-[11px]">
@@ -191,10 +256,10 @@
           <span>Secure &amp; Quality Education</span>
         </div>
       </div>
-
     </div>
   </footer>
-  <!-- Subscribe Modal (centered) -->
+
+  <!-- Subscribe Modal -->
   <div id="subscribeModal" class="fixed inset-0 hidden grid place-items-center bg-black/60 p-4 z-[60]" role="dialog" aria-modal="true" tabindex="-1">
     <div class="w-full max-w-md bg-white rounded-xl shadow-xl max-h-[90vh] flex flex-col">
       <div class="bg-gradient-to-r from-primary to-secondary text-white px-5 py-3 flex items-center justify-between rounded-t-xl">
@@ -221,75 +286,424 @@
   </div>
 
   <script>
-    const burger=document.getElementById('burger'),
-          mobileNav=document.getElementById('mobileNav');
-    burger?.addEventListener('click',()=>{
-      const open=mobileNav.classList.toggle('hidden')===false;
-      burger.setAttribute('aria-expanded',String(open));
+    /* ---------- NAV + MODAL ---------- */
+    const burger = document.getElementById('burger'),
+          mobileNav = document.getElementById('mobileNav');
+    burger?.addEventListener('click', () => {
+      const open = mobileNav.classList.toggle('hidden') === false;
+      burger.setAttribute('aria-expanded', String(open));
     });
 
-    const openBtn=document.getElementById('openSubscribe'), modal=document.getElementById('subscribeModal'),
-          closeBtn=document.getElementById('closeSubscribe'), cancelBtn=document.getElementById('cancelSubscribe'),
-          form=document.getElementById('subscribeForm'), emailInp=document.getElementById('subEmail'),
-          toast=document.getElementById('toast');
+    const openBtn = document.getElementById('openSubscribe'),
+          modal = document.getElementById('subscribeModal'),
+          closeBtn = document.getElementById('closeSubscribe'),
+          cancelBtn = document.getElementById('cancelSubscribe'),
+          form = document.getElementById('subscribeForm'),
+          emailInp = document.getElementById('subEmail'),
+          toast = document.getElementById('toast');
 
-    function openModal(){
+    function openModal() {
       modal.classList.remove('hidden');
       document.body.classList.add('overflow-hidden');
-      setTimeout(()=>emailInp.focus(),50);
+      setTimeout(() => emailInp.focus(), 50);
     }
-    function closeModal(){
+    function closeModal() {
       modal.classList.add('hidden');
       document.body.classList.remove('overflow-hidden');
     }
-    function showToast(msg){
-      toast.textContent=msg;
+    function showToast(msg) {
+      toast.textContent = msg;
       toast.classList.remove('opacity-0');
-      setTimeout(()=>toast.classList.add('opacity-0'),1800);
+      setTimeout(() => toast.classList.add('opacity-0'), 1800);
     }
 
-    openBtn?.addEventListener('click',openModal);
-    closeBtn?.addEventListener('click',closeModal);
-    cancelBtn?.addEventListener('click',closeModal);
-    modal?.addEventListener('click',e=>{ if(e.target===modal) closeModal(); });
-    window.addEventListener('keydown',e=>{ if(e.key==='Escape') closeModal(); });
+    openBtn?.addEventListener('click', openModal);
+    closeBtn?.addEventListener('click', closeModal);
+    cancelBtn?.addEventListener('click', closeModal);
+    modal?.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+    window.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
-    // Render posts (no fallback)
-    (function(){
-      const grid=document.getElementById('newsGrid');
-      function load(){
-        try{
-          return JSON.parse(localStorage.getItem('bit_news')||'[]');
-        }catch{
-          return[];
-        }
+    form?.addEventListener('submit', e => {
+      e.preventDefault();
+      closeModal();
+      showToast('Subscribed!');
+      form.reset();
+    });
+
+    /* ---------- API + CALENDAR + EVENTS ---------- */
+    (async function () {
+      const grid = document.getElementById('newsGrid');
+      const heading = document.getElementById('newsHeading');
+      const calendarEl = document.getElementById('calendarInner');
+      const eventsCountEl = document.getElementById('eventsCount');
+      const eventsPanel = document.getElementById('eventsPanel');
+      const closeEventsBtn = document.getElementById('closeEvents');
+      const calendarShell = document.getElementById('calendarShell');
+
+      const API_URL = 'events.json'; // local JSON "API"
+
+      let eventsVisible = false;
+      let events = [];
+
+      // pantayin lagi ang height ng calendar & events panel
+      function syncPanelHeight() {
+        if (!calendarShell || !eventsPanel) return;
+        if (eventsPanel.classList.contains('hidden')) return;
+
+        calendarShell.style.height = '';
+        eventsPanel.style.height = '';
+
+        const calH = calendarShell.offsetHeight;
+        const panelContentH = eventsPanel.scrollHeight;
+        const target = Math.max(calH, panelContentH);
+        if (!target) return;
+
+        calendarShell.style.height = target + 'px';
+        eventsPanel.style.height = target + 'px';
       }
-      const posts=load().filter(p=>p.published).sort((a,b)=>(b.date||'').localeCompare(a.date||''));
-      if(!posts.length){ return; } // leave blank
-      for(const p of posts){
-        const card=document.createElement('div');
-        card.className='bg-white rounded-lg overflow-hidden shadow hover:shadow-lg transition';
-        const imgHtml=p.imgDataUrl
-          ? `<img src="${p.imgDataUrl}" alt="${(p.imgAlt||'').replace(/"/g,'&quot;')}" class="w-full h-52 object-cover">`
-          : '';
-        card.innerHTML = `
-          ${imgHtml}
-          <div class="p-4">
-            <span class="text-secondary text-sm block mb-1">${p.date||''}</span>
-            <h3 class="font-bold mb-2">${escapeHtml(p.title)}</h3>
-            <p class="text-sm">${escapeHtml(p.summary)}</p>
-            <a href="news-detail.html?id=${encodeURIComponent(p.id)}"
-               class="inline-flex items-center gap-2 mt-3 bg-secondary hover:bg-primary text-white px-4 py-2 rounded transition">
-              <span class="material-symbols-rounded">read_more</span> Read More
-            </a>
-          </div>`;
-        grid.appendChild(card);
+
+      function openEventsPanel() {
+        if (!eventsPanel || eventsVisible) return;
+        eventsVisible = true;
+        eventsPanel.classList.remove('hidden');
+        requestAnimationFrame(() => {
+          eventsPanel.classList.remove('opacity-0', 'translate-x-4');
+          eventsPanel.classList.add('opacity-100', 'translate-x-0');
+          syncPanelHeight();
+        });
       }
-      function escapeHtml(s){
-        return (s||'').replace(/[&<>"']/g,c=>({
+
+      function closeEventsPanel() {
+        if (!eventsPanel || !eventsVisible) return;
+        eventsVisible = false;
+        eventsPanel.classList.remove('opacity-100', 'translate-x-0');
+        eventsPanel.classList.add('opacity-0', 'translate-x-4');
+        if (heading) heading.textContent = 'All news & events';
+        if (eventsCountEl) eventsCountEl.textContent = '';
+        setTimeout(() => {
+          eventsPanel.classList.add('hidden');
+          eventsPanel.style.height = '';
+          if (calendarShell) calendarShell.style.height = '';
+        }, 250);
+      }
+
+      closeEventsBtn?.addEventListener('click', () => {
+        closeEventsPanel();
+        calendarShell?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+
+      function escapeHtml(s) {
+        return (s || '').replace(/[&<>"']/g, c => ({
           '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
         }[c]));
       }
+
+      function normalizeDateKey(dateStr) {
+        if (!dateStr) return null;
+        if (/^\d{4}-\d{2}-\d{2}$/.test(dateStr)) return dateStr;
+        const d = new Date(dateStr);
+        if (isNaN(d.getTime())) return null;
+        const m = String(d.getMonth() + 1).padStart(2, '0');
+        const day = String(d.getDate()).padStart(2, '0');
+        return `${d.getFullYear()}-${m}-${day}`;
+      }
+
+      function formatDisplayDate(dateKey) {
+        const [y, m, d] = dateKey.split('-').map(Number);
+        const date = new Date(y, m - 1, d);
+        return date.toLocaleDateString(undefined, {
+          month: 'long',
+          day: 'numeric',
+          year: 'numeric'
+        });
+      }
+
+      async function fetchEvents() {
+        const res = await fetch(API_URL);
+        if (!res.ok) throw new Error('Failed to load events from API');
+        const data = await res.json();
+        return (data || []).filter(e => e.published);
+      }
+
+      // card for single-date view
+      function buildCard(p) {
+        const card = document.createElement('article');
+        card.className =
+          'group bg-white/95 rounded-2xl shadow-sm border border-zinc-100 overflow-hidden flex flex-col h-full ' +
+          'hover:shadow-lg hover:-translate-y-0.5 transition transform backdrop-blur-sm';
+
+        const imgHtml = p.imgUrl
+          ? `<div class="relative overflow-hidden">
+               <div class="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition"></div>
+               <img src="${p.imgUrl}" alt="${(p.imgAlt || '').replace(/"/g, '&quot;')}"
+                    class="w-full h-40 md:h-44 object-cover group-hover:scale-[1.03] transition-transform duration-300">
+             </div>`
+          : '';
+
+        const dateKey = normalizeDateKey(p.date);
+        const displayDate = dateKey ? formatDisplayDate(dateKey) : (p.date || '');
+
+        card.innerHTML = `
+          <div class="h-1 w-full bg-gradient-to-r from-secondary via-primary to-secondary"></div>
+          ${imgHtml}
+          <div class="flex flex-col flex-1 p-4 md:p-5">
+            <div class="flex items-center gap-2 text-[11px] md:text-xs text-zinc-500 mb-1">
+              <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-secondary/5 text-secondary border border-secondary/15">
+                <span class="material-symbols-rounded text-[14px]">event</span>
+                ${escapeHtml(displayDate)}
+              </span>
+            </div>
+
+            <h4 class="mt-2 text-base md:text-lg font-semibold text-zinc-900 leading-snug">
+              ${escapeHtml(p.title)}
+            </h4>
+
+            <p class="mt-2 text-sm md:text-[15px] text-zinc-700 leading-relaxed">
+              ${escapeHtml(p.summary)}
+            </p>
+
+            <div class="mt-4 pt-3 flex items-center justify-start gap-3 border-t border-zinc-100">
+              <a href="https://www.facebook.com/share/17JXKevdbE/"
+                 target="_blank" rel="noopener"
+                 class="inline-flex items-center gap-1.5 text-sm font-semibold text-secondary group-hover:text-primary">
+                <span class="material-symbols-rounded text-[18px]">read_more</span>
+                Read more
+              </a>
+            </div>
+          </div>
+        `;
+        return card;
+      }
+
+      // mode: 'dateCards' | 'allList'
+      function renderPosts(list, mode = 'dateCards') {
+        if (!grid) return;
+        grid.innerHTML = '';
+
+        if (!list.length) {
+          const msg =
+            mode === 'allList'
+              ? 'No events have been added yet.'
+              : 'No events or special announcements for this date. Regular classes or non-event day.';
+          grid.innerHTML = `
+            <p class="col-span-full text-center text-sm md:text-base text-zinc-500 bg-white/90 rounded-xl py-8 px-4 border border-zinc-100">
+              ${msg}
+            </p>`;
+        } else if (mode === 'allList') {
+          const sorted = [...list].sort((a, b) => (b.date || '').localeCompare(a.date || ''));
+          const wrapper = document.createElement('div');
+          wrapper.className = 'space-y-3';
+
+          for (const e of sorted) {
+            const dateKey = normalizeDateKey(e.date);
+            const displayDate = dateKey ? formatDisplayDate(dateKey) : (e.date || '');
+
+            const row = document.createElement('article');
+            row.className =
+              'border border-zinc-200 rounded-xl px-3 py-3 md:px-4 md:py-3 bg-white/95 hover:border-secondary/50 hover:shadow-sm transition';
+
+            row.innerHTML = `
+              <div class="flex flex-wrap items-center justify-between gap-2">
+                <div class="flex flex-col gap-1">
+                  <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-secondary/5 text-secondary border border-secondary/15 text-[11px] md:text-xs">
+                    <span class="material-symbols-rounded text-[14px]">event</span>
+                    ${escapeHtml(displayDate)}
+                  </span>
+                  <h4 class="text-sm md:text-base font-semibold text-zinc-900">
+                    ${escapeHtml(e.title)}
+                  </h4>
+                </div>
+                <a href="https://www.facebook.com/share/17JXKevdbE/"
+                   target="_blank" rel="noopener"
+                   class="inline-flex items-center gap-1.5 text-[11px] md:text-sm font-semibold text-secondary hover:text-primary">
+                  <span class="material-symbols-rounded text-[16px]">read_more</span>
+                  Read more
+                </a>
+              </div>
+              ${e.summary ? `
+              <p class="mt-2 text-xs md:text-sm text-zinc-700 line-clamp-2">
+                ${escapeHtml(e.summary)}
+              </p>` : ''}
+            `;
+            wrapper.appendChild(row);
+          }
+
+          grid.appendChild(wrapper);
+        } else {
+          // dateCards (calendar date clicked)
+          if (list.length === 1) {
+            // isang event lang: punuin yung box
+            const wrapper = document.createElement('div');
+            wrapper.className = 'h-full flex';
+            const card = buildCard(list[0]);
+            card.classList.add('flex-1');
+            wrapper.appendChild(card);
+            grid.appendChild(wrapper);
+          } else {
+            const wrapper = document.createElement('div');
+            wrapper.className = 'grid gap-5 sm:grid-cols-2 xl:grid-cols-3';
+            for (const p of list) wrapper.appendChild(buildCard(p));
+            grid.appendChild(wrapper);
+          }
+        }
+
+        if (eventsCountEl) {
+          const total = events.length;
+          const countText = `Showing ${list.length} of ${total} event${total !== 1 ? 's' : ''}`;
+          eventsCountEl.textContent = total ? countText : '';
+        }
+
+        syncPanelHeight();
+      }
+
+      // load events
+      try {
+        events = await fetchEvents();
+      } catch (err) {
+        console.error(err);
+        if (grid) {
+          grid.innerHTML = `
+            <p class="col-span-full text-center text-sm text-red-600 bg-white/80 rounded-xl py-8 px-4 border border-red-100">
+              Failed to load events from the server. Please try again later.
+            </p>`;
+        }
+        if (eventsCountEl) eventsCountEl.textContent = '';
+        return;
+      }
+
+      // sort globally
+      events.sort((a, b) => (b.date || '').localeCompare(a.date || ''));
+
+      // calendar (November only)
+      function setupCalendar() {
+        if (!calendarEl) return;
+
+        const now = new Date();
+        const year = now.getFullYear();
+        const monthIndex = 10; // 0-based: 10 = November
+
+        const monthNames = [
+          'January','February','March','April','May','June',
+          'July','August','September','October','November','December'
+        ];
+        const weekdayNames = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+
+        const eventsByDate = {};
+        for (const e of events) {
+          const key = normalizeDateKey(e.date);
+          if (!key) continue;
+          const [y, m] = key.split('-').map(Number);
+          if (y === year && m === monthIndex + 1) {
+            (eventsByDate[key] ||= []).push(e);
+          }
+        }
+
+        calendarEl.innerHTML = `
+          <div class="flex items-center justify-between mb-4 gap-3">
+            <div>
+              <h3 class="font-semibold text-base md:text-lg text-zinc-900">
+                ${monthNames[monthIndex]} ${year}
+              </h3>
+              <p class="mt-0.5 text-xs text-zinc-500">
+                Tap a date to view scheduled news &amp; events.
+              </p>
+            </div>
+            <button
+              type="button"
+              id="clearFilter"
+              class="text-[11px] md:text-xs px-3 py-1.5 rounded-full border border-secondary text-secondary hover:bg-secondary hover:text-white transition"
+            >
+              Show all events
+            </button>
+          </div>
+
+          <div class="grid grid-cols-7 text-[11px] text-center text-zinc-500 mb-2">
+            ${weekdayNames.map(d => `<div class="py-1 font-medium">${d}</div>`).join('')}
+          </div>
+
+          <div class="grid grid-cols-7 gap-1.5 text-sm" id="calendarDays"></div>
+
+          <div class="mt-3 flex items-center gap-2 text-[10px] text-zinc-500">
+            <span class="inline-block w-2 h-2 rounded-full bg-secondary"></span>
+            <span>Dates with news or events</span>
+          </div>
+        `;
+
+        const daysContainer = document.getElementById('calendarDays');
+        const firstDay = new Date(year, monthIndex, 1);
+        const daysInMonth = new Date(year, monthIndex + 1, 0).getDate();
+        const today = new Date();
+        const isCurrentNovember = today.getFullYear() === year && today.getMonth() === monthIndex;
+
+        let weekday = firstDay.getDay();
+        for (let i = 0; i < weekday; i++) {
+          const empty = document.createElement('div');
+          daysContainer.appendChild(empty);
+        }
+
+        function setSelectedDay(btn) {
+          document.querySelectorAll('.calendar-day--selected').forEach(el => {
+            el.classList.remove('calendar-day--selected', 'bg-secondary', 'text-white', 'shadow-md');
+          });
+          if (btn) {
+            btn.classList.add('calendar-day--selected', 'bg-secondary', 'text-white', 'shadow-md');
+          }
+        }
+
+        for (let day = 1; day <= daysInMonth; day++) {
+          const dateKey = `${year}-${String(monthIndex + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+          const hasEvents = !!eventsByDate[dateKey];
+
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.dataset.date = dateKey;
+
+          const isToday = isCurrentNovember && today.getDate() === day;
+
+          btn.className =
+            'calendar-day w-full rounded-lg text-xs sm:text-sm flex flex-col items-center justify-center ' +
+            'py-1.5 sm:py-2 hover:bg-secondary/10 focus:outline-none focus:ring-2 focus:ring-secondary/60 border transition';
+
+          if (hasEvents) {
+            btn.className += ' border-secondary/60 font-semibold bg-secondary/5';
+          } else {
+            btn.className += ' border-zinc-200 bg-zinc-50/70';
+          }
+
+          if (isToday) {
+            btn.className += ' ring-2 ring-secondary/60';
+          }
+
+          btn.innerHTML = `
+            <span>${day}</span>
+            ${hasEvents ? '<span class="mt-0.5 w-1.5 h-1.5 rounded-full bg-secondary"></span>' : ''}
+          `;
+
+          btn.addEventListener('click', () => {
+            const list = eventsByDate[dateKey] || [];
+            if (heading) heading.textContent = `Schedule on ${formatDisplayDate(dateKey)}`;
+            renderPosts(list, 'dateCards'); // single event = puno box
+            openEventsPanel();
+            setSelectedDay(btn);
+          });
+
+          daysContainer.appendChild(btn);
+        }
+
+        const clearBtn = document.getElementById('clearFilter');
+        clearBtn?.addEventListener('click', () => {
+          if (heading) heading.textContent = 'All news & events';
+          renderPosts(events, 'allList'); // list, no images
+          openEventsPanel();
+          setSelectedDay(null);
+        });
+      }
+
+      setupCalendar();
+
+      window.addEventListener('resize', () => {
+        if (eventsVisible) syncPanelHeight();
+      });
     })();
   </script>
 </body>
